@@ -1,0 +1,346 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <!-- Configuration for the defa ult package. -->
+    <package name="default" extends="struts-default">
+                
+        <interceptors>
+            <interceptor name="mySessionInterceptor" class="com.pritient.security.ActionSecurity" />
+            
+            <interceptor-stack name="myStack">
+               
+                <interceptor-ref name="mySessionInterceptor"/>
+                  <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+        </interceptors>
+ 
+        <default-interceptor-ref name="myStack"/>
+        
+        
+        <action name="login" class="com.pritient.forward.LoginAction">
+            <interceptor-ref name="defaultStack" />
+            <result name="success" type="chain">dashboard</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="logout" class="com.pritient.forward.LoginAction" method="logout">
+            <result name="success">/index.jsp</result>
+            
+        </action>
+        
+        <action name="getproduct" class="com.pritient.forward.ProductAction" method="getProducts">
+            <result name="success">/jsp/product.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="saveProduct" class="com.pritient.forward.ProductAction" >
+            <result name="success" type="chain">getproduct</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="updateProductThreshold" class="com.pritient.forward.ProductAction" method="updateProductThreashold" >
+            <result name="success" type="chain">getproduct</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="updateProduct" class="com.pritient.forward.ProductAction" method="updateProduct" >
+            <result name="success" type="chain">getproduct</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        
+        <action name="purchase" class="com.pritient.forward.PurchaseAction" >
+            <result name="success">/jsp/purchase.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="getvoucher" class="com.pritient.forward.VoucherAction" >
+            <result name="success">/jsp/voucher.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="savePurchase" class="com.pritient.forward.PurchaseAction" method="savePurchase" >
+            <result name="success">/jsp/purchase.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="getaddressbook" class="com.pritient.forward.AddressBookAction" >
+            <result name="success">/jsp/addressbook.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="saveCompany" class="com.pritient.forward.AddressBookAction" method="addCompanyAddress">
+            <result name="success" type="chain">getaddressbook</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="getCompanyDetails" class="com.pritient.forward.AddressBookAction" method="getCompanyDetails">
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        <action name="getHSNUOM" class="com.pritient.forward.InvoiceAction" method="getUOMandHSN">
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        <action name="getUOMQTY" class="com.pritient.forward.RawMaterialAction" method="getUOMandQty">
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        
+        <action name="updateCompany" class="com.pritient.forward.AddressBookAction" method="updateCompanyDetails">
+            <result name="success" type="chain">getaddressbook</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="updateVoucher" class="com.pritient.forward.VoucherAction" method="updateVoucher">
+            <result name="purchase" type="chain">purchasePayment</result>
+            <result name="invoice" type="chain">invoicePayment</result>
+            <result name="success" type="chain">getvoucher</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="invoice" class="com.pritient.forward.InvoiceAction" >
+            <result name="success">/jsp/invoice.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="getPrintList" class="com.pritient.forward.PrintAction" >
+            <result name="success">/jsp/print.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        
+        <action name="saveInvoice" class="com.pritient.forward.InvoiceAction" method="saveInvoiceAction" >
+            <result type="chain"> invoice</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        
+        <action name="printInvoice" class="com.pritient.forward.InvoiceAction" method="printInvoice"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        <action name="printInvoicePDF" class="com.pritient.forward.InvoiceAction" method="printInvoicePDF"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        
+        <action name="printPurchasePDF" class="com.pritient.forward.PurchaseAction" method="printPurchasePDF"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        <action name="getPendingInvoiceList" class="com.pritient.forward.VoucherAction" method="getPendingInvoice"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        <action name="getPendingPurchaseList" class="com.pritient.forward.VoucherAction" method="getPendingPurchase"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        
+        
+        <action name="getProductInfo" class="com.pritient.forward.ProductAction" method="getProductInfo"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        
+        <action name="myProfile" class="com.pritient.forward.MyProfileAction" >
+            <result name="success">/jsp/myProfile.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="dashboard" class="com.pritient.forward.DashboardAction" >
+            <result name="success">/jsp/dashboard.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        
+        <action name="updateDetails" class="com.pritient.forward.MyProfileAction" method="updateMyDetails" >
+            <result name="success"  type="chain"> myProfile</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="invoiceDetails" class="com.pritient.forward.InvoiceAction" method="getInvoices" >
+            <result name="success" > /jsp/invoiceDetails.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        
+        <action name="purchaseDetails" class="com.pritient.forward.PurchaseAction" method="getPurchase" >
+            <result name="success" > /jsp/purchaseDetails.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="getInvoiceDetailsInfo" class="com.pritient.forward.InvoiceAction" method="getInvoiceDetailsInfo"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        <action name="getPurchaseDetailsInfo" class="com.pritient.forward.PurchaseAction" method="getPurchaseDetailsInfo"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        
+        <action name="rawMaterial" class="com.pritient.forward.RawMaterialAction"   >
+            <result name="success" > /jsp/rawmaterial.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="saveRawMaterial" class="com.pritient.forward.RawMaterialAction" method="saveRawMaterial"  >
+            <result name="success" type="chain">rawMaterial</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        
+        <action name="updatePurchase" class="com.pritient.forward.PurchaseAction" method="updatePurchase"  >
+            <result name="success" type="chain">purchaseDetails</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="updateInvoice" class="com.pritient.forward.InvoiceAction" method="updateInvoiceAction"  >
+            <result name="success" type="chain">invoiceDetails</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="invoicePayment" class="com.pritient.forward.VoucherAction"  >
+            <result name="success" > /jsp/invoicePayment.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+         <action name="purchasePayment" class="com.pritient.forward.VoucherAction"  >
+            <result name="success" > /jsp/purchasePayment.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+
+        <action name="createExcel" class="com.pritient.forward.ExcelAction" method="createExcel"  >
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        
+        <action name="createExcelForPurchase" class="com.pritient.forward.ExcelAction" method="createExcelForPurchase"  >
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename="${fileName}"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        
+        
+        
+        
+        <action name="getPdfFile" class="com.pritient.forward.InvoiceAction" method="getPdf">
+            <result name="success" type="stream">
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">inline;filename=${fileName}</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        
+        
+        <action name="getPurchasePdfFile" class="com.pritient.forward.PurchaseAction" method="getPurchasePdfFile">
+            <result name="success" type="stream">
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">inline;filename=${fileName}</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        
+        <action name="ledger" class="com.pritient.forward.LedgerAction"  >
+            <result name="success" > /jsp/ledger.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="bill" class="com.pritient.forward.BillAction"  >
+            <result name="success" > /jsp/bill.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="getLedger" class="com.pritient.forward.LedgerAction" method="getLedger" >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        <action name="getLedgerFile" class="com.pritient.forward.LedgerAction" method="getLedgerPdf">
+            <result name="success" type="stream">
+                <param name="contentType">application/pdf</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">inline;filename=${fileName}</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        
+        <action name="downloadBills" class="com.pritient.forward.BillAction" method="download">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename=${fileName}</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        
+         <action name="getPurchaseReport" class="com.pritient.forward.DashboardAction" method="getPurchaseList"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        
+        <action name="getSalesReport" class="com.pritient.forward.DashboardAction" method="getSalesReport"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        <action name="getPLReport" class="com.pritient.forward.DashboardAction" method="getPLReport"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+        <action name="getPurchaseSalePlReport" class="com.pritient.forward.DashboardAction" method="getPurchaseSalePlReport"  >
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+         <action name="deleteInvoice" class="com.pritient.forward.InvoiceAction" method="deleteInvoice"  >
+           <result name="success" type="chain">invoiceDetails</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        <action name="deletePurchase" class="com.pritient.forward.PurchaseAction" method="deletePurchase"  >
+           <result name="success" type="chain">invoiceDetails</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+    </package>
+</struts>
