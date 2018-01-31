@@ -42,6 +42,7 @@ public class ConvertToPdf {
             } else {
 
                 templatePath = CommonUtil.path + CommonUtil.getResourceProperties("template.path");
+//                templatePath = CommonUtil.getResourceProperties("template.path");
             }
 
             String outputPath = CommonUtil.directoryPath + "index.html";

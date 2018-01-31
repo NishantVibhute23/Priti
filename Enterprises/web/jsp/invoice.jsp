@@ -114,6 +114,7 @@
                     type: "POST",
                     data: formData
                 }).success(function(response) {
+                    
                     $("#spinner").hide();
                     $('#invoiceModal').find('.modal-body').text("");
                     $('#invoiceModal').find('.modal-body').append("<iframe width='100%' height='700px' id='iFramePdf' src='" + response + "/getPdfFile'  ></iframe>");
@@ -257,7 +258,7 @@
                                             <div class="form-group row">
                                                 <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">Invoice Date.</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" placeholder="Invoice Date" class="form-control" id="datepicker"  style="background-color: #fff !important"  readonly name="date" />
+                                                    <input type="text" required class="form-control" id="datepicker"  style="background-color: #fff !important"  readonly name="date" />
                                                 </div>
                                             </div>
 
@@ -331,8 +332,8 @@
                                                 <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">Name</label>
                                                 <input type="hidden" id="hiddenBillToName" name="billToName"/>
                                                 <div class="col-sm-9">
-                                                    <select id="billToCompSelect" class="form-control" name="billTO"  onchange="getCompanyInfoBillTo()">
-                                                        <option value="0">Select</option>
+                                                    <select id="billToCompSelect" required class="form-control" name="billTO"  onchange="getCompanyInfoBillTo()">
+                                                        <option value="">Select</option>
                                                         <s:iterator value="companyList">
                                                             <option value="<s:property value = 'companyId'/>"><s:property value = 'companyName'/></option>
                                                         </s:iterator>
@@ -461,7 +462,7 @@
                                             <tr align="center">
 
                                                 <th style="text-align: center" width="3%">PERC</th>
-                                                <th  style="text-align: center;border:1px solid #ddd"width="7%">AMOUNT</th>
+                                                <th  style="text-align: center;border:1px solid #ddd" width="7%">AMOUNT</th>
                                                 <th style="text-align: center" width="3%">PERC</th>
                                                 <th style="text-align: center;border:1px solid #ddd" width="7%">AMOUNT</th>
                                                 <th style="text-align: center" width="3%">PERC</th>
@@ -474,50 +475,50 @@
 
                                                 <td >
                                                     <input type="hidden" id="productId0" name="invoiceDetails[0].productName"/>
-                                                    <select id="productSelect0" name="invoiceDetails[0].productId" class="form-control" onchange="setProduct(0)">
-                                                        <option value="0">Select</option>
+                                                    <select id="productSelect0" required name="invoiceDetails[0].productId" class="form-control" onchange="setProduct(0)">
+                                                        <option value="">Select</option>
                                                         <s:iterator value="subProductList">
                                                             <option value="<s:property value = 'subProductId'/>"><s:property value = 'subProductName'/></option>
                                                         </s:iterator>
                                                     </select>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1"  readonly  required type="text" name="invoiceDetails[0].hsn" id="hsn0"   class="form-control"/>
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1"  readonly  required type="text" name="invoiceDetails[0].hsn" id="hsn0"   class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1" readonly  required   type="text" name="invoiceDetails[0].uom" id="uom0"    class="form-control"/>
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1" readonly  required   type="text" name="invoiceDetails[0].uom" id="uom0"    class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center"  required  type="text" name="invoiceDetails[0].qty" id="qty0"  class="form-control"/>
-                                                </td>
-
-                                                <td >
-                                                    <input style="text-align: center"  required  type="text" name="invoiceDetails[0].price" id="price0"  onblur="calculateRowGSTTotal('0')"  class="form-control"/>
+                                                    <input required style="text-align: center"  required  type="text" name="invoiceDetails[0].qty" id="qty0"  class="form-control"/>
                                                 </td>
 
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1" readonly  required  type="text" name="invoiceDetails[0].amount" id="amount0"  class="form-control"/>
+                                                    <input required style="text-align: center"  required  type="text" name="invoiceDetails[0].price" id="price0"  onblur="calculateRowGSTTotal('0')"  class="form-control"/>
+                                                </td>
+
+                                                <td >
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1" readonly  required  type="text" name="invoiceDetails[0].amount" id="amount0"  class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1"    required  type="text" name="invoiceDetails[0].cgstPerc" id="cgstPerc0" onblur="calculateRowGSTTotal('0')" value="0" class="form-control"/>
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1"    required  type="text" name="invoiceDetails[0].cgstPerc" id="cgstPerc0" onblur="calculateRowGSTTotal('0')" value="0" class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1" readonly   required  type="text" name="invoiceDetails[0].cgstAmount" id="cgstAmt0" class="form-control"/>
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1" readonly   required  type="text" name="invoiceDetails[0].cgstAmount" id="cgstAmt0" class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1"    required  type="text" name="invoiceDetails[0].sgstPerc" id="sgstPerc0" onblur="calculateRowGSTTotal('0')"  value="0" class="form-control"/>
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1"    required  type="text" name="invoiceDetails[0].sgstPerc" id="sgstPerc0" onblur="calculateRowGSTTotal('0')"  value="0" class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1"   readonly   required  type="text" name="invoiceDetails[0].sgstAmount"  id="sgstAmt0" class="form-control"/>
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1"   readonly   required  type="text" name="invoiceDetails[0].sgstAmount"  id="sgstAmt0" class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1"    required  type="text" name="invoiceDetails[0].igstPerc" id="igstPerc0" onblur="calculateRowGSTTotal('0')" value="0" class="form-control"/>
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1"    required  type="text" name="invoiceDetails[0].igstPerc" id="igstPerc0" onblur="calculateRowGSTTotal('0')" value="0" class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1" readonly   required  type="text" name="invoiceDetails[0].igstAmount"  id="igstAmt0" class="form-control"/>
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1" readonly   required  type="text" name="invoiceDetails[0].igstAmount"  id="igstAmt0" class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input style="text-align: center;background-color: #fff !important" tabindex="-1" readonly   required  type="text" name="invoiceDetails[0].totalAmountAfterTax" id="totalAmountAfterTax0" class="form-control"/>
+                                                    <input required style="text-align: center;background-color: #fff !important" tabindex="-1" readonly   required  type="text" name="invoiceDetails[0].totalAmountAfterTax" id="totalAmountAfterTax0" class="form-control"/>
                                                 </td>
 
 

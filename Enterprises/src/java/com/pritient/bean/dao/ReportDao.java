@@ -31,7 +31,7 @@ public class ReportDao extends DBUtil {
 
     public List<ReportRowBean> getPurchaseReport(String fromDate, String toDate) {
 
-        LinkedHashMap<String, Double> purchaseMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
+        LinkedHashMap<String, ReportRowBean> purchaseMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
 
         List<ReportRowBean> reportList = new ArrayList<>();
         try {
@@ -42,17 +42,23 @@ public class ReportDao extends DBUtil {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                purchaseMap.put(rs.getString("date"), rs.getDouble("amount"));
+                ReportRowBean rrb = new ReportRowBean();
+                rrb.setDate("" + rs.getString("monthDate"));
+                rrb.setAmountTotal(Double.parseDouble((rs.getString("total") == null ? "0" : rs.getString("total"))));
+                rrb.setAmountPaid(Double.parseDouble((rs.getString("paid") == null ? "0" : rs.getString("paid"))));
+                rrb.setAmountUnpaid(Double.parseDouble((rs.getString("unpaid") == null ? "0" : rs.getString("unpaid"))));
+                purchaseMap.put(rs.getString("monthDate"), rrb);
 
             }
+
             Iterator it = purchaseMap.entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
 
-                ReportRowBean rrb = new ReportRowBean();
-                rrb.setDate("" + pair.getKey());
-                rrb.setAmount(Double.parseDouble("" + pair.getValue()));
-                reportList.add(rrb);
+//                ReportRowBean rrb = new ReportRowBean();
+//                rrb.setDate("" + pair.getKey());
+//                rrb.setAmountTotal(Double.parseDouble("" + pair.getValue()));
+                reportList.add((ReportRowBean) pair.getValue());
                 it.remove(); // avoids a ConcurrentModificationException
             }
 
@@ -65,8 +71,7 @@ public class ReportDao extends DBUtil {
 
     public List<ReportRowBean> getSalesReport(String fromDate, String toDate) {
 
-        LinkedHashMap<String, Double> salesMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
-
+        LinkedHashMap<String, ReportRowBean> salesMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
         List<ReportRowBean> reportList = new ArrayList<>();
         try {
             conn = getConnection();
@@ -76,17 +81,22 @@ public class ReportDao extends DBUtil {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                salesMap.put(rs.getString("date"), rs.getDouble("amount"));
+                ReportRowBean rrb = new ReportRowBean();
+                rrb.setDate("" + rs.getString("monthDate"));
+                rrb.setAmountTotal(Double.parseDouble((rs.getString("total") == null ? "0" : rs.getString("total"))));
+                rrb.setAmountPaid(Double.parseDouble((rs.getString("paid") == null ? "0" : rs.getString("paid"))));
+                rrb.setAmountUnpaid(Double.parseDouble((rs.getString("unpaid") == null ? "0" : rs.getString("unpaid"))));
+                salesMap.put(rs.getString("monthDate"), rrb);
 
             }
             Iterator it = salesMap.entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
 
-                ReportRowBean rrb = new ReportRowBean();
-                rrb.setDate("" + pair.getKey());
-                rrb.setAmount(Double.parseDouble("" + pair.getValue()));
-                reportList.add(rrb);
+//                ReportRowBean rrb = new ReportRowBean();
+//                rrb.setDate("" + pair.getKey());
+//                rrb.setAmountTotal(Double.parseDouble("" + pair.getValue()));
+                reportList.add((ReportRowBean) pair.getValue());
                 it.remove(); // avoids a ConcurrentModificationException
             }
 
@@ -98,8 +108,8 @@ public class ReportDao extends DBUtil {
     }
 
     public List<ReportRowBean> getProfitLossReport(String fromDate, String toDate) {
-        LinkedHashMap<String, Double> purchaseMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
-        LinkedHashMap<String, Double> salesMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
+        LinkedHashMap<String, ReportRowBean> purchaseMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
+        LinkedHashMap<String, ReportRowBean> salesMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
 
         List<ReportRowBean> reportList = new ArrayList<>();
         try {
@@ -110,7 +120,12 @@ public class ReportDao extends DBUtil {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                salesMap.put(rs.getString("date"), rs.getDouble("amount"));
+                ReportRowBean rrb = new ReportRowBean();
+                rrb.setDate("" + rs.getString("monthDate"));
+                rrb.setAmountTotal(Double.parseDouble((rs.getString("total") == null ? "0" : rs.getString("total"))));
+                rrb.setAmountPaid(Double.parseDouble((rs.getString("paid") == null ? "0" : rs.getString("paid"))));
+                rrb.setAmountUnpaid(Double.parseDouble((rs.getString("unpaid") == null ? "0" : rs.getString("unpaid"))));
+                salesMap.put(rs.getString("monthDate"), rrb);
 
             }
             PreparedStatement ps1 = conn.prepareStatement("Call getPurchaseMonthWise(?,?)");
@@ -119,7 +134,12 @@ public class ReportDao extends DBUtil {
             ResultSet rs1 = ps1.executeQuery();
 
             while (rs1.next()) {
-                purchaseMap.put(rs1.getString("date"), rs1.getDouble("amount"));
+                ReportRowBean rrb = new ReportRowBean();
+                rrb.setDate("" + rs1.getString("monthDate"));
+                rrb.setAmountTotal(Double.parseDouble((rs1.getString("total") == null ? "0" : rs1.getString("total"))));
+                rrb.setAmountPaid(Double.parseDouble((rs1.getString("paid") == null ? "0" : rs1.getString("paid"))));
+                rrb.setAmountUnpaid(Double.parseDouble((rs1.getString("unpaid") == null ? "0" : rs1.getString("unpaid"))));
+                purchaseMap.put(rs1.getString("monthDate"), rrb);
 
             }
 
@@ -127,15 +147,15 @@ public class ReportDao extends DBUtil {
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
 
-                double purchaseVal = Double.parseDouble("" + purchaseMap.get(pair.getKey()));
+                double purchaseVal = Double.parseDouble("" + ((ReportRowBean) purchaseMap.get(pair.getKey())).getAmountTotal());
 
-                double sale = Double.parseDouble("" + salesMap.get(pair.getKey()));
+                double sale = Double.parseDouble("" + ((ReportRowBean) salesMap.get(pair.getKey())).getAmountTotal());
 
                 double pl = sale - purchaseVal;
 
                 ReportRowBean rrb = new ReportRowBean();
                 rrb.setDate("" + pair.getKey());
-                rrb.setAmount(Double.parseDouble("" + pl));
+                rrb.setAmountTotal(Double.parseDouble("" + pl));
                 reportList.add(rrb);
                 it.remove(); // avoids a ConcurrentModificationException
             }
@@ -148,8 +168,8 @@ public class ReportDao extends DBUtil {
     }
 
     public List<ReportAllBean> getPurchaseSalePLReport(String fromDate, String toDate) {
-        LinkedHashMap<String, Double> purchaseMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
-        LinkedHashMap<String, Double> salesMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
+        LinkedHashMap<String, ReportRowBean> purchaseMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
+        LinkedHashMap<String, ReportRowBean> salesMap = CommonUtil.getMonthsBetweenDate(fromDate, toDate);
 
         List<ReportAllBean> reportList = new ArrayList<>();
         try {
@@ -160,7 +180,12 @@ public class ReportDao extends DBUtil {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                salesMap.put(rs.getString("date"), rs.getDouble("amount"));
+                ReportRowBean rrb = new ReportRowBean();
+                rrb.setDate("" + rs.getString("monthDate"));
+                rrb.setAmountTotal(Double.parseDouble((rs.getString("total") == null ? "0" : rs.getString("total"))));
+                rrb.setAmountPaid(Double.parseDouble((rs.getString("paid") == null ? "0" : rs.getString("paid"))));
+                rrb.setAmountUnpaid(Double.parseDouble((rs.getString("unpaid") == null ? "0" : rs.getString("unpaid"))));
+                salesMap.put(rs.getString("monthDate"), rrb);
 
             }
             PreparedStatement ps1 = conn.prepareStatement("Call getPurchaseMonthWise(?,?)");
@@ -169,15 +194,20 @@ public class ReportDao extends DBUtil {
             ResultSet rs1 = ps1.executeQuery();
 
             while (rs1.next()) {
-                purchaseMap.put(rs1.getString("date"), rs1.getDouble("amount"));
+                ReportRowBean rrb = new ReportRowBean();
+                rrb.setDate("" + rs1.getString("monthDate"));
+                rrb.setAmountTotal(Double.parseDouble((rs1.getString("total") == null ? "0" : rs1.getString("total"))));
+                rrb.setAmountPaid(Double.parseDouble((rs1.getString("paid") == null ? "0" : rs1.getString("paid"))));
+                rrb.setAmountUnpaid(Double.parseDouble((rs1.getString("unpaid") == null ? "0" : rs1.getString("unpaid"))));
+                purchaseMap.put(rs1.getString("monthDate"), rrb);
 
             }
 
             Iterator it = purchaseMap.entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
-                double purchaseVal = Double.parseDouble("" + purchaseMap.get(pair.getKey()));
-                double sale = Double.parseDouble("" + salesMap.get(pair.getKey()));
+                double purchaseVal = Double.parseDouble("" + ((ReportRowBean) purchaseMap.get(pair.getKey())).getAmountTotal());
+                double sale = Double.parseDouble("" + ((ReportRowBean) salesMap.get(pair.getKey())).getAmountTotal());
                 double pl = sale - purchaseVal;
 
                 it.remove(); // avoids a ConcurrentModificationException

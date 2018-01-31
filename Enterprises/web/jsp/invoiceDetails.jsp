@@ -542,14 +542,14 @@
                                                                        
                                                                             <label class="col-xs-3 control-label">Invoice No.</label>
                                                                             <div class="col-xs-9">
-                                                                                <input type="text" id="invoiceId1" readonly class="form-control" name="id" />
+                                                                                <input type="text" required id="invoiceId1" readonly class="form-control" name="id" />
                                                                             </div>
                                                                         
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label class="col-xs-3 control-label">Invoice Date.</label>
                                                                         <div class="col-xs-9">
-                                                                            <input type="text" class="form-control" id="datepicker"  style="background-color: #fff !important"  readonly name="date" />
+                                                                            <input type="text" required class="form-control" id="datepicker"  style="background-color: #fff !important"  readonly name="date" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -566,11 +566,11 @@
                                                                     <div class="form-group row">
                                                                         <label class="col-xs-3 control-label">State </label>
                                                                         <div class="col-xs-5">
-                                                                            <input type="text" id="companyState" class="form-control" name="state" />
+                                                                            <input type="text" required id="companyState" class="form-control" name="state" />
                                                                         </div>
                                                                         <label class="col-xs-1 control-label">Code </label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" id="companyStateCode"  class="form-control" name="code" />
+                                                                            <input type="text" required id="companyStateCode"  class="form-control" name="code" />
                                                                         </div> 
                                                                     </div>
                                                                 </div>
@@ -745,7 +745,7 @@
                                                                         <div style="visibility: hidden">
 
                                                                             <select id="productSelect" class="form-control" onchange="setProduct(0)">
-                                                                                <option value="0">Select</option>
+                                                                                <option value="">Select</option>
                                                                                 <s:iterator value="subProductList">
                                                                                     <option value="<s:property value = 'subProductId'/>"><s:property value = 'subProductName'/></option>
                                                                                 </s:iterator>

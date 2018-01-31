@@ -16,9 +16,9 @@ $(document).ready(function () {
         var newRow = $("<tr>");
         var cols = "";
         
-        cols += '<td><select id="productSelect' + counter + '" name="subProduct[' + counter + '].subProductId" class="form-control" onchange="setProductHSN('+counter+')"></select></td>';
-        cols += '<td><input type="text" name="subProduct[' + counter + '].qty" id="qty' + counter + '"  class="form-control"/></td>';
-        cols += '<td><input type="text"  id="uom' + counter + '" class="form-control"/></td>';
+        cols += '<td><select required id="productSelect' + counter + '" name="subProduct[' + counter + '].subProductId" class="form-control" onchange="setProductHSN('+counter+')"></select></td>';
+        cols += '<td><input required type="text" name="subProduct[' + counter + '].qty" id="qty' + counter + '"  class="form-control"/></td>';
+        cols += '<td><input required type="text"  id="uom' + counter + '" class="form-control"/></td>';
         
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="X"></td>';
         newRow.append(cols);

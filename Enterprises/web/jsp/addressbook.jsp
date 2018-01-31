@@ -71,20 +71,20 @@ $("#Ledger").removeClass("active");
                     <!-- The form is placed inside the body of modal -->
                     <form id="loginForm" method="post" class="form-horizontal" action="saveCompany">
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">Company Name</label>
+                            <label class="col-xs-3 control-label">Company Name *</label>
                             <div class="col-xs-8">
                                 <input type="text" required class="form-control" name="companyName" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">GSTIN</label>
+                            <label class="col-xs-3 control-label">GSTIN  *</label>
                             <div class="col-xs-8">
                                 <input type="text" required class="form-control" name="companyGSTIN" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">Address</label>
+                            <label class="col-xs-3 control-label">Address  *</label>
                             <div class="col-xs-8">
                                 <textarea name="companyAddress" required class="form-control"></textarea>
                                 <!--<input type="text" class="form-control" name="companyAddress" />-->
@@ -93,7 +93,7 @@ $("#Ledger").removeClass("active");
 
 
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">State</label>
+                            <label class="col-xs-3 control-label">State  *</label>
                             <div class="col-xs-8">
                                 <select required id="stateList" name="companyStateId" class="form-control" >
                                     <option value="">Select</option>
@@ -107,7 +107,7 @@ $("#Ledger").removeClass("active");
 
 
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">Email ID:</label>
+                            <label class="col-xs-3 control-label">Email ID  *</label>
                             <div class="col-xs-8">
 
                                 <input type="email" required class="form-control" name="companyEmailId" />
@@ -115,41 +115,41 @@ $("#Ledger").removeClass("active");
                         </div>
 
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">Phone No 1:</label>
+                            <label class="col-xs-3 control-label">Phone No 1  *</label>
                             <div class="col-xs-8">
 
                                 <input type="text" required class="form-control" name="companyPhoneNo1" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">Phone No 2:</label>
+                            <label class="col-xs-3 control-label">Phone No 2 </label>
                             <div class="col-xs-8">
 
                                 <input type="text" class="form-control" name="companyPhoneNo2" />
                             </div>
                         </div><div class="form-group">
-                            <label class="col-xs-3 control-label">Phone No 3:</label>
+                            <label class="col-xs-3 control-label">Phone No 3 </label>
                             <div class="col-xs-8">
 
                                 <input type="text" class="form-control" name="companyPhoneNo3" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">Bank Name:</label>
+                            <label class="col-xs-3 control-label">Bank Name </label>
                             <div class="col-xs-8">
 
                                 <input type="text" class="form-control" name="companyBankName" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">IFSC Code:</label>
+                            <label class="col-xs-3 control-label">IFSC Code </label>
                             <div class="col-xs-8">
 
                                 <input type="text" class="form-control" name="companyBankIFSC" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">Account No:</label>
+                            <label class="col-xs-3 control-label">Account No </label>
                             <div class="col-xs-8">
 
                                 <input type="text" class="form-control" name="companyBankAccountNo" />

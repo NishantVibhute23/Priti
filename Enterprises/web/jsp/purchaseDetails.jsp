@@ -545,13 +545,13 @@ table, th, td {
                                                                 <div class="col-xs-8">
                                                                     <input type="hidden"  id="purchaseId1" name="id" />
                                                                     <input type="hidden" id="count"/>
-                                                                    <input type="text" class="form-control" id="invoiceNo" name="invoiceNo" />
+                                                                    <input type="text" required class="form-control" id="invoiceNo" name="invoiceNo" />
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
                                                                 <label class="col-xs-4 ">Date</label>
                                                                 <div class="col-xs-8">
-                                                                    <input type="text" class="form-control" id="datepicker" name="date"  readonly/>
+                                                                    <input type="text" required class="form-control" id="datepicker" name="date"  readonly/>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">
@@ -621,8 +621,8 @@ table, th, td {
 
                                                                     <div style="visibility: hidden">
 
-                                                                        <select id="productSelect" class="form-control" onchange="setProduct(0)">
-                                                                            <option value="0">Select</option>
+                                                                        <select id="productSelect" required class="form-control" onchange="setProduct(0)">
+                                                                            <option value="">Select</option>
                                                                             <s:iterator value="subProductList">
                                                                                 <option value="<s:property value = 'subProductId'/>"><s:property value = 'subProductName'/></option>
                                                                             </s:iterator>

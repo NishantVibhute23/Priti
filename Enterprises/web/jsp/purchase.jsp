@@ -188,8 +188,8 @@
                                                         <div class="form-group row">
                                                             <label class="col-xs-3 ">Company Name</label>
                                                             <div class="col-xs-9 ">
-                                                                <select id="compSelect" name="companyId" class="form-control"  onchange="getCompanyInfo()">
-                                                                    <option value="0">Select</option>
+                                                                <select id="compSelect" required name="companyId" class="form-control"  onchange="getCompanyInfo()">
+                                                                    <option value="">Select</option>
                                                                     <s:iterator value="companyList">
                                                                         <option value="<s:property value = 'companyId'/>"><s:property value = 'companyName'/></option>
                                                                     </s:iterator>
@@ -201,25 +201,25 @@
 
                                                             <label class="col-xs-3 control-label">Address</label>
                                                             <div style="height:80px" class="col-xs-9">
-                                                                <textarea style="height:80px" id="companyAddress" resize="none" name="billToAddress" class="form-control"> </textarea>
+                                                                <textarea  requiredstyle="height:80px" id="companyAddress" resize="none" name="billToAddress" class="form-control"> </textarea>
 
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="control-label col-xs-3" for="inputWarning">GSTIN</label>
                                                             <div class="col-xs-9">
-                                                                <input type="text" class="form-control" id="companyGSTIN">
+                                                                <input required type="text" class="form-control" id="companyGSTIN">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-xs-3 ">State</label>
                                                             <div class="col-xs-5">
-                                                                <input type="text" class="form-control" id="compState" name=""  readonly/>
+                                                                <input required type="text" class="form-control" id="compState" name=""  readonly/>
                                                             </div>
 
                                                             <label class="col-xs-2 control-label">Code</label>
                                                             <div class="col-xs-2">
-                                                                <input type="text" class="form-control" id="compCode" name="" />
+                                                                <input required type="text" class="form-control" id="compCode" name="" />
                                                             </div>
                                                         </div>
 
@@ -229,7 +229,7 @@
                                                             <label class="col-xs-4 control-label">Invoice No.</label>
                                                             <div class="col-xs-8">
                                                                 <input type="hidden" id="count" value="1"/>
-                                                                <input type="text" class="form-control" name="invoiceNo" />
+                                                                <input required type="text" class="form-control" name="invoiceNo" />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -316,8 +316,8 @@
 
                                                                         <td >
                                                                             <input type="hidden" id="productId0" name="invoiceDetails[0].productName"/>
-                                                                            <select id="productSelect0" name="invoiceDetails[0].productId" class="form-control" onchange="setProduct(0)">
-                                                                                <option value="0">Select</option>
+                                                                            <select required id="productSelect0" name="invoiceDetails[0].productId" class="form-control" onchange="setProduct(0)">
+                                                                                <option value="">Select</option>
                                                                                 <s:iterator value="subProductList">
                                                                                     <option value="<s:property value = 'subProductId'/>"><s:property value = 'subProductName'/></option>
                                                                                 </s:iterator>

@@ -12,7 +12,9 @@ package com.pritient.bean;
 public class ReportRowBean {
 
     public String date;
-    public double amount;
+    public double amountTotal;
+    public double amountPaid;
+    public double amountUnpaid;
 
     public String getDate() {
         return date;
@@ -22,12 +24,28 @@ public class ReportRowBean {
         this.date = date;
     }
 
-    public double getAmount() {
-        return amount;
+    public double getAmountTotal() {
+        return amountTotal;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setAmountTotal(double amountTotal) {
+        this.amountTotal = amountTotal;
+    }
+
+    public double getAmountPaid() {
+        return amountPaid;
+    }
+
+    public void setAmountPaid(double amountPaid) {
+        this.amountPaid = amountPaid;
+    }
+
+    public double getAmountUnpaid() {
+        return amountUnpaid;
+    }
+
+    public void setAmountUnpaid(double amountUnpaid) {
+        this.amountUnpaid = amountUnpaid;
     }
 
 }

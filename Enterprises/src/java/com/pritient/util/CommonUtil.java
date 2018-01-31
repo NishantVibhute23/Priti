@@ -5,6 +5,7 @@
  */
 package com.pritient.util;
 
+import com.pritient.bean.ReportRowBean;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class CommonUtil {
         try {
             this.path = path;
             input = new FileInputStream(path + "WEB-INF\\classes\\com\\pritient\\properties\\resource.properties");
+//            input = new FileInputStream("/home/ec2-user/Properties/resource.properties");
 //            input = new FileInputStream(System.getenv("OPENSHIFT_DATA_DIR") + "resource.properties");
             // load a properties file
             prop.load(input);
@@ -45,7 +47,7 @@ public class CommonUtil {
             if (CommonUtil.getResourceProperties("template.path").equalsIgnoreCase("yes")) {
                 directoryPath = System.getenv("OPENSHIFT_DATA_DIR");
             } else {
-                directoryPath = path;
+                directoryPath = CommonUtil.getResourceProperties("directory.path");;
             }
         } catch (Exception ex) {
             Logger.getLogger(CommonUtil.class.getName()).log(Level.SEVERE, null, ex);
@@ -143,8 +145,8 @@ public class CommonUtil {
 
     }
 
-    public static LinkedHashMap<String, Double> getMonthsBetweenDate(String fromDate, String toDate) {
-        LinkedHashMap<String, Double> monthlyMap = new LinkedHashMap<>();
+    public static LinkedHashMap<String, ReportRowBean> getMonthsBetweenDate(String fromDate, String toDate) {
+        LinkedHashMap<String, ReportRowBean> monthlyMap = new LinkedHashMap<>();
         String date1 = fromDate;
         String date2 = toDate;
 
@@ -165,7 +167,12 @@ public class CommonUtil {
         while (beginCalendar.before(finishCalendar)) {
             // add one month to date per loop
             String date = formater2.format(beginCalendar.getTime());
-            monthlyMap.put(date, 0.0);
+            ReportRowBean rr = new ReportRowBean();
+            rr.setDate(date);
+            rr.setAmountTotal(Double.parseDouble("0"));
+            rr.setAmountPaid(Double.parseDouble("0"));
+            rr.setAmountUnpaid(Double.parseDouble("0"));
+            monthlyMap.put(date, rr);
             beginCalendar.add(Calendar.MONTH, 1);
         }
 

@@ -107,8 +107,8 @@ public class DashboardAction extends ActionSupport {
             Calendar now = Calendar.getInstance();
             int year = now.get(Calendar.YEAR);
             int month = now.get(Calendar.MONTH) + 1; // Note: zero based!
-            fromDate = "01/01/" + year;
-            toDate = "31/"+month+"/" + year;
+            fromDate = "01/03/" + (year - 1);
+            toDate = "31/" + month + "/" + year;
         }
 
         try {

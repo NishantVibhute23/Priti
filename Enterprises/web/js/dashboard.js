@@ -7,23 +7,24 @@ $(document).ready(function() {
     var purchaseChart = Morris.Bar({
         element: 'purchase-report',
         xkey: 'date',
-        ykeys: ['amount'],
-        labels: ['Purchase'],
-        barColors: ['#2577B5']
+        ykeys: ['amountTotal','amountPaid','amountUnpaid'],
+        labels: ['Total', 'Paid', 'Unpaid'],
+        barColors: ['#2577B5','#257898','#259685'],
     });
 
     var salesChart = Morris.Bar({
         element: 'sales-report',
         xkey: 'date',
-        ykeys: ['amount'],
-        labels: ['Sale'],
-        barColors: ['#A7B3BC']
+        ykeys: ['amountTotal','amountPaid','amountUnpaid'],
+         labels: ['Total', 'Paid', 'Unpaid'],
+        barColors: ['#A7B3BC'],
+        
     });
 
     var plChart = Morris.Bar({
         element: 'pl-report',
         xkey: 'date',
-        ykeys: ['amount'],
+        ykeys: ['amountTotal'],
         labels: ['Sale'],
         barColors: ['#7CB47C']
     });
@@ -35,7 +36,10 @@ $(document).ready(function() {
         labels: ['Purchase', 'Sale', 'Profit'],
         pointSize: 2,
         hideHover: 'auto',
-        resize: true
+        resize: true,
+        fillOpacity: 0.6,
+      behaveLikeLine: true
+     
     });
 
     $.ajax({
