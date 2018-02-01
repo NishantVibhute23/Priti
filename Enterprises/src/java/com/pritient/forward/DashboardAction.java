@@ -15,8 +15,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**
@@ -24,6 +22,9 @@ import org.codehaus.jackson.map.ObjectMapper;
  * @author nishant.vibhute
  */
 public class DashboardAction extends ActionSupport {
+
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     ReportDao reportDao = new ReportDao();
     private InputStream inputStream;
@@ -53,7 +54,7 @@ public class DashboardAction extends ActionSupport {
             String res = mapper.writeValueAsString(reportList);
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
         } catch (IOException ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("DashboardAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -75,7 +76,7 @@ public class DashboardAction extends ActionSupport {
             String res = mapper.writeValueAsString(reportList);
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
         } catch (IOException ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("DashboardAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -97,7 +98,7 @@ public class DashboardAction extends ActionSupport {
             String res = mapper.writeValueAsString(reportList);
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
         } catch (IOException ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("DashboardAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -118,7 +119,7 @@ public class DashboardAction extends ActionSupport {
             String res = mapper.writeValueAsString(reportList);
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
         } catch (IOException ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("DashboardAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }

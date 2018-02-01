@@ -27,8 +27,10 @@ public class PaymentBean {
     private String utrNo;
     private String ifscCode;
     private String type;
+
     private List<String> invId = new ArrayList<String>();
     public int isPaymentDone;
+    public int isLast;
 
     public String getType() {
         return type;
@@ -148,6 +150,14 @@ public class PaymentBean {
 
     public void setIsPaymentDone(int isPaymentDone) {
         this.isPaymentDone = isPaymentDone;
+    }
+
+    public int getIsLast() {
+        return isLast;
+    }
+
+    public void setIsLast(int isLast) {
+        this.isLast = isLast;
     }
 
 }

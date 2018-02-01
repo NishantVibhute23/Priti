@@ -22,6 +22,8 @@ public class PrintAction extends ActionSupport {
 
     String successMessage = "";
     String errorMessage = "";
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     @Override
     public String execute() {

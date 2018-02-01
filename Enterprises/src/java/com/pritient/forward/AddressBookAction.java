@@ -16,8 +16,8 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
+
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**
@@ -35,6 +35,8 @@ public class AddressBookAction extends ActionSupport implements ModelDriven {
     int id;
     String successMessage = "";
     String errorMessage = "";
+    static final Logger errorLog = Logger.getLogger("errorLogger");
+    static final Logger infoLog = Logger.getLogger("infoLogger");
 
     public AddressBookAction() {
     }
@@ -80,7 +82,7 @@ public class AddressBookAction extends ActionSupport implements ModelDriven {
             String res = mapper.writeValueAsString(companyBean);
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
         } catch (IOException ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("AddressBookAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }

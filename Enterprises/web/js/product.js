@@ -13,8 +13,8 @@ $(document).ready(function () {
         var newRow = $("<tr>");
         var cols = "";
 
-        cols += '<td><input type="text" class="form-control" name="subProductList[' + counter + '].subProductName"/></td>';
-        cols += '<td><input type="text" class="form-control" name="subProductList[' + counter + '].subProductCode"/></td>';
+        cols += '<td><input type="text" required class="form-control" name="subProductList[' + counter + '].subProductName"/></td>';
+        cols += '<td><input type="text" required class="form-control" name="subProductList[' + counter + '].subProductCode"/></td>';
         
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
         newRow.append(cols);
@@ -31,7 +31,7 @@ $(document).ready(function () {
         var cols = "";
 
         cols += '<td><input type="hidden" name="subProductList[' + counter1 + '].subProductId" value="0"/><input type="text" class="form-control" name="subProductList[' + counter1 + '].subProductName"/></td>';
-        cols += '<td><input type="text" class="form-control" value="0" name="subProductList[' + counter1 + '].qty"/></td>';
+        cols += '<td><input type="text" required class="form-control" value="0" name="subProductList[' + counter1 + '].qty"/></td>';
         
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
         newRow.append(cols);

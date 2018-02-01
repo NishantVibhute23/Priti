@@ -47,6 +47,7 @@
                 $("#AddressBook").removeClass("active");
                 $("#RawMaterial").removeClass("active");
                 $("#Ledger").removeClass("active");
+                $("#Bills").removeClass("active");
             });
             $(function() {
                 $("#datepicker").datepicker({changeMonth: true,

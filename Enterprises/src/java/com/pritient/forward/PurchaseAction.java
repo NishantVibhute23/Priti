@@ -26,8 +26,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**
@@ -50,6 +48,8 @@ public class PurchaseAction extends ActionSupport implements ModelDriven {
     InvoiceDao invoiceDao = new InvoiceDao();
     MyProfileDao myProfileDao = new MyProfileDao();
     private String fileName;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public PurchaseAction() {
     }
@@ -112,7 +112,7 @@ public class PurchaseAction extends ActionSupport implements ModelDriven {
             String res = mapper.writeValueAsString(invoice);
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
         } catch (Exception ex) {
-            Logger.getLogger(PurchaseAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PurchaseAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -128,7 +128,7 @@ public class PurchaseAction extends ActionSupport implements ModelDriven {
             inputStream = new ByteArrayInputStream(path.getBytes(StandardCharsets.UTF_8));
 
         } catch (Exception ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PurchaseAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -140,7 +140,7 @@ public class PurchaseAction extends ActionSupport implements ModelDriven {
 //            inputStream = new FileInputStream(CommonUtil.getPath() + "\\pdf.pdf");
             inputStream = new FileInputStream(CommonUtil.directoryPath + "pdf.pdf");
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(InvoiceAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PurchaseAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }

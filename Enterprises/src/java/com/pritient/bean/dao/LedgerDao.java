@@ -15,14 +15,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author nishant.vibhute
  */
 public class LedgerDao extends DBUtil {
+
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     Connection conn;
 
@@ -67,7 +68,7 @@ public class LedgerDao extends DBUtil {
             ledgerBean.setCreditTotal(creditTotal);
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("LedgerDao : " + ex);
         }
 
         return ledgerBean;

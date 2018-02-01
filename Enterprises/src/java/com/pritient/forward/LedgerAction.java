@@ -21,8 +21,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -40,6 +38,8 @@ public class LedgerAction extends ActionSupport {
     MyProfileDao myProfileDao = new MyProfileDao();
     private InputStream inputStream;
     private String fileName;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     @Override
     public String execute() {
@@ -65,7 +65,7 @@ public class LedgerAction extends ActionSupport {
 //            inputStream = new FileInputStream(CommonUtil.getPath() + "\\pdf.pdf");
             inputStream = new FileInputStream(CommonUtil.directoryPath + "ledger.pdf");
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(InvoiceAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("LedgerAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }

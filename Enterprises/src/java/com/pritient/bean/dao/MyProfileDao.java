@@ -11,8 +11,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -21,6 +19,8 @@ import java.util.logging.Logger;
 public class MyProfileDao extends DBUtil {
 
     Connection conn;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public MyProfile getprofileDetails() {
 
@@ -56,7 +56,7 @@ public class MyProfileDao extends DBUtil {
 
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("MyProfileDao : " + ex);
         }
 
         return myProfile;
@@ -97,7 +97,7 @@ public class MyProfileDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("MyProfileDao : " + ex);
         }
         return count;
     }

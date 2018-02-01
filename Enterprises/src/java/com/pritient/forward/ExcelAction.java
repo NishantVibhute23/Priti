@@ -22,8 +22,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -41,6 +39,8 @@ import org.apache.poi.ss.util.CellUtil;
  */
 public class ExcelAction extends ActionSupport {
 
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
     InvoiceDao invoiceDao = new InvoiceDao();
     public String val;
     MyProfileDao myProfileDao = new MyProfileDao();
@@ -151,7 +151,7 @@ public class ExcelAction extends ActionSupport {
 //            invoice row start
             cell = invoiceSheet.createRow(++row).createCell(0);
             cell.setCellStyle(styleMedium);
-            invoiceSheet.getRow(row).getCell(0).setCellValue("Invoice No. : " + invoice.getId());
+            invoiceSheet.getRow(row).getCell(0).setCellValue("Invoice No. : " + invoice.getInvoiceNo());
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 0, leftCol));
 
             cell = invoiceSheet.getRow(row).createCell(12);
@@ -738,7 +738,7 @@ public class ExcelAction extends ActionSupport {
             invoiceSheet.setColumnWidth(19, 2000);
 
 //           bill amount details  ends
-            String fileName = "Invoice_" + invoice.getId() + "_" + invoice.getBillToName() + ".xls";
+            String fileName = "Invoice_" + invoice.getInvoiceNo() + "_" + invoice.getBillToName() + ".xls";
 
             if (path.equals("")) {
                 File file = new File(CommonUtil.getResourceProperties("directory.path") + fileName);
@@ -759,7 +759,7 @@ public class ExcelAction extends ActionSupport {
 //            File file = new File(System.getenv("OPENSHIFT_DATA_DIR") + fileName);
 
         } catch (Exception ex) {
-            Logger.getLogger(ExcelAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ExcelAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -1460,7 +1460,7 @@ public class ExcelAction extends ActionSupport {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(ExcelAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ExcelAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }

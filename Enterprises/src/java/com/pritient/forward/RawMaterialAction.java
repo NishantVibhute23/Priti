@@ -18,8 +18,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**
@@ -38,6 +36,8 @@ public class RawMaterialAction extends ActionSupport implements ModelDriven {
     public int prodId;
     String successMessage = "";
     String errorMessage = "";
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     @Override
     public String execute() {
@@ -58,7 +58,7 @@ public class RawMaterialAction extends ActionSupport implements ModelDriven {
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
 
         } catch (Exception ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("RawMaterialAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -76,7 +76,7 @@ public class RawMaterialAction extends ActionSupport implements ModelDriven {
             }
 
         } catch (Exception ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("RawMaterialAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }

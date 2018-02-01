@@ -16,8 +16,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -26,6 +24,8 @@ import java.util.logging.Logger;
 public class PurchaseDao extends DBUtil {
 
     Connection conn;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public int savePurchase(Invoice invoice) {
         int id = 0;
@@ -89,7 +89,7 @@ public class PurchaseDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PurchaseDao : " + ex);
         }
         return id;
 
@@ -173,7 +173,7 @@ public class PurchaseDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PurchaseDao : " + ex);
         }
         return id;
 
@@ -195,13 +195,14 @@ public class PurchaseDao extends DBUtil {
                 pb.setAmount(rs.getDouble("bill_amount"));
                 pb.setDate(CommonUtil.convertDateToNormal(rs.getString("date")));
                 pb.setIsPaymentDone(rs.getInt("isPaymentDone"));
+                pb.setIsLast(rs.getInt("isLast"));
                 purchase.add(pb);
             }
 
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PurchaseDao : " + ex);
         }
         return purchase;
     }
@@ -303,7 +304,7 @@ public class PurchaseDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PurchaseDao : " + ex);
         }
 
         return in;
@@ -336,7 +337,7 @@ public class PurchaseDao extends DBUtil {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(InvoiceDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PurchaseDao : " + ex);
         }
         return count;
     }

@@ -41,6 +41,7 @@
                 $("#AddressBook").removeClass("active");
                 $("#RawMaterial").removeClass("active");
                 $("#Ledger").removeClass("active");
+                $("#Bills").removeClass("active");
             });
 
 
@@ -173,7 +174,7 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <form role="form" action="savePurchase" >
+                        <form role="form" action="savePurchase" method="post" >
 
 
                             <div class="panel panel-default">
@@ -201,7 +202,7 @@
 
                                                             <label class="col-xs-3 control-label">Address</label>
                                                             <div style="height:80px" class="col-xs-9">
-                                                                <textarea  requiredstyle="height:80px" id="companyAddress" resize="none" name="billToAddress" class="form-control"> </textarea>
+                                                                <textarea  required style="height:80px" id="companyAddress" resize="none" name="billToAddress" class="form-control"> </textarea>
 
                                                             </div>
                                                         </div>
@@ -235,7 +236,7 @@
                                                         <div class="form-group row">
                                                             <label class="col-xs-4 ">Date</label>
                                                             <div class="col-xs-8">
-                                                                <input type="text" class="form-control" id="datepicker" name="date"  readonly/>
+                                                                <input type="text" required class="form-control" id="datepicker" name="date"  />
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">

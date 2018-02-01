@@ -32,17 +32,18 @@ import java.util.logging.Logger;
  */
 public class ConvertToPdf {
 
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
+
     public static String convert(Invoice in, MyProfile myProfile) {
         Writer out = null;
         try {
             Configuration cfg = new Configuration();
-            String templatePath = System.getenv("OPENSHIFT_DATA_DIR");
-            if (CommonUtil.getResourceProperties("template.path").equalsIgnoreCase("yes")) {
-                templatePath = CommonUtil.directoryPath;
+            String templatePath = "";
+            if (CommonUtil.getResourceProperties("is.server").equalsIgnoreCase("yes")) {
+                templatePath = CommonUtil.getResourceProperties("template.path");
             } else {
-
                 templatePath = CommonUtil.path + CommonUtil.getResourceProperties("template.path");
-//                templatePath = CommonUtil.getResourceProperties("template.path");
             }
 
             String outputPath = CommonUtil.directoryPath + "index.html";
@@ -61,7 +62,7 @@ public class ConvertToPdf {
             data.put("companyHeaderTelNo2", myProfile.getCompanyPhoneNo2());
             data.put("companyHeaderEmail", myProfile.getCompanyEmailId());
 
-            data.put("invoiceNo", in.getId());
+            data.put("invoiceNo", in.getInvoiceNo());
             data.put("invoiceDate", in.getDate());
             data.put("isReverse", in.getReverseCharge());
             data.put("invoiceState", in.getState());
@@ -240,7 +241,7 @@ public class ConvertToPdf {
             //step 5
             document.close();
         } catch (Exception ex) {
-            Logger.getLogger(ConvertToPdf.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ConvertToPdf : " + ex);
         }
 
         return out.toString();

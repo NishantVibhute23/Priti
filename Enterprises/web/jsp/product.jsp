@@ -45,7 +45,7 @@
                 $("#RawMaterial").removeClass("active");
                 $("#Ledger").removeClass("active");
 
-
+$("#Bills").removeClass("active");
 
             });
 
@@ -194,7 +194,7 @@
                                             <div class="form-group">
                                                 <label class="col-xs-2 control-label">Product Name</label>
                                                 <div class="col-xs-3">
-                                                    <input type="text" class="form-control" name="mainProductName"  />
+                                                    <input type="text" required class="form-control" name="mainProductName"  />
 
 
                                                 </div>
@@ -203,7 +203,7 @@
                                                     <label class="col-xs-2 ">HSN Code</label>
                                                     <div class="col-xs-3 ">
 
-                                                        <input type="text" class="form-control" name="mainProductHSN"  />
+                                                        <input type="text" required class="form-control" name="mainProductHSN"  />
                                                     </div>
 
                                                 </div>
@@ -215,8 +215,8 @@
                                             <div class="form-group">
                                                 <label class="col-xs-2 ">UOM Type</label>
                                                 <div class="col-xs-3 ">
-                                                    <select id="uomSelect" name="mainProductUOM" class="form-control"  >
-                                                        <option value="0">Select</option>
+                                                    <select required id="uomSelect" name="mainProductUOM" class="form-control"  >
+                                                        <option value="">Select</option>
                                                         <s:iterator value="uomBeanList">
                                                             <option value="<s:property value = 'id'/>"><s:property value = 'name'/></option>
                                                         </s:iterator>
@@ -225,8 +225,8 @@
 
                                                 <label class="col-xs-2 ">Product Type</label>
                                                 <div class="col-xs-3 ">
-                                                    <select id="ProductSelect" name="mainProductType" class="form-control"  >
-                                                        <option value="0">Select</option>
+                                                    <select required id="ProductSelect" name="mainProductType" class="form-control"  >
+                                                        <option value="">Select</option>
                                                         <s:iterator value="productTypeBeanList">
                                                             <option value="<s:property value = 'id'/>"><s:property value = 'name'/></option>
                                                         </s:iterator>
@@ -248,10 +248,10 @@
                                                 <tr>
 
                                                     <td class="col-sm-4">
-                                                        <input type="text" name="subProductList[0].subProductName" class="form-control" />
+                                                        <input type="text" required name="subProductList[0].subProductName" class="form-control" />
                                                     </td>
                                                     <td class="col-sm-4">
-                                                        <input type="text" name="subProductList[0].subProductCode"  class="form-control"/>
+                                                        <input type="text" required name="subProductList[0].subProductCode"  class="form-control"/>
                                                     </td>
 
                                                     <td class="col-sm-2"><a class="deleteRow"></a>

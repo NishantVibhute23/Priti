@@ -16,8 +16,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -26,6 +24,8 @@ import java.util.logging.Logger;
 public class ProductDao extends DBUtil {
 
     Connection conn;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public int insertProduct(Product product) {
         int id = 0;
@@ -60,7 +60,7 @@ public class ProductDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductDao : " + ex);
         }
         return id;
     }
@@ -101,7 +101,7 @@ public class ProductDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductDao : " + ex);
         }
         return id;
     }
@@ -123,7 +123,7 @@ public class ProductDao extends DBUtil {
             }
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductDao : " + ex);
         }
         return productList;
     }
@@ -144,7 +144,7 @@ public class ProductDao extends DBUtil {
             }
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductDao : " + ex);
         }
         return UOMBeanList;
     }
@@ -165,7 +165,7 @@ public class ProductDao extends DBUtil {
             }
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductDao : " + ex);
         }
         return ProductTypeBeanList;
     }
@@ -209,7 +209,7 @@ public class ProductDao extends DBUtil {
             }
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductDao : " + ex);
         }
         return productList;
     }
@@ -252,7 +252,7 @@ public class ProductDao extends DBUtil {
             }
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductDao : " + ex);
         }
         return product;
     }
@@ -270,7 +270,7 @@ public class ProductDao extends DBUtil {
             }
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductDao : " + ex);
         }
         return num;
     }
@@ -285,7 +285,7 @@ public class ProductDao extends DBUtil {
 
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductDao : " + ex);
         }
 
     }

@@ -27,6 +27,8 @@ public class MyProfileAction extends ActionSupport implements ModelDriven {
     CompanyAddressDao companyAddressDao = new CompanyAddressDao();
     MyProfileDao myProfileDao = new MyProfileDao();
     List<StateBean> stateList = new ArrayList<>();
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     String successMessage = "";
     String errorMessage = "";

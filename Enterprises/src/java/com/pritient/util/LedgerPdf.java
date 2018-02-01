@@ -22,14 +22,15 @@ import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author nishant.vibhute
  */
 public class LedgerPdf {
+
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public static String convert(LedgerBean ledger, MyProfile myProfile, String fromDate, String toDate) {
         Writer out = null;
@@ -86,7 +87,7 @@ public class LedgerPdf {
             //step 5
             document.close();
         } catch (Exception ex) {
-            Logger.getLogger(ConvertToPdf.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("LedgerPdf : " + ex);
         }
 
         return out.toString();

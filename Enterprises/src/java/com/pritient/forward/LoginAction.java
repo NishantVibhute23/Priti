@@ -35,6 +35,8 @@ public class LoginAction extends ActionSupport implements ModelDriven, SessionAw
     MyProfileDao myProfileDao = new MyProfileDao();
     ProductDao productDao = new ProductDao();
     List<Product> productList;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public LoginAction() {
 

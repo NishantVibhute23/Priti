@@ -46,7 +46,8 @@
                 $("#Products").removeClass("active");
                 $("#AddressBook").removeClass("active");
                 $("#RawMaterial").removeClass("active");
-                $("#Ledger").addClass("active");
+                $("#Ledger").removeClass("active");
+                $("#Bills").addClass("active");
             });
 
 $(function() {
@@ -100,9 +101,9 @@ $(function() {
                 <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
+                        <h3 class="page-header">
                             Bills
-                        </h1>
+                        </h3>
                         
                     </div>
                 </div>

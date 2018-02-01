@@ -14,6 +14,8 @@ import java.sql.DriverManager;
  */
 public class DBUtil {
 
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
     Connection con;
     String url;
 
@@ -29,7 +31,7 @@ public class DBUtil {
             return con;
 
         } catch (Exception e) {
-            System.out.println(e);
+            errorLog.error("DBUtil : " + e);
         }
         return null;
 

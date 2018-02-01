@@ -17,8 +17,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -38,6 +36,8 @@ public class VoucherAction extends ActionSupport implements ModelDriven {
     PaymentBean paymentBean = new PaymentBean();
     List<CompanyBean> companyList = new ArrayList<>();
     CompanyAddressDao companyAddressDao = new CompanyAddressDao();
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     private InputStream inputStream;
 
@@ -58,7 +58,7 @@ public class VoucherAction extends ActionSupport implements ModelDriven {
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
 
         } catch (IOException ex) {
-            Logger.getLogger(VoucherAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("VoucherAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -77,7 +77,7 @@ public class VoucherAction extends ActionSupport implements ModelDriven {
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
 
         } catch (IOException ex) {
-            Logger.getLogger(VoucherAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("VoucherAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }

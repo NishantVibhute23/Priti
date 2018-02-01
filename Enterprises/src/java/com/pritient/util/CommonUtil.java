@@ -18,8 +18,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -33,24 +31,20 @@ public class CommonUtil {
     static InputStream input = null;
     static String path;
     public static String directoryPath;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public CommonUtil(String path) {
 
         try {
             this.path = path;
-            input = new FileInputStream(path + "WEB-INF\\classes\\com\\pritient\\properties\\resource.properties");
-//            input = new FileInputStream("/home/ec2-user/Properties/resource.properties");
-//            input = new FileInputStream(System.getenv("OPENSHIFT_DATA_DIR") + "resource.properties");
-            // load a properties file
+//            input = new FileInputStream(path + "WEB-INF\\classes\\com\\pritient\\properties\\resource.properties");
+            input = new FileInputStream("/home/ec2-user/PritiEnterprises/Properties/resource.properties");
             prop.load(input);
+            directoryPath = CommonUtil.getResourceProperties("directory.path");
 
-            if (CommonUtil.getResourceProperties("template.path").equalsIgnoreCase("yes")) {
-                directoryPath = System.getenv("OPENSHIFT_DATA_DIR");
-            } else {
-                directoryPath = CommonUtil.getResourceProperties("directory.path");;
-            }
         } catch (Exception ex) {
-            Logger.getLogger(CommonUtil.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CommonUtil : " + ex);
         }
     }
 
@@ -71,7 +65,7 @@ public class CommonUtil {
             newDate = sdf.format(date1);
 
         } catch (ParseException ex) {
-            Logger.getLogger(CommonUtil.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CommonUtil : " + ex);
         }
         return newDate;
     }
@@ -87,7 +81,7 @@ public class CommonUtil {
             newDate = sdf.format(date1);
 
         } catch (ParseException ex) {
-            Logger.getLogger(CommonUtil.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CommonUtil : " + ex);
         }
         return newDate;
     }
@@ -103,7 +97,7 @@ public class CommonUtil {
             newDate = sdf.format(date1);
 
         } catch (ParseException ex) {
-            Logger.getLogger(CommonUtil.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CommonUtil : " + ex);
         }
         return newDate;
     }
@@ -130,7 +124,7 @@ public class CommonUtil {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            errorLog.error("CommonUtil : " + e);
         } finally {
             if (br != null) {
                 try {
@@ -161,7 +155,7 @@ public class CommonUtil {
             beginCalendar.setTime(formater.parse(date1));
             finishCalendar.setTime(formater.parse(date2));
         } catch (ParseException e) {
-            e.printStackTrace();
+            errorLog.error("CommonUtil : " + e);
         }
 
         while (beginCalendar.before(finishCalendar)) {
@@ -189,7 +183,7 @@ public class CommonUtil {
             Date date = formater2.parse(dateIn);
             convertedDate = formater.format(date);
         } catch (ParseException ex) {
-            Logger.getLogger(CommonUtil.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CommonUtil : " + ex);
         }
         return convertedDate;
     }

@@ -45,7 +45,7 @@
                 $("#Products").removeClass("active");
                 $("#AddressBook").removeClass("active");
                 $("#RawMaterial").addClass("active");
-
+$("#Bills").removeClass("active");
 
             });
 

@@ -17,8 +17,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -27,13 +25,15 @@ import java.util.logging.Logger;
 public class InvoiceDao extends DBUtil {
 
     Connection conn;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public int insertInvoice(Invoice invoice) {
         int id = 0;
         try {
             conn = getConnection();
 
-            PreparedStatement ps = conn.prepareStatement("Call insertInvoice(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("Call insertInvoice(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, CommonUtil.convertDate(invoice.getDate()));
             ps.setString(2, invoice.getReverseCharge());
             ps.setString(3, invoice.getState());
@@ -57,6 +57,7 @@ public class InvoiceDao extends DBUtil {
             ps.setString(21, invoice.getTotalAmountInWords());
             ps.setDouble(22, invoice.getTotalAmountGST());
             ps.setDouble(23, invoice.getGstOnReverseCharge());
+            ps.setInt(24, Integer.parseInt(invoice.getInvoiceNo()));
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -95,7 +96,7 @@ public class InvoiceDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceDao : " + ex);
         }
         return id;
 
@@ -106,7 +107,7 @@ public class InvoiceDao extends DBUtil {
         try {
             conn = getConnection();
 
-            PreparedStatement ps = conn.prepareStatement("Call updateInvoice(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("Call updateInvoice(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, CommonUtil.convertDate(invoice.getDate()));
             ps.setString(2, invoice.getReverseCharge());
             ps.setString(3, invoice.getState());
@@ -131,6 +132,7 @@ public class InvoiceDao extends DBUtil {
             ps.setDouble(22, invoice.getTotalAmountGST());
             ps.setDouble(23, invoice.getGstOnReverseCharge());
             ps.setInt(24, invoice.getId());
+            ps.setInt(25, Integer.parseInt(invoice.getInvoiceNo()));
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -187,7 +189,7 @@ public class InvoiceDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceDao : " + ex);
         }
         return id;
 
@@ -203,19 +205,20 @@ public class InvoiceDao extends DBUtil {
 
             while (rs.next()) {
                 PaymentBean pb = new PaymentBean();
-//                pb.setId(id);
-                pb.setInvoiceId("" + rs.getInt("id"));
+                pb.setId(rs.getInt("id"));
+                pb.setInvoiceId("" + rs.getInt("invoiceId"));
                 pb.setCompanyName(rs.getString("company_name"));
                 pb.setAmount(rs.getDouble("bill_amount"));
                 pb.setDate(CommonUtil.convertDateToNormal(rs.getString("date")));
                 pb.setIsPaymentDone(rs.getInt("isPaymentDone"));
+                pb.setIsLast(rs.getInt("isLast"));
                 invoice.add(pb);
             }
 
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceDao : " + ex);
         }
         return invoice;
     }
@@ -230,6 +233,7 @@ public class InvoiceDao extends DBUtil {
 
             while (rs.next()) {
                 in.setId(rs.getInt("id"));
+                in.setInvoiceNo("" + rs.getInt("invoiceId"));
                 in.setDate(CommonUtil.convertDateToNormal(rs.getString("date")));
                 in.setReverseCharge(rs.getString("reverse_charge"));
                 in.setState(rs.getString("state"));
@@ -337,7 +341,7 @@ public class InvoiceDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceDao : " + ex);
         }
 
         return in;
@@ -362,7 +366,7 @@ public class InvoiceDao extends DBUtil {
 
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceDao : " + ex);
         }
 
         return count;
@@ -387,7 +391,7 @@ public class InvoiceDao extends DBUtil {
 
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceDao : " + ex);
         }
 
         return p;
@@ -420,7 +424,7 @@ public class InvoiceDao extends DBUtil {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(InvoiceDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceDao : " + ex);
         }
         return count;
     }

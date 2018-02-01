@@ -9,9 +9,6 @@ import com.pritient.util.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -19,6 +16,8 @@ import java.util.logging.Logger;
  */
 public class LoginDao extends DBUtil {
 
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
     Connection conn;
 
     public int checkLogin(String userName, String password) {
@@ -36,8 +35,8 @@ public class LoginDao extends DBUtil {
             }
 
             closeConnection(conn);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            errorLog.error("LoginDao : " + ex);
         }
 
         return count;

@@ -50,7 +50,7 @@ $("#RawMaterial").removeClass("active");
 
 $("#Ledger").removeClass("active");
 
-
+$("#Bills").removeClass("active");
          
             });
 

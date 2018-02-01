@@ -16,8 +16,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -35,6 +33,8 @@ public class BillAction extends ActionSupport {
 
     String successMessage = "";
     String errorMessage = "";
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     @Override
     public String execute() {
@@ -78,7 +78,7 @@ public class BillAction extends ActionSupport {
             out.close();
 
         } catch (Exception ex) {
-            Logger.getLogger(BillAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("BillAction : " + ex);
         } finally {
             try {
                 fileInputStream = new FileInputStream(outFolder);
@@ -88,7 +88,7 @@ public class BillAction extends ActionSupport {
                 outFolder.delete();
                 inFolder.delete();
             } catch (IOException ex) {
-                Logger.getLogger(BillAction.class.getName()).log(Level.SEVERE, null, ex);
+                errorLog.error("BillAction : " + ex);
             }
         }
         return ActionSupport.SUCCESS;

@@ -14,14 +14,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author nishant.vibhute
  */
 public class CompanyAddressDao extends DBUtil {
+
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     Connection conn;
 
@@ -51,7 +52,7 @@ public class CompanyAddressDao extends DBUtil {
 
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CompanyAddressDao : " + ex);
         }
 
         return id;
@@ -86,7 +87,7 @@ public class CompanyAddressDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CompanyAddressDao : " + ex);
         }
         return compList;
     }
@@ -111,7 +112,7 @@ public class CompanyAddressDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CompanyAddressDao : " + ex);
         }
         return stateList;
     }
@@ -145,7 +146,7 @@ public class CompanyAddressDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CompanyAddressDao : " + ex);
         }
         return cb;
     }
@@ -178,7 +179,7 @@ public class CompanyAddressDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("CompanyAddressDao : " + ex);
         }
         return count;
     }

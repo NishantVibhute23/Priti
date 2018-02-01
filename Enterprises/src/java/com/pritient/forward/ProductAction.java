@@ -18,8 +18,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -32,6 +30,8 @@ public class ProductAction extends ActionSupport implements ModelDriven, Session
 
     Product product = new Product();
     ProductDao productDao = new ProductDao();
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     private InputStream inputStream;
 
@@ -87,7 +87,7 @@ public class ProductAction extends ActionSupport implements ModelDriven, Session
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
 
         } catch (IOException ex) {
-            Logger.getLogger(ProductAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ProductAction : " + ex);
         }
         return "success";
     }

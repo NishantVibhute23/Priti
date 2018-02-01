@@ -54,7 +54,7 @@
                                                         'autoWidth': false,
                                                         'aaSorting': []});
                 $("#Ledger").removeClass("active");
-
+$("#Bills").removeClass("active");
             });
 
             $(function() {
@@ -156,6 +156,8 @@
                     $("#paydesc").val(response.description);
                     
                     $("#invoiceId1").val(response.id);
+                    
+                    $("#invoiceNo").val(response.invoiceNo);
                     $("#transporteMode").val(response.transportMode);
                     $("#datepicker").val(response.date);
                     $("#vehicleNo").val(response.vehicleNo);
@@ -475,15 +477,19 @@
                                                             </td>
                                                             <td  style="text-align: center">
 
-                                                                <a href="createExcel?val=<s:property value = 'invoiceId'/>" ><input type="button" value="Excel"  class="btn btn-default editButton"></a>
+                                                                <a href="createExcel?val=<s:property value = 'id'/>" ><input type="button" value="Excel"  class="btn btn-default editButton"></a>
                                                                 
                                                                 <s:if test="isPaymentDone== 0">
-                                                                    <input type="button" value="Edit" onclick="getInvoiceDetails('<s:property value = 'invoiceId'/>')" class="btn btn-default editButton">
-                                                                    <a href="deleteInvoice?val=<s:property value = 'invoiceId'/>" ><input type="button" value="Delete"  class="btn btn-default editButton"></a>
+                                                                    <input type="button" value="Edit" onclick="getInvoiceDetails('<s:property value = 'id'/>')" class="btn btn-default editButton">
+                                                                    
                                                                 </s:if>
+                                                                    
                                                                         <s:else>
-                                                                        <input type="button" value="View" onclick="viewBillPdf('<s:property value = 'invoiceId'/>')" class="btn btn-default editButton">
+                                                                        <input type="button" value="View" onclick="viewBillPdf('<s:property value = 'id'/>')" class="btn btn-default editButton">
                                                                     </s:else>
+                                                                        <s:if test="isLast== 1">
+                                                                            <a href="deleteInvoice?val=<s:property value = 'id'/>" ><input type="button" value="Delete"  class="btn btn-default editButton"></a>
+                                                                            </s:if>
                                                                 
                                                             </td>
 
@@ -542,7 +548,8 @@
                                                                        
                                                                             <label class="col-xs-3 control-label">Invoice No.</label>
                                                                             <div class="col-xs-9">
-                                                                                <input type="text" required id="invoiceId1" readonly class="form-control" name="id" />
+                                                                                <input type="hidden"  id="invoiceId1" class="form-control" name="id" />
+                                                                                <input type="text" required id="invoiceNo" readonly class="form-control" name="invoiceNo" />
                                                                             </div>
                                                                         
                                                                     </div>

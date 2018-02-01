@@ -18,8 +18,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -28,6 +26,8 @@ import java.util.logging.Logger;
 public class ReportDao extends DBUtil {
 
     Connection conn;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public List<ReportRowBean> getPurchaseReport(String fromDate, String toDate) {
 
@@ -64,7 +64,7 @@ public class ReportDao extends DBUtil {
 
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ReportDao : " + ex);
         }
         return reportList;
     }
@@ -102,7 +102,7 @@ public class ReportDao extends DBUtil {
 
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ReportDao : " + ex);
         }
         return reportList;
     }
@@ -162,7 +162,7 @@ public class ReportDao extends DBUtil {
 
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ReportDao : " + ex);
         }
         return reportList;
     }
@@ -222,7 +222,7 @@ public class ReportDao extends DBUtil {
 
             closeConnection(conn);
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("ReportDao : " + ex);
         }
         return reportList;
     }

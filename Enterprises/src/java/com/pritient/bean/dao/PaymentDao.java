@@ -14,8 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +21,8 @@ import java.util.logging.Logger;
  */
 public class PaymentDao extends DBUtil {
 
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
     Connection conn;
 
     public List<PaymentBean> getPendingPurchase(int id) {
@@ -47,7 +47,7 @@ public class PaymentDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PaymentDao : " + ex);
         }
         return payment;
     }
@@ -63,8 +63,8 @@ public class PaymentDao extends DBUtil {
 
             while (rs.next()) {
                 PaymentBean pb = new PaymentBean();
-//                pb.setId(id);
-                pb.setInvoiceId("" + rs.getInt("id"));
+                pb.setId(rs.getInt("id"));
+                pb.setInvoiceId("" + rs.getInt("invoiceId"));
                 pb.setCompanyName(rs.getString("company_name"));
                 pb.setAmount(rs.getDouble("bill_amount"));
                 pb.setDate(CommonUtil.convertDateToNormal(rs.getString("date")));
@@ -74,7 +74,7 @@ public class PaymentDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PaymentDao : " + ex);
         }
         return invoice;
     }
@@ -118,7 +118,7 @@ public class PaymentDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PaymentDao : " + ex);
         }
         return id;
 
@@ -163,7 +163,7 @@ public class PaymentDao extends DBUtil {
             closeConnection(conn);
 
         } catch (SQLException ex) {
-            Logger.getLogger(LoginDao.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("PaymentDao : " + ex);
         }
         return id;
     }

@@ -47,7 +47,7 @@
                 $("#AddressBook").removeClass("active");
                 $("#RawMaterial").removeClass("active");
                 $("#Ledger").removeClass("active");
-
+$("#Bills").removeClass("active");
 
             });
 
@@ -235,11 +235,20 @@
                         <strong><s:property value = 'errorMessage'/></strong>
                     </div>
                 </s:if>
+                
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">
+                            Invoice New
+                        </h3>
+
+                    </div>
+                </div>
 
 
                 <div class="panel panel-default">
                     <div class="panel-heading text-center"><b>Tax Invoice</b></div>
-                    <div class="panel-body"><form  id="invoiceForm" action="saveInvoice">
+                    <div class="panel-body"><form  id="invoiceForm" action="saveInvoice" method="post">
 
                             <div class="row">
                                 <div class="col-sm-12">
@@ -250,7 +259,7 @@
                                                 <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">Invoice No.</label>
                                                 <div class="col-sm-9">
                                                     <input type="hidden" id="count" value="1"/>
-                                                    <input type="text" readonly  class="form-control" name="id" value="<s:property value = 'latestInvoiceNumber'/>"/>
+                                                    <input type="text" readonly  class="form-control" name="invoiceNo" value="<s:property value = 'latestInvoiceNumber'/>"/>
 
                                                 </div>
                                             </div>

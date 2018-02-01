@@ -27,8 +27,6 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**
@@ -58,6 +56,8 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
     int prodId;
     int docId;
     private InputStream inputStream;
+    static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
+    static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
 
     public String execute() throws Exception {
 
@@ -128,7 +128,7 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
 
         } catch (IOException ex) {
-            Logger.getLogger(InvoiceAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -143,7 +143,7 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
             inputStream = new ByteArrayInputStream(path.getBytes(StandardCharsets.UTF_8));
 
         } catch (Exception ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -158,7 +158,7 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
             inputStream = new ByteArrayInputStream(path.getBytes(StandardCharsets.UTF_8));
 
         } catch (Exception ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -170,7 +170,7 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
 //            inputStream = new FileInputStream(CommonUtil.getPath() + "\\pdf.pdf");
             inputStream = new FileInputStream(CommonUtil.directoryPath + "pdf.pdf");
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(InvoiceAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }
@@ -186,7 +186,7 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
             inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
 
         } catch (Exception ex) {
-            Logger.getLogger(AddressBookAction.class.getName()).log(Level.SEVERE, null, ex);
+            errorLog.error("InvoiceAction : " + ex);
         }
         return ActionSupport.SUCCESS;
     }

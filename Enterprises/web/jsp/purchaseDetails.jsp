@@ -46,6 +46,7 @@
                 $("#AddressBook").removeClass("active");
                 $("#RawMaterial").removeClass("active");
 $("#Ledger").removeClass("active");
+$("#Bills").removeClass("active");
                 $('#invoiceTable').DataTable({
                                                                     'paging': true,
                                                         'lengthChange': true,
@@ -442,11 +443,15 @@ table, th, td {
                                                         <a href="createExcelForPurchase?val=<s:property value = 'id'/>" ><input type="button" value="Excel"  class="btn btn-default editButton"></a>
                                                     <s:if test="isPaymentDone== 0">
                                                                     <input type="button" value="Edit" onclick="getPurchaseDetails('<s:property value = 'id'/>')" class="btn btn-default editButton">
-                                                                    <a href="deletePurchase?val=<s:property value = 'id'/>" ><input type="button" value="Delete"  class="btn btn-default editButton"></a>
+                                                                   
                                                                 </s:if>
                                                                         <s:else>
                                                                         <input type="button" value="View" onclick="viewBillPdfPurchase('<s:property value = 'id'/>')" class="btn btn-default editButton">
                                                                     </s:else>
+                                                                         <s:if test="isLast== 1">
+                                                                   
+                                                                    <a href="deletePurchase?val=<s:property value = 'id'/>" ><input type="button" value="Delete"  class="btn btn-default editButton"></a>
+                                                                </s:if>
                                                     
                                                     </td>
 
