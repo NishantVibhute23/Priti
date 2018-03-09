@@ -38,8 +38,8 @@ public class CommonUtil {
 
         try {
             this.path = path;
-//            input = new FileInputStream(path + "WEB-INF\\classes\\com\\pritient\\properties\\resource.properties");
-            input = new FileInputStream("/home/ec2-user/PritiEnterprises/Properties/resource.properties");
+            input = new FileInputStream(path + "WEB-INF\\classes\\com\\pritient\\properties\\resource.properties");
+//            input = new FileInputStream("/home/ec2-user/PritiEnterprises/Properties/resource.properties");
             prop.load(input);
             directoryPath = CommonUtil.getResourceProperties("directory.path");
 
