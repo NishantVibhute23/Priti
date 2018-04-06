@@ -107,10 +107,10 @@ $("#Bills").removeClass("active");
 
 
                         <div class="form-group">
-                            <label class="col-xs-3 control-label">Email ID  *</label>
+                            <label class="col-xs-3 control-label">Email ID </label>
                             <div class="col-xs-8">
 
-                                <input type="email" required class="form-control" name="companyEmailId" />
+                                <input type="email" class="form-control" name="companyEmailId" />
                             </div>
                         </div>
 
