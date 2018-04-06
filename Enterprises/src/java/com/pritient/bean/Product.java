@@ -20,9 +20,18 @@ public class Product {
     String mainProductUOMName;
     String mainProductType;
     String mainProductTypeName;
+    double price;
     String qty;
 
     List<SubProduct> subProductList;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public String getMainProductName() {
         return mainProductName;

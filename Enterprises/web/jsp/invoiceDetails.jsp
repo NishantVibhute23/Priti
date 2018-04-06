@@ -29,9 +29,9 @@
         <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
         <title>JSP Page</title>
         <script>
+//            var map = {};
             $(document).ready(function() {
                 $("#dashboard").removeClass("active");
-
                 $("#Invoice").addClass("active");
                 $("#invoiceId").show()
                 $("#InvoiceNew").removeClass("highlight");
@@ -41,22 +41,20 @@
                 $("#Purchase").removeClass("active");
                 $("#PurchaseNew").removeClass("highlight");
                 $("#PurchaseDetails").removeClass("highlight");
-
                 $("#Products").removeClass("active");
                 $("#AddressBook").removeClass("active");
                 $("#RawMaterial").removeClass("active");
                 $('#invoiceTable').DataTable({
-                                                                    'paging': true,
-                                                        'lengthChange': true,
-                                                        'searching': true,
-                                                        'ordering': true,
-                                                        'info': true,
-                                                        'autoWidth': false,
-                                                        'aaSorting': []});
+                    'paging': true,
+                    'lengthChange': true,
+                    'searching': true,
+                    'ordering': true,
+                    'info': true,
+                    'autoWidth': false,
+                    'aaSorting': []});
                 $("#Ledger").removeClass("active");
-$("#Bills").removeClass("active");
+                $("#Bills").removeClass("active");
             });
-
             $(function() {
                 $("#datepicker").datepicker({changeMonth: true,
                     changeYear: true,
@@ -68,11 +66,7 @@ $("#Bills").removeClass("active");
                     showAnim: "slideDown",
                     dateFormat: "dd/mm/yy"
                 });
-
             });
-
-
-
             function getCompanyInfoBillTo()
             {
                 var id = $("#billToCompSelect").val();
@@ -82,14 +76,20 @@ $("#Bills").removeClass("active");
                     type: "POST",
                     dataType: 'json'
                 }).success(function(response) {
-
+//                    map = {};
 
                     $("#companyId").val(response.companyId);
                     $("#billToAddress").val(response.companyAddress);
                     $("#billToGSTIN").val(response.companyGSTIN);
                     $("#billToState").val(response.companyState);
                     $("#billToCode").val(response.companyStateCode);
-
+//                    $.each(response.productList, function(index, value) {
+//                        $.each(value.subProductList, function(index1, value1) {
+//                            map[value1.subProductId] = value1.price;
+//
+//                        });
+//
+//                    });
                 });
             }
             function getCompanyInfoShipTo()
@@ -116,23 +116,18 @@ $("#Bills").removeClass("active");
             {
 
                 var id = idIn;
-
-
                 $.ajax({
                     url: 'createExcel?val=' + id,
                     type: "POST",
                     dataType: 'json'
                 }).success(function(response) {
                 });
-
             }
 
             function getInvoiceDetails(idIn)
             {
 
                 var id = idIn;
-
-
                 $.ajax({
                     url: 'getInvoiceDetailsInfo?val=' + id,
                     type: "POST",
@@ -141,38 +136,28 @@ $("#Bills").removeClass("active");
 
 
                     $('.nav-tabs a[href="#2b"]').tab('show');
-                    
                     $("#paystatus").val(response.status);
-                    
-                    
-                    
-                    if(response.status === 'Not Paid')
+                    if (response.status === 'Not Paid')
                     {
                         $("#payDiv").hide();
-                        
                     }
-                    
+
                     $("#paydate").val(response.paymentDate);
                     $("#paydesc").val(response.description);
-                    
                     $("#invoiceId1").val(response.id);
-                    
                     $("#invoiceNo").val(response.invoiceNo);
                     $("#transporteMode").val(response.transportMode);
                     $("#datepicker").val(response.date);
                     $("#vehicleNo").val(response.vehicleNo);
-
                     $("#reverseCharge").val(response.reverseCharge);
                     $("#datepicker1").val(response.dateOfSupply);
                     $("#companyState").val(response.state);
                     $("#companyStateCode").val(response.code);
                     $("#placeOfSupply").val(response.placeOfSupply);
-
                     $("#billToCompSelect").val(response.billTO);
                     $("#shipToCompSelect").val(response.shipTo);
-
-$("#hiddenBillToName").val(response.billToName);
-$("#hiddenShipToName").val(response.shipToName);
+                    $("#hiddenBillToName").val(response.billToName);
+                    $("#hiddenShipToName").val(response.shipToName);
                     $("#billToAddress").val(response.billToAddress);
                     $("#shipToAddress").val(response.shipToAddress);
                     $("#billToGSTIN").val(response.billToGSTIN);
@@ -181,9 +166,6 @@ $("#hiddenShipToName").val(response.shipToName);
                     $("#billToCode").val(response.billToCode);
                     $("#shipToState").val(response.shipToState);
                     $("#shipToCode").val(response.shipToCode);
-
-
-
                     $("#TotalTatalAmount").val(response.totalAmountBeforeTax);
                     $("#TotalTatalCGST").val(response.cgstAmount);
                     $("#TotalTatalSGST").val(response.sgstAmount);
@@ -199,13 +181,9 @@ $("#hiddenShipToName").val(response.shipToName);
                     $("#totalAmountGST").val(response.totalAmountGST);
                     $("#totalAmountAfterTaxFinal").val(response.totalAmountATax);
                     $("#roubndOffAmountFinal").val(response.roundOff);
-
                     $("#FinalAmount").val(response.totalAmount);
                     $("#gstOnReverseCharge").val(response.gstOnReverseCharge);
                     $("#amountInwords").val(response.totalAmountInWords);
-
-
-
                     if (response.cgstPerc === 0)
                     {
                         $('#cgstCheckBox').prop('checked', false);
@@ -237,19 +215,15 @@ $("#hiddenShipToName").val(response.shipToName);
                     var counter = 0;
                     $.each(response.invoiceDetails, function(i, val) {
                         var $options = $("#productSelect > option").clone();
-
 //                        alert(" - " + val.subProductId);
                         var newRow = $("<tr>");
                         var cols = "";
-
-
                         cols += '<td ><input type="hidden" id="id' + counter + '" value="' + val.id + '" name="invoiceDetails[' + counter + '].id"/><input type="hidden" id="oldProductId' + counter + '"  value="' + val.productId + '" name="invoiceDetails[' + counter + '].oldProductId"/><input type="hidden" id="productId' + counter + '"  value="' + val.productName + '" name="invoiceDetails[' + counter + '].productName"/><select  id="productSelect' + counter + '" name="invoiceDetails[' + counter + '].productId" class="form-control" onchange="setProduct(' + counter + ')"></select></td>';
                         cols += '<td><input type="text" style="text-align: center;background-color: #fff !important" tabindex="-1" readonly class="form-control" value="' + val.hsn + '" name="invoiceDetails[' + counter + '].hsn" id="hsn' + counter + '"/></td>';
                         cols += '<td > <input type="text" style="text-align: center;background-color: #fff !important" tabindex="-1" readonly class="form-control" value="' + val.uom + '" name="invoiceDetails[' + counter + '].uom" id="uom' + counter + '"/></td>';
                         cols += '<td >\n\
 \n\
 <input type="hidden" class="form-control" value="' + val.qty + '" name="invoiceDetails[' + counter + '].oldQty" id="oldQty' + counter + '"/><input style="text-align: center" type="text" class="form-control" value="' + val.qty + '" name="invoiceDetails[' + counter + '].qty" id="qty' + counter + '"/></td>';
-
                         cols += '<td ><input style="text-align: center" type="text" class="form-control" value="' + val.price + '" name="invoiceDetails[' + counter + '].price" id="price' + counter + '" onblur="calculateRowGSTTotal(' + counter + ')"/></td>';
                         cols += '<td ><input style="text-align: center;background-color: #fff !important" tabindex="-1" readonly type="text" class="form-control" value="' + val.amount + '" name="invoiceDetails[' + counter + '].amount" id="amount' + counter + '" /></td>';
                         cols += '<td ><input style="text-align: center;background-color: #fff !important" tabindex="-1"  type="text" class="form-control" value="' + val.cgstPerc + '" name="invoiceDetails[' + counter + '].cgstPerc" id="cgstPerc' + counter + '" onblur="calculateRowGSTTotal(' + counter + ')" /></td>';
@@ -261,18 +235,12 @@ $("#hiddenShipToName").val(response.shipToName);
                         cols += '<td ><input style="text-align: center;background-color: #fff !important" tabindex="-1" readonly type="text" class="form-control" value="' + val.totalAmountAfterTax + '" name="invoiceDetails[' + counter + '].totalAmountAfterTax" id="totalAmountAfterTax' + counter + '"/></td>';
                         cols += '<td ><input style="text-align: center" type="button" class="ibtnDel btn btn-md btn-danger "  value="X"></td>';
                         newRow.append(cols);
-
-
-
                         $("#myTable").append(newRow);
-
                         $('#productSelect' + counter + '').append($options);
                         $('#productSelect' + counter + '').val(val.productId);
                         counter++;
                         $('#count').val(counter);
-
                     });
-
                 });
             }
 
@@ -283,7 +251,6 @@ $("#hiddenShipToName").val(response.shipToName);
                     if ($("#cgstCheckBox").is(':checked')) {
                         $("#cgstPerc0").val("9");
                         $("#cgstPercFinal").val("9");
-
                     } else {
                         $("#cgstPerc0").val("0");
                         $("#cgstPercFinal").val("0");
@@ -315,29 +282,29 @@ $("#hiddenShipToName").val(response.shipToName);
             function setProduct(val)
             {
                 var id = $("#productSelect" + val + " option:selected").val()
-
+                $("#hsn" + val).val("");
+                $("#uom" + val).val("");
+                $("#price" + val).val("");
+                var bill = $("#billToCompSelect").val();
                 $.ajax({
-                    url: 'getHSNUOM?prodId=' + id,
+                    url: 'getHSNUOMPRICE?prodId=' + id + "&compId=" + bill,
                     type: "POST",
                     dataType: 'json'
                 }).success(function(response) {
 
                     $("#hsn" + val).val(response.mainProductHSN);
                     $("#uom" + val).val(response.mainProductUOM);
-
+                    $("#price" + val).val(response.price);
                 });
                 $("#productId" + val).val($("#productSelect" + val + " option:selected").text());
             }
-            
+
             function viewBillPdf(id_in)
             {
                 $('#invoiceModal').modal('show');
-               
-               
                 $.ajax({
-                    url: 'printInvoicePDF?val='+id_in,
+                    url: 'printInvoicePDF?val=' + id_in,
                     type: "POST",
-                    
                 }).success(function(response) {
                     $("#spinner").hide();
 //                    alert(response);
@@ -346,7 +313,7 @@ $("#hiddenShipToName").val(response.shipToName);
                     $('#invoiceModal').modal('show');
                 });
             }
-            
+
 
             function viewBill()
             {
@@ -470,8 +437,8 @@ $("#hiddenShipToName").val(response.shipToName);
                                                             <td  style="text-align: center"><s:property value = 'amount'/></td>
                                                             <td  style="text-align: center">
                                                                 <s:if test = 'isPaymentDone==1'>Paid
-                                                                  
-                                                            </s:if>
+
+                                                                </s:if>
                                                                 <s:else>
                                                                     Not Paid
                                                                 </s:else>
@@ -479,19 +446,19 @@ $("#hiddenShipToName").val(response.shipToName);
                                                             <td  style="text-align: center">
 
                                                                 <a href="createExcel?val=<s:property value = 'id'/>" ><input type="button" value="Excel"  class="btn btn-default editButton"></a>
-                                                                
+
                                                                 <s:if test="isPaymentDone== 0">
                                                                     <input type="button" value="Edit" onclick="getInvoiceDetails('<s:property value = 'id'/>')" class="btn btn-default editButton">
-                                                                    
+
                                                                 </s:if>
-                                                                    
-                                                                        <s:else>
-                                                                        <input type="button" value="View" onclick="viewBillPdf('<s:property value = 'id'/>')" class="btn btn-default editButton">
-                                                                    </s:else>
-                                                                        <s:if test="isLast== 1">
-                                                                            <a href="deleteInvoice?val=<s:property value = 'id'/>" ><input type="button" value="Delete"  class="btn btn-default editButton"></a>
-                                                                            </s:if>
-                                                                
+
+                                                                <s:else>
+                                                                    <input type="button" value="View" onclick="viewBillPdf('<s:property value = 'id'/>')" class="btn btn-default editButton">
+                                                                </s:else>
+                                                                <s:if test="isLast== 1">
+                                                                    <a href="deleteInvoice?val=<s:property value = 'id'/>" ><input type="button" value="Delete"  class="btn btn-default editButton"></a>
+                                                                    </s:if>
+
                                                             </td>
 
                                                         </tr>
@@ -521,22 +488,22 @@ $("#hiddenShipToName").val(response.shipToName);
                                                             </div>
                                                             <div id="payDiv">
                                                                 <div class="form-group row">
-                                                                <label class="col-xs-2 control-label">Payment Date : </label>
+                                                                    <label class="col-xs-2 control-label">Payment Date : </label>
                                                                     <div class="col-xs-5">
                                                                         <!--<input type="text" class="form-control" id="datepicker"  style="background-color: #fff !important"  readonly name="date" />-->
                                                                         <input type="text" id="paydate" style="background-color: #fff !important" readonly class="form-control"  />
 
                                                                     </div>
                                                                 </div>
-                                                            
-                                                            <div class="form-group row">
-                                                                <label class="col-xs-2 control-label">Payment By : </label>
+
+                                                                <div class="form-group row">
+                                                                    <label class="col-xs-2 control-label">Payment By : </label>
                                                                     <div class="col-xs-10">
                                                                         <!--<input type="text" class="form-control" id="datepicker"  style="background-color: #fff !important"  readonly name="date" />-->
                                                                         <input type="text"  style="background-color: #fff !important" id="paydesc" readonly class="form-control" />
                                                                     </div>
                                                                 </div>
-                                                            
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -546,13 +513,13 @@ $("#hiddenShipToName").val(response.shipToName);
                                                                 <div class="col-md-6 well">
 
                                                                     <div class="form-group row">
-                                                                       
-                                                                            <label class="col-xs-3 control-label">Invoice No.</label>
-                                                                            <div class="col-xs-9">
-                                                                                <input type="hidden"  id="invoiceId1" class="form-control" name="id" />
-                                                                                <input type="text" required id="invoiceNo" readonly class="form-control" name="invoiceNo" />
-                                                                            </div>
-                                                                        
+
+                                                                        <label class="col-xs-3 control-label">Invoice No.</label>
+                                                                        <div class="col-xs-9">
+                                                                            <input type="hidden"  id="invoiceId1" class="form-control" name="id" />
+                                                                            <input type="text" required id="invoiceNo" readonly class="form-control" name="invoiceNo" />
+                                                                        </div>
+
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label class="col-xs-3 control-label">Invoice Date.</label>
@@ -579,7 +546,7 @@ $("#hiddenShipToName").val(response.shipToName);
                                                                         <label class="col-xs-1 control-label">Code </label>
                                                                         <div class="col-xs-3">
                                                                             <input type="text" required id="companyStateCode"  class="form-control" name="code" />
-                                                                        </div> 
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 well">
@@ -685,12 +652,12 @@ $("#hiddenShipToName").val(response.shipToName);
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        
-                                                                            <label class="col-xs-3 control-label">&nbsp;&nbsp;Address</label>
-                                                                            <div class="col-xs-9">
-                                                                                <textarea style="height:80px" id="shipToAddress" resize="none" name="shipToAddress" class="form-control"> </textarea>
-                                                                            </div>
-                                                                        
+
+                                                                        <label class="col-xs-3 control-label">&nbsp;&nbsp;Address</label>
+                                                                        <div class="col-xs-9">
+                                                                            <textarea style="height:80px" id="shipToAddress" resize="none" name="shipToAddress" class="form-control"> </textarea>
+                                                                        </div>
+
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label class="col-xs-3 control-label">&nbsp;&nbsp;GSTIN</label>
@@ -933,7 +900,7 @@ $("#hiddenShipToName").val(response.shipToName);
 
 
 
-                                        
+
                                     </div>
 
                                 </div>

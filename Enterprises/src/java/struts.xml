@@ -3,6 +3,7 @@
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+    
     <!-- Configuration for the defa ult package. -->
     <package name="default" extends="struts-default">
                 
@@ -81,6 +82,12 @@
         </action>
         
         <action name="getHSNUOM" class="com.pritient.forward.InvoiceAction" method="getUOMandHSN">
+            <result type="stream">
+                <param name="contentType">text/plain</param>
+            </result>
+        </action>
+        
+         <action name="getHSNUOMPRICE" class="com.pritient.forward.InvoiceAction" method="getUOMandHSNAndPrice">
             <result type="stream">
                 <param name="contentType">text/plain</param>
             </result>

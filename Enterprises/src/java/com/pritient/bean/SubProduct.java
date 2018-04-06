@@ -14,7 +14,25 @@ public class SubProduct {
     int subProductId;
     String subProductName;
     String subProductCode;
+    int isDeleted;
+    double price = 0;
     int qty;
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(int isDeleted) {
+        this.isDeleted = isDeleted;
+    }
 
     public String getSubProductName() {
         return subProductName;

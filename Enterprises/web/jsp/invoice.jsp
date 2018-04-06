@@ -30,6 +30,7 @@
         <script>
 
             $(document).ready(function() {
+
 //    $("#reports").addClass("active");
                 $("#dashboard").removeClass("active");
 
@@ -47,7 +48,7 @@
                 $("#AddressBook").removeClass("active");
                 $("#RawMaterial").removeClass("active");
                 $("#Ledger").removeClass("active");
-$("#Bills").removeClass("active");
+                $("#Bills").removeClass("active");
 
             });
 
@@ -68,6 +69,7 @@ $("#Bills").removeClass("active");
             });
             function getCompanyInfoBillTo()
             {
+
                 var id = $("#billToCompSelect").val();
                 $("#hiddenBillToName").val($("#billToCompSelect option:selected").text());
                 $.ajax({
@@ -76,14 +78,28 @@ $("#Bills").removeClass("active");
                     dataType: 'json'
                 }).success(function(response) {
 
-
+//                    map = {};
                     $("#companyId").val(response.companyId);
                     $("#billToAddress").val(response.companyAddress);
                     $("#billToGSTIN").val(response.companyGSTIN);
                     $("#billToState").val(response.companyState);
                     $("#billToCode").val(response.companyStateCode);
 
+
+
+//                    $.each(response.productList, function(index, value) {
+//                        $.each(value.subProductList, function(index1, value1) {
+//                            map[value1.subProductId] = value1.price;
+//
+//                        });
+//
+//                    });
+
+
+
                 });
+
+
             }
             function getCompanyInfoShipTo()
             {
@@ -114,7 +130,7 @@ $("#Bills").removeClass("active");
                     type: "POST",
                     data: formData
                 }).success(function(response) {
-                    
+
                     $("#spinner").hide();
                     $('#invoiceModal').find('.modal-body').text("");
                     $('#invoiceModal').find('.modal-body').append("<iframe width='100%' height='700px' id='iFramePdf' src='" + response + "/getPdfFile'  ></iframe>");
@@ -161,25 +177,36 @@ $("#Bills").removeClass("active");
 
             function setProduct(val)
             {
-
+                $("#hsn" + val).val("");
+                $("#uom" + val).val("");
+                $("#price" + val).val("");
+                var bill = $("#billToCompSelect").val();
                 if (($("#cgstCheckBox").is(':checked') && $("#sgstCheckBox").is(':checked')) || $("#igstCheckBox").is(':checked'))
                 {
-                    var id = $("#productSelect" + val + " option:selected").val()
 
-                    $.ajax({
-                        url: 'getHSNUOM?prodId=' + id,
-                        type: "POST",
-                        dataType: 'json'
-                    }).success(function(response) {
+                    if (bill !== "")
+                    {
+                        var id = $("#productSelect" + val + " option:selected").val()
 
-                        $("#hsn" + val).val(response.mainProductHSN);
-                        $("#uom" + val).val(response.mainProductUOM);
+                        $.ajax({
+                            url: 'getHSNUOMPRICE?prodId=' + id + "&compId=" + bill,
+                            type: "POST",
+                            dataType: 'json'
+                        }).success(function(response) {
 
-                    });
+                            $("#hsn" + val).val(response.mainProductHSN);
+                            $("#uom" + val).val(response.mainProductUOM);
+                            $("#price" + val).val(response.price);
+
+                        });
 
 
 
-                    $("#productId" + val).val($("#productSelect" + val + " option:selected").text());
+                        $("#productId" + val).val($("#productSelect" + val + " option:selected").text());
+                    } else {
+                        alert("Please Select Company");
+                        $("#productSelect" + val).val(0);
+                    }
                 } else {
                     alert("Please Select GST Type");
                     $("#productSelect" + val).val(0);
@@ -235,7 +262,7 @@ $("#Bills").removeClass("active");
                         <strong><s:property value = 'errorMessage'/></strong>
                     </div>
                 </s:if>
-                
+
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
@@ -299,9 +326,9 @@ $("#Bills").removeClass("active");
                                             </div>
                                         </div>
 
-                                                    <div class="col-md-6 well">
-                                                        <div class="form-group row">
-                                                            <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">Transport Mode</label>
+                                        <div class="col-md-6 well">
+                                            <div class="form-group row">
+                                                <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">Transport Mode</label>
                                                 <div class="col-sm-9">
                                                     <input type="text" class="form-control" name="transportMode" />
                                                 </div>
@@ -448,7 +475,7 @@ $("#Bills").removeClass("active");
                                     </div>
                                     <div class="checkbox disabled">
                                         <label><input type="checkbox" id="igstCheckBox" onchange="setValue('igst')"/>IGST</label>
-                                    </div> 
+                                    </div>
                                     <table id="myTable" class="myt table order-list" style="border:1px solid #ddd" >
 
                                         <thead>
@@ -498,11 +525,11 @@ $("#Bills").removeClass("active");
                                                     <input required style="text-align: center;background-color: #fff !important" tabindex="-1" readonly  required   type="text" name="invoiceDetails[0].uom" id="uom0"    class="form-control"/>
                                                 </td>
                                                 <td >
-                                                    <input required style="text-align: center"  required  type="text" name="invoiceDetails[0].qty" id="qty0"  class="form-control"/>
+                                                    <input required style="text-align: center"  required  type="text" name="invoiceDetails[0].qty" id="qty0" onblur="calculateRowGSTTotal('0')" class="form-control"/>
                                                 </td>
 
                                                 <td >
-                                                    <input required style="text-align: center"  required  type="text" name="invoiceDetails[0].price" id="price0"  onblur="calculateRowGSTTotal('0')"  class="form-control"/>
+                                                    <input required style="text-align: center"  required  type="text" tabindex="-1" name="invoiceDetails[0].price" id="price0"  onblur="calculateRowGSTTotal('0')"  class="form-control"/>
                                                 </td>
 
                                                 <td >

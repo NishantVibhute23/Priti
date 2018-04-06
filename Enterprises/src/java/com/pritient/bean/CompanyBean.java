@@ -5,6 +5,9 @@
  */
 package com.pritient.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author nishant.vibhute
@@ -35,6 +38,8 @@ public class CompanyBean {
     private String companyBankName;
     private String companyBankIFSC;
     private String companyBankAccountNo;
+
+    List<Product> productList = new ArrayList<>();
 
     public String getCompanyName() {
         return companyName;
@@ -146,6 +151,14 @@ public class CompanyBean {
 
     public void setCompanyBankAccountNo(String companyBankAccountNo) {
         this.companyBankAccountNo = companyBankAccountNo;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
 }

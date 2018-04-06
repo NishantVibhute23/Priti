@@ -397,6 +397,34 @@ public class InvoiceDao extends DBUtil {
         return p;
     }
 
+    public Product getUOMAndHSNAndPrice(int id, int companyId) {
+        Product p = new Product();
+
+        try {
+
+            conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement("Call getUOMAndHSNAndPrice(?,?)");
+            ps.setInt(1, id);
+            ps.setInt(2, companyId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                p.setMainProductHSN(rs.getString(1));
+                p.setMainProductUOM(rs.getString(2));
+                p.setMainProductType(rs.getString(3));
+                p.setQty(rs.getString(4));
+                p.setPrice(rs.getDouble(5));
+
+            }
+
+            closeConnection(conn);
+        } catch (SQLException ex) {
+            errorLog.error("InvoiceDao : " + ex);
+        }
+
+        return p;
+    }
+
     public int deleteInvoice(int id) {
         int count = 0;
         try {
