@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
+             <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <script type="text/javascript" src="js/formValidation.min.js"></script>
 
@@ -626,7 +626,7 @@ table, th, td {
 
                                                                     <div style="visibility: hidden">
 
-                                                                        <select id="productSelect" required class="form-control" onchange="setProduct(0)">
+                                                                        <select id="productSelect" class="form-control" onchange="setProduct(0)">
                                                                             <option value="">Select</option>
                                                                             <s:iterator value="subProductList">
                                                                                 <option value="<s:property value = 'subProductId'/>"><s:property value = 'subProductName'/></option>

@@ -171,7 +171,8 @@ $("#Bills").removeClass("active");
                     $("#billToCompSelect").val(response.billTO);
                     $("#shipToCompSelect").val(response.shipTo);
 
-
+$("#hiddenBillToName").val(response.billToName);
+$("#hiddenShipToName").val(response.shipToName);
                     $("#billToAddress").val(response.billToAddress);
                     $("#shipToAddress").val(response.shipToAddress);
                     $("#billToGSTIN").val(response.billToGSTIN);
