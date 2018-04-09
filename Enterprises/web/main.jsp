@@ -1,460 +1,608 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html class="no-js">
+
 
     <head>
-
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="robots" content="all,follow">
+        <meta name="googlebot" content="index,follow,snippet,archive">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Priti Enterprises</title>
-        
-        <!-- Bootstrap core CSS -->
-        <link href="mainPage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-        <!-- Custom fonts for this template -->
-        <link href="mainPage/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-        <!-- Plugin CSS -->
-        <link href="mainPage/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+        <meta name="keywords" content="">
 
-        <!-- Custom styles for this template -->
-        <link href="mainPage/css/freelancer.min.css" rel="stylesheet">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,100%7CRoboto:400,700,300,100' rel='stylesheet' type='text/css'>
 
+        <!-- Bootstrap and Font Awesome css -->
+        <link href="homeView/css/font-awesome.css" rel="stylesheet">
+        <link href="homeView/css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- Theme stylesheet -->
+        <link href="homeView/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+
+        <!-- Custom stylesheet - for your changes -->
+        <link href="homeView/css/custom.css" rel="stylesheet">
+
+        <!-- owl carousel css -->
+
+        <link href="homeView/css/owl.carousel.css" rel="stylesheet">
+        <link href="homeView/css/owl.theme.css" rel="stylesheet">
+
+        <!-- CSS Animations -->
+        <link href="homeView/css/animate.css" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Mordernizr -->
+        <script src="homeView/js/modernizr-2.6.2.min.js"></script>
+
+        <!-- Responsivity for older IE -->
+        <!--[if lt IE 9]>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
     </head>
 
-    <body id="page-top">
+    <body data-spy="scroll" data-target="#navigation" data-offset="120">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+        <!-- *** NAVBAR ***
+    _________________________________________________________ -->
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
             <div class="container">
-                <a class="navbar-brand js-scroll-trigger" href="#page-top">Priti Enterprises</a>
-                <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fa fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Products</a>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand scrollTo" href="#intro">Priti EnterPrises</a>
+                </div>
+
+                <div class="navbar-collapse collapse" id="navigation">
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#intro">Home</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+                        <li><a href="#services">Products</a>
                         </li>
-                        <li class="nav-item mx-0 mx-lg-1">
-                            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+                        <li><a href="#about">About</a>
+                        </li>
+                        
+                        
+                        <li><a href="#contact">Contact</a>
                         </li>
                     </ul>
                 </div>
+                <!--/.nav-collapse -->
+
             </div>
-        </nav>
+        </div>
+        <!-- /#navbar -->
 
-        <!-- Header -->
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container">
-                <img class="img-fluid mb-5 d-block mx-auto" src="images/PritiEnterprises.jpg" alt="">
-                <h1 class="text-uppercase mb-0">Priti Enterprises </h1>
-                <hr class="star-light">
-                <h2 class="font-weight-light mb-0">Manufacturer Of Paper Napkin</h2>
-            </div>
-        </header>
-
-        <!-- Portfolio Grid Section -->
-        <section class="portfolio" id="portfolio">
+        <!-- *** NAVBAR END *** -->
 
 
+        <div id="all">
 
-            <div class="container">
-                <h2 class="text-center text-uppercase text-secondary mb-0">Products</h2>
-                <hr class="star-dark mb-5">
-                <div class="row">
+
+            <!-- *** INTRO IMAGE ***
+    _________________________________________________________ -->
+            <div id="intro" class="clearfix">
+                <div class="item">
                     <div class="container">
-
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse" href="#collapse1">Tissue Paper</a>
-                                    </h4>
+                        <div class="row">
+                            <div class="carousel-caption">
+                                <div data-animate="fadeInDown" class="logo">
+                                    <img src="images/PritiEnterprises.jpg" alt="logo" width="130">
                                 </div>
-                                <div id="collapse1" class="panel-collapse collapse">
-                                    <ul class="list-group">
-                                        <li class="list-group-item">One</li>
-                                        <li class="list-group-item">Two</li>
-                                        <li class="list-group-item">Three</li>
-                                    </ul>
-
-                                </div>
+                                <h1 data-animate="fadeInDown">Priti Enterprises</h1>
+                                <h2 data-animate="slideInUp">Manufacturer Of Paper Napkin</h2>
                             </div>
                         </div>
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse"  href="#collapse2">Kitchen Tissue Paper Rolls</a>
-                                    </h4>
-                                </div>
-                                <div id="collapse2" class="panel-collapse collapse">
-                                     <div class="panel-body">
-                                         dafadsf
-                                     </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel-group">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a data-toggle="collapse"  href="#collapse3">Toilet Tissue Paper Rolls</a>
-                                    </h4>
-                                </div>
-                                <div id="collapse3" class="panel-collapse collapse">
-                                     <div class="panel-body">
-                                    <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-1">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="images/facial-tissue-paper.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-2">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="images/PritiEnterprises.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-3">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="images/PritiEnterprises.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-4">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="images/PritiEnterprises.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-5">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="images/PritiEnterprises.jpg" alt="">
-            </a>
-          </div>
-          <div class="col-md-6 col-lg-4">
-            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-6">
-              <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="images/PritiEnterprises.jpg" alt="">
-            </a>
-          </div>
-                                     </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="bg-primary text-white mb-0" id="about">
-            <div class="container">
-                <h2 class="text-center text-uppercase text-white">About</h2>
-                <hr class="star-light mb-5">
-                <div class="row">
-                    <div class="col-lg-6 ml-auto">
-                        <p class="lead"><b>Priti Enterprises</b> is located in Silvassa (Dadra & Nagar Haveli), efficiently running under the guiding light of Mr. Mehul R. Mistry (Proprietor). This is owing to his sheer dedication and hard work of the team members, that the company has grown magnificently and is still rising at a rapid pace. We deals our product under brand name Clean Up.</p>
-                    </div>
-                    <div class="col-lg-6 mr-auto">
-                        <p class="lead">Sprawling over a large area, we have compartmentalized the infrastrucutre as per the functionalities. We have R7D Unit, Sourcing Unit, Manufacturing Unit, Storehouse, Testing Unit, Packaging and Transport Unit. We efficiently present reliable Disposable Paper Napkin, manufacured using most up-to-date machines and technology. Thus, The products are highly appreciated amongst the customers.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 ml-auto">
-                        <p class="lead">Unit<br>Our dexterous team members work 24x7 with commitment and hard work. Our team has Supervisors, Procuring Managers, R&D Experts, Skilled Workers, Quality Auditors, Marketing Heads, Sales Executives and Logisticians. They keep close coordination with the customers to bring forth the best and cost effective Disposable Paper Napkin. </p>
-                    </div>
-                    <!--          <div class="col-lg-4 mr-auto">
-                                <p class="lead">Sprawling over a large area, we have compartmentalized the infrastrucutre as per the functionalities. We have R7D Unit, Sourcing Unit, Manufacturing Unit, Storehouse, Testing Unit, Packaging and Transport Unit. We efficiently present reliable Disposable Paper Napkin, manufacured using most up-to-date machines and technology. Thus, The products are highly appreciated amongst the customers.</p>
-                              </div>-->
-                </div>
-                <div class="row">
-                    <div class="col-lg-12 ml-auto">
-                        <p class="lead">Key Points
-                        <ul>
-                            <li>Remarkable past track records of the company</li>
-                            <li>Top notch quality Paper Napkin</li>
-                            <li>High-Tech production unit</li>
-                            <li>Reasonably priced Napkin</li>
-                            <li>Outstanding R&D Team</li>
-                            <li>High-Tech infrastructure</li>
-                        </ul>
-                    </div>
-                    <!--          <div class="col-lg-4 mr-auto">
-                                <p class="lead">Sprawling over a large area, we have compartmentalized the infrastrucutre as per the functionalities. We have R7D Unit, Sourcing Unit, Manufacturing Unit, Storehouse, Testing Unit, Packaging and Transport Unit. We efficiently present reliable Disposable Paper Napkin, manufacured using most up-to-date machines and technology. Thus, The products are highly appreciated amongst the customers.</p>
-                              </div>-->
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact">
-            <div class="container">
-                <h2 class="text-center text-uppercase text-secondary mb-0">Contact Me</h2>
-                <hr class="star-dark mb-5">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-                        <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                        <form name="sentMessage" id="contactForm" novalidate="novalidate">
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Name</label>
-                                    <input class="form-control" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Email Address</label>
-                                    <input class="form-control" id="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Phone Number</label>
-                                    <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Message</label>
-                                    <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <br>
-                            <div id="success"></div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Footer -->
-        <footer class="footer text-center">
-            <div class="container ">
-                <div class="row text-center">
-                    <div class="col-md-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Location</h4>
-                        <p class="lead mb-0">2215 John Daniel Drive
-                            <br>Clark, MO 65243</p>
+            <!-- *** INTRO IMAGE END *** -->
+            <!-- *** SERVICES ***
+               _________________________________________________________ -->
+            <div class="section " id="services">
+                <div class="container">
+                    <div class="section" id="references">
+                        <div class="container">
+                            <div class="col-sm-12">
+
+                                <div class="mb20">
+                                    <h2 class="title" data-animate="fadeInUp">Products</h2>
+
+                                    <p class="lead" data-animate="fadeInUp">We have following list of products</p>
+                                </div>
+
+                                <ul id="filter" data-animate="fadeInUp">
+                                    
+                                    <li><a href="#" data-filter="webdesign">Tissue Paper</a>
+                                    </li>
+                                    <li><a href="#" data-filter="seo">Kitchen Tissue Paper Rolls</a>
+                                    </li>
+                                    <li><a href="#" data-filter="marketing">Toilet Tissue Paper Rolls</a>
+                                    </li>
+                                    
+                                </ul>
+
+                                <div id="detail">
+
+                                    <span class="close">&times;</span>
+
+                                    <div id="detail-slider"></div>
+
+                                    <div class="text-center">
+                                        <h1 id="detail-title">&nbsp;</h1>
+                                    </div>
+
+                                    <div id="detail-content"></div>
+
+                                </div>
+                                <!-- Reference detail -->
+
+                                <div id="references-masonry" data-animate="fadeInUp">
+
+                                    <div class="reference-item" data-category="webdesign">
+                                        <div class="reference">
+                                            <a href="#">
+                                                <img src="images/facial-tissue-paper.jpg" class="img-responsive" alt="" />
+
+                                                <div class="overlay">
+                                                    <h3 class="reference-title">Facial Tissue Paper</h3>
+                                                    
+                                                </div>
+                                            </a>
+
+                                            <div class="sr-only reference-description" data-images="images/facial-tissue-paper.jpg">
+
+                                                <p>With the assistance of our hardworking team, we are able to offer a wide range of quality Facial Tissue Paper. We are a quality-conscious firm and for ensuring high quality of the products, we dedicatedly work in tune with the defined industry standards. We are offering Facial Tissue Paper measuring 20 cm x 20 cm, 100 pulls.</p>
+                                                <div class="text-center">
+
+                                                    <p class="lead">Would you like to know more or just discuss something?</p>
+
+                                                    <p><a href="#contact" class="btn btn-default btn-lg scrollTo">Contact me</a>
+                                                    </p>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="reference-item" data-category="seo">
+                                        <div class="reference">
+                                            <a href="#">
+                                                <img src="img/portfolio-2.jpg" class="img-responsive" alt="" />
+
+                                                <div class="overlay">
+                                                    <h3 class="reference-title">Project name</h3>
+                                                    <p>Short project description goes here...</p>
+                                                </div>
+                                            </a>
+
+                                            <div class="sr-only reference-description" data-images="img/main-slider1.jpg,img/main-slider2.jpg,img/main-slider3.jpg">
+
+                                                <p>Projecting surrounded literature yet delightful alteration but bed men. Open are from long why cold. If must snug by upon sang loud left. As me do preference entreaties compliment motionless ye literature. Day behaviour
+                                                    explained law remainder. Produce can cousins account you pasture. Peculiar delicate an pleasant provided do perceive.</p>
+
+                                                <p>Sitting mistake towards his few country ask. You delighted two rapturous six depending objection happiness something the. Off nay impossible dispatched partiality unaffected. Norland adapted put ham cordial. Ladies
+                                                    talked may shy basket narrow see. Him she distrusts questions sportsmen. Tolerably pretended neglected on my earnestly by. Sex scale sir style truth ought.</p>
+
+                                                <p class="buttons">
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-globe"></i> Visit website</a>
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-download"></i> Download case study</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reference-item" data-category="marketing">
+                                        <div class="reference">
+                                            <a href="#">
+                                                <img src="img/portfolio-3.jpg" class="img-responsive" alt="" />
+
+                                                <div class="overlay">
+                                                    <h3 class="reference-title">Project name</h3>
+                                                    <p>Short project description goes here...</p>
+                                                </div>
+                                            </a>
+
+                                            <div class="sr-only reference-description" data-images="img/main-slider1.jpg,img/main-slider2.jpg,img/main-slider3.jpg">
+
+                                                <p>Projecting surrounded literature yet delightful alteration but bed men. Open are from long why cold. If must snug by upon sang loud left. As me do preference entreaties compliment motionless ye literature. Day behaviour
+                                                    explained law remainder. Produce can cousins account you pasture. Peculiar delicate an pleasant provided do perceive.</p>
+
+                                                <p>Sitting mistake towards his few country ask. You delighted two rapturous six depending objection happiness something the. Off nay impossible dispatched partiality unaffected. Norland adapted put ham cordial. Ladies
+                                                    talked may shy basket narrow see. Him she distrusts questions sportsmen. Tolerably pretended neglected on my earnestly by. Sex scale sir style truth ought.</p>
+
+                                                <p class="buttons">
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-globe"></i> Visit website</a>
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-download"></i> Download case study</a>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="reference-item" data-category="marketing">
+                                        <div class="reference">
+                                            <a href="#">
+                                                <img src="img/portfolio-4.jpg" class="img-responsive" alt="" />
+
+                                                <div class="overlay">
+                                                    <h3 class="reference-title">Project name</h3>
+                                                    <p>Short project description goes here...</p>
+                                                </div>
+                                            </a>
+
+                                            <div class="sr-only reference-description" data-images="img/main-slider1.jpg,img/main-slider2.jpg,img/main-slider3.jpg">
+
+                                                <p>Projecting surrounded literature yet delightful alteration but bed men. Open are from long why cold. If must snug by upon sang loud left. As me do preference entreaties compliment motionless ye literature. Day behaviour
+                                                    explained law remainder. Produce can cousins account you pasture. Peculiar delicate an pleasant provided do perceive.</p>
+
+                                                <p>Sitting mistake towards his few country ask. You delighted two rapturous six depending objection happiness something the. Off nay impossible dispatched partiality unaffected. Norland adapted put ham cordial. Ladies
+                                                    talked may shy basket narrow see. Him she distrusts questions sportsmen. Tolerably pretended neglected on my earnestly by. Sex scale sir style truth ought.</p>
+
+                                                <p class="buttons">
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-globe"></i> Visit website</a>
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-download"></i> Download case study</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reference-item" data-category="webdesign">
+                                        <div class="reference">
+                                            <a href="#">
+                                                <img src="img/portfolio-5.jpg" class="img-responsive" alt="" />
+
+                                                <div class="overlay">
+                                                    <h3 class="reference-title">Project name</h3>
+                                                    <p>Short project description goes here...</p>
+                                                </div>
+                                            </a>
+
+                                            <div class="sr-only reference-description" data-images="img/main-slider1.jpg,img/main-slider2.jpg,img/main-slider3.jpg">
+
+                                                <p>Projecting surrounded literature yet delightful alteration but bed men. Open are from long why cold. If must snug by upon sang loud left. As me do preference entreaties compliment motionless ye literature. Day behaviour
+                                                    explained law remainder. Produce can cousins account you pasture. Peculiar delicate an pleasant provided do perceive.</p>
+
+                                                <p>Sitting mistake towards his few country ask. You delighted two rapturous six depending objection happiness something the. Off nay impossible dispatched partiality unaffected. Norland adapted put ham cordial. Ladies
+                                                    talked may shy basket narrow see. Him she distrusts questions sportsmen. Tolerably pretended neglected on my earnestly by. Sex scale sir style truth ought.</p>
+
+                                                <p class="buttons">
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-globe"></i> Visit website</a>
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-download"></i> Download case study</a>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reference-item" data-category="other">
+                                        <div class="reference">
+                                            <a href="#">
+                                                <img src="img/portfolio-6.jpg" class="img-responsive" alt="" />
+
+                                                <div class="overlay">
+                                                    <h3 class="reference-title">Project name</h3>
+                                                    <p>Short project description goes here...</p>
+                                                </div>
+                                            </a>
+
+                                            <div class="sr-only reference-description" data-images="img/main-slider1.jpg,img/main-slider2.jpg,img/main-slider3.jpg">
+
+                                                <p>Projecting surrounded literature yet delightful alteration but bed men. Open are from long why cold. If must snug by upon sang loud left. As me do preference entreaties compliment motionless ye literature. Day behaviour
+                                                    explained law remainder. Produce can cousins account you pasture. Peculiar delicate an pleasant provided do perceive.</p>
+
+                                                <p>Sitting mistake towards his few country ask. You delighted two rapturous six depending objection happiness something the. Off nay impossible dispatched partiality unaffected. Norland adapted put ham cordial. Ladies
+                                                    talked may shy basket narrow see. Him she distrusts questions sportsmen. Tolerably pretended neglected on my earnestly by. Sex scale sir style truth ought.</p>
+
+                                                <p class="buttons">
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-globe"></i> Visit website</a>
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-download"></i> Download case study</a>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reference-item" data-category="seo">
+                                        <div class="reference">
+                                            <a href="#">
+                                                <img src="img/portfolio-7.jpg" class="img-responsive" alt="" />
+
+                                                <div class="overlay">
+                                                    <h3 class="reference-title">Project name</h3>
+                                                    
+                                                </div>
+                                            </a>
+
+                                            <div class="sr-only reference-description" data-images="img/main-slider1.jpg,img/main-slider2.jpg,img/main-slider3.jpg">
+
+                                                <p>Projecting surrounded literature yet delightful alteration but bed men. Open are from long why cold. If must snug by upon sang loud left. As me do preference entreaties compliment motionless ye literature. Day behaviour
+                                                    explained law remainder. Produce can cousins account you pasture. Peculiar delicate an pleasant provided do perceive.</p>
+
+                                                <p>Sitting mistake towards his few country ask. You delighted two rapturous six depending objection happiness something the. Off nay impossible dispatched partiality unaffected. Norland adapted put ham cordial. Ladies
+                                                    talked may shy basket narrow see. Him she distrusts questions sportsmen. Tolerably pretended neglected on my earnestly by. Sex scale sir style truth ought.</p>
+
+                                                <p class="buttons">
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-globe"></i> Visit website</a>
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-download"></i> Download case study</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="reference-item" data-category="webdesign">
+                                        <div class="reference">
+                                            <a href="#">
+                                                <img src="img/portfolio-8.jpg" class="img-responsive" alt="" />
+
+                                                <div class="overlay">
+                                                    <h3 class="reference-title">Project name</h3>
+                                                    <p>Short project description goes here...</p>
+                                                </div>
+                                            </a>
+
+                                            <div class="sr-only reference-description" data-images="img/main-slider1.jpg,img/main-slider2.jpg,img/main-slider3.jpg">
+
+                                                <p>Projecting surrounded literature yet delightful alteration but bed men. Open are from long why cold. If must snug by upon sang loud left. As me do preference entreaties compliment motionless ye literature. Day behaviour
+                                                    explained law remainder. Produce can cousins account you pasture. Peculiar delicate an pleasant provided do perceive.</p>
+
+                                                <p>Sitting mistake towards his few country ask. You delighted two rapturous six depending objection happiness something the. Off nay impossible dispatched partiality unaffected. Norland adapted put ham cordial. Ladies
+                                                    talked may shy basket narrow see. Him she distrusts questions sportsmen. Tolerably pretended neglected on my earnestly by. Sex scale sir style truth ought.</p>
+
+                                                <p class="buttons">
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-globe"></i> Visit website</a>
+                                                    <a class="btn btn-primary" href="javascript:void(0);"><i class="fa fa-download"></i> Download case study</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /#references-masonry -->
+
+                            </div>
+                            <!-- /.12 -->
+                        </div>
+                        <!-- /.container -->
                     </div>
+
                     
-                   
                 </div>
+                <!-- /.container -->
             </div>
-        </footer>
+            <!-- /.section -->
 
-        <div class="copyright py-4 text-center text-white">
-            <div class="container">
-                <small>Copyright &copy; Your Website 2018</small>
-            </div>
-        </div>
+            <!-- *** SERVICES END *** -->
 
-        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-        <div class="scroll-to-top d-lg-none position-fixed ">
-            <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-                <i class="fa fa-chevron-up"></i>
-            </a>
-        </div>
 
-        <!-- Portfolio Modals -->
 
-        <!-- Portfolio Modal 1 -->
-        <div class="portfolio-modal mfp-hide" id="portfolio-modal-1">
-            <div class="portfolio-modal-dialog bg-white">
-                <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
-                    <i class="fa fa-3x fa-times"></i>
-                </a>
-                <div class="container text-center">
+            <!-- *** ABOUT ***
+    _________________________________________________________ -->
+            <div class="section text-gradient" id="about">
+                <div class="container">
                     <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2 class="text-secondary text-uppercase mb-0">Facial Tissue Paper</h2>
-                            <hr class="star-dark mb-5">
-                            <img class="img-fluid mb-5" src="images/facial-tissue-paper.jpg" alt="">
-                            <p class="mb-5">With the assistance of our hardworking team, we are able to offer a wide range of quality Facial Tissue Paper. We are a quality-conscious firm and for ensuring high quality of the products, we dedicatedly work in tune with the defined industry standards. We are offering Facial Tissue Paper measuring 20 cm x 20 cm, 100 pulls.</p>
-                            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
-                                <i class="fa fa-close"></i>
-                                Close Project</a>
+
+                        <div class="col-sm-12">
+                            <h2 class="title" data-animate="fadeInDown">About Us</h2>
+                        </div>
+
+                        <div class="col-sm-12">
+
+                            <div class="row">
+
+                                <div class="col-sm-6 text-left" data-animate="fadeInUp">
+
+                                    <p><b>Priti Enterprises</b> is located in Silvassa (Dadra & Nagar Haveli), efficiently running under the guiding light of <b>Mr. Mehul R. Mistry (Proprietor)</b>. This is owing to his sheer dedication and hard work of the team members, that the company has grown magnificently and is still rising at a rapid pace. We deals our product under brand name Clean Up.</p>
+
+                                    <p>Sprawling over a large area, we have compartmentalized the infrastrucutre as per the functionalities. We have R&D Unit, Sourcing Unit, Manufacturing Unit, Storehouse, Testing Unit, Packaging and Transport Unit. We efficiently present reliable Disposable Paper Napkin, manufactured using most up-to-date machines and technology. Thus, The products are highly appreciated amongst the customers.</p>
+
+
+                                </div>
+
+                                <div class="col-sm-6 text-left" data-animate="fadeInUp">
+
+                                    <p><b>Unit</b><br>Our dexterous team members work 24x7 with commitment and hard work. Our team has Supervisors, Procuring Managers, R&D Experts, Skilled Workers, Quality Auditors, Marketing Heads, Sales Executives and Logisticians. They keep close coordination with the customers to bring forth the best and cost effective Disposable Paper Napkin. </p>
+
+                                    <p>
+                                        <b>Key Points</b>
+                                    <ul>
+                                        <li>Remarkable past track records of the company</li>
+                                        <li>Top notch quality Paper Napkin</li>
+                                        <li>High-Tech production unit</li>
+                                        <li>Reasonably priced Napkin</li>
+                                        <li>Outstanding R&D Team</li>
+                                        <li>High-Tech infrastructure</li>
+                                    </ul>
+                                    </p>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 mt-big" data-animate="bounceIn">
+                            <img src="img/about.jpg" class="image img-circle img-responsive" alt="This is we - Priti Enterprises">
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <!-- /#about -->
 
-        <!-- Portfolio Modal 2 -->
-        <div class="portfolio-modal mfp-hide" id="portfolio-modal-2">
-            <div class="portfolio-modal-dialog bg-white">
-                <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
-                    <i class="fa fa-3x fa-times"></i>
-                </a>
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
-                            <hr class="star-dark mb-5">
-                            <img class="img-fluid mb-5" src="img/portfolio/cake.png" alt="">
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
-                                <i class="fa fa-close"></i>
-                                Close Project</a>
+            <!-- *** ABOUT END *** -->
+
+
+
+            
+
+            <!-- *** CONTACT ***
+    _________________________________________________________ -->
+
+            <div class="section contact" id="contact" data-animate="bounceIn">
+                <div class="container">
+                    <div class="col-md-12">
+
+
+                        <h2 class="title">Contact me</h2>
+
+                        <div class="row">
+
+                            <div class="col-md-8 col-md-offset-2">
+                                <form id="contact-form" method="post" action="contact.php">
+
+                                    <div class="messages">
+
+                                    </div>
+
+                                    <div class="controls">
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" name="name" class="form-control" placeholder="Your firstname *" required="required">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="surname" class="form-control" placeholder="Your lastname *" required="required">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="email" class="form-control" placeholder="Your email *" required="required">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" name="phone" class="form-control" placeholder="Your phone">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <textarea name="message" class="form-control" placeholder="Message for me *" rows="4" required="required"></textarea>
+                                            </div>
+                                            <div class="col-md-12 text-center">
+                                                <input type="submit" class="btn btn-primary btn-lg" value="Send message">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Portfolio Modal 3 -->
-        <div class="portfolio-modal mfp-hide" id="portfolio-modal-3">
-            <div class="portfolio-modal-dialog bg-white">
-                <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
-                    <i class="fa fa-3x fa-times"></i>
-                </a>
-                <div class="container text-center">
+                    </div>
+                    <!-- /.12 -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.section -->
+
+            <!-- *** CONTACT END *** -->
+
+            <!-- *** MAP ***
+    _________________________________________________________ -->
+
+            <div class="section" id="map">
+
+            </div>
+            <!-- /.section -->
+
+            <!-- *** MAP END *** -->
+
+            <!-- *** FOOTER ***
+    _________________________________________________________ -->
+
+            <div class="section" id="footer">
+                <div class="container">
+
                     <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
-                            <hr class="star-dark mb-5">
-                            <img class="img-fluid mb-5" src="img/portfolio/circus.png" alt="">
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
-                                <i class="fa fa-close"></i>
-                                Close Project</a>
+
+                        <div class="col-sm-4">
+
+                            <p class="social">
+                                <a href="#" class="external facebook" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="external instagram" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="external gplus" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="email" data-animate-hover="shake" data-animate="fadeInUp"><i class="fa fa-envelope"></i></a>
+                            </p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Portfolio Modal 4 -->
-        <div class="portfolio-modal mfp-hide" id="portfolio-modal-4">
-            <div class="portfolio-modal-dialog bg-white">
-                <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
-                    <i class="fa fa-3x fa-times"></i>
-                </a>
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
-                            <hr class="star-dark mb-5">
-                            <img class="img-fluid mb-5" src="img/portfolio/game.png" alt="">
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
-                                <i class="fa fa-close"></i>
-                                Close Project</a>
+                        <!-- /.6 -->
+                        <div class="col-sm-4 text-center">
+                            <h4 class="text-uppercase mb-4">Location</h4>
+                            <p class="lead mb-0">Silvassa (Dadra & Nagar Haveli)</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Portfolio Modal 5 -->
-        <div class="portfolio-modal mfp-hide" id="portfolio-modal-5">
-            <div class="portfolio-modal-dialog bg-white">
-                <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
-                    <i class="fa fa-3x fa-times"></i>
-                </a>
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
-                            <hr class="star-dark mb-5">
-                            <img class="img-fluid mb-5" src="img/portfolio/safe.png" alt="">
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
-                                <i class="fa fa-close"></i>
-                                Close Project</a>
+
+                        <div class="col-sm-4">
+                            <p>&copy; Priti Enterprises. All rights reserved.</p>
                         </div>
+
+                       
+
                     </div>
+
                 </div>
+                <!-- /.container -->
+                
             </div>
+
+            <!-- /.section -->
+
+            <!-- *** FOOTER END *** -->
+
+
+
         </div>
+        <!-- /#all -->
 
-        <!-- Portfolio Modal 6 -->
-        <div class="portfolio-modal mfp-hide" id="portfolio-modal-6">
-            <div class="portfolio-modal-dialog bg-white">
-                <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
-                    <i class="fa fa-3x fa-times"></i>
-                </a>
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-lg-8 mx-auto">
-                            <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
-                            <hr class="star-dark mb-5">
-                            <img class="img-fluid mb-5" src="img/portfolio/submarine.png" alt="">
-                            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
-                            <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
-                                <i class="fa fa-close"></i>
-                                Close Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
 
-        <!-- Bootstrap core JavaScript -->
-        <script src="mainPage/vendor/jquery/jquery.min.js"></script>
-        <script src="mainPage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- #### JAVASCRIPT FILES ### -->
 
-        <!-- Plugin JavaScript -->
-        <script src="mainPage/vendor/jquery-easing/jquery.easing.min.js"></script>
-        <script src="mainPage/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <!-- js base -->
+        <script src="homeView/js/jquery-1.11.0.min.js"></script>
+        <script src="homeView/js/bootstrap.min.js"></script>
 
-        <!-- Contact Form JavaScript -->
-        <script src="mainPage/js/jqBootstrapValidation.js"></script>
-        <script src="mainPage/js/contact_me.js"></script>
+        <!-- for demo purpose -->
+        <script src="homeView/js/jquery.cookie.js"></script>
 
-        <!-- Custom scripts for this template -->
-        <script src="mainPage/js/freelancer.min.js"></script>
+        <!-- waypoints for scroll spy -->
+        <script src="homeView/js/waypoints.min.js"></script>
+
+        <!-- maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUmpON753DycjzgEFLY5KXlx13Yh47lwM"></script>
+        <!-- to use it on your site, generate your own API key for Google Maps and paste it above -->
+        <script src="homeView/js/gmaps.js"></script>
+
+        <!-- masonry layout -->
+        <script src="homeView/js/masonry.pkgd.min.js"></script>
+
+        <!-- owl carousel -->
+        <script src="homeView/js/owl.carousel.min.js"></script>
+
+
+        <!-- jQuery scroll to -->
+        <script src="homeView/js/jquery.scrollTo.min.js"></script>
+
+        <!-- jQuery counter -->
+        <script src="homeView/js/jquery.counterup.min.js"></script>
+
+        <!-- jQuery parallax -->
+        <script src="homeView/js/jquery.parallax-1.1.3.js"></script>
+
+        <!-- main js file -->
+
+        <script src="homeView/js/front.js"></script>
+
+
+
+
+
+
 
     </body>
 

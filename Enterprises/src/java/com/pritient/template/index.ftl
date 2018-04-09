@@ -353,7 +353,7 @@ br {
 
 
                         <tr>
-                            <td style="border: 0.5px solid gray"  ><span class="font-small" >${i}</span></td>
+                            <td style="border: 0.5px solid gray"  ><span class="font-small" >&nbsp;</span></td>
                             <td style="border: 0.5px solid gray"  ><span class="font-small">&nbsp;</span></td>
                             <td style="border: 0.5px solid gray"  ><span class="font-small" >&nbsp;</span></td>
                             <td style="border: 0.5px solid gray"  ><span class="font-small">&nbsp;</span></td>

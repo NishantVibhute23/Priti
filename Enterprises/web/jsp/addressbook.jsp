@@ -124,7 +124,15 @@
                                         </div>
                                     </div>
 
+                       
+                        <div class="form-group">
+                            <label class="col-xs-3 control-label">Email ID </label>
+                            <div class="col-xs-8">
 
+                            
+                                <input type="email" class="form-control" name="companyEmailId" />
+                            </div>
+                        </div>
 
                                     <div class="form-group">
                                         <label class="col-xs-3 control-label">Email ID  *</label>

@@ -19,7 +19,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
-
 import org.codehaus.jackson.map.ObjectMapper;
 
 /**
@@ -59,7 +58,7 @@ public class AddressBookAction extends ActionSupport implements ModelDriven {
         String compName = companyBean.getCompanyName();
         String compAdd = companyBean.getCompanyAddress();
         String compGST = companyBean.getCompanyGSTIN();
-        String compEmail = companyBean.getCompanyEmailId();
+        String compEmail = companyBean.getCompanyEmailId() == null ? "" : companyBean.getCompanyEmailId();
         String compPhone1 = companyBean.getCompanyPhoneNo1();
         String compPhone2 = companyBean.getCompanyPhoneNo2();
         String compPhone3 = companyBean.getCompanyPhoneNo3();

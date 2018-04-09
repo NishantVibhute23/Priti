@@ -413,6 +413,7 @@ public class InvoiceDao extends DBUtil {
                 p.setMainProductUOM(rs.getString(2));
                 p.setMainProductType(rs.getString(3));
                 p.setQty(rs.getString(4));
+                p.setMainProductType("" + rs.getInt(5));
                 p.setPrice(rs.getDouble(5));
 
             }
