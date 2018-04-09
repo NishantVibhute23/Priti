@@ -3,10 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/bean/ReportAllBean.java</file>
-            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/web/jsp/dashboard.jsp</file>
-            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/bean/dao/ReportDao.java</file>
-            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/forward/DashboardAction.java</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/forward/RawMaterialAction.java</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/bean/SubProduct.java</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/web/jsp/invoice.jsp</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/web/jsp/invoiceDetails.jsp</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/web/js/invoice.js</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/web/jsp/addressbook.jsp</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/forward/InvoiceAction.java</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/bean/dao/InvoiceDao.java</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/bean/Product.java</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/struts.xml</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/web/jsp/rawmaterial.jsp</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/forward/AddressBookAction.java</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/forward/ProductAction.java</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/bean/CompanyBean.java</file>
+            <file>file:/E:/old%20data/Personal/Mehul/Priti/Enterprises/src/java/com/pritient/bean/dao/CompanyAddressDao.java</file>
         </group>
     </open-files>
 </project-private>
