@@ -55,6 +55,7 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
     String filePath;
     int prodId;
     int docId;
+    int compId;
     private InputStream inputStream;
     static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
     static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
@@ -191,6 +192,24 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
         return ActionSupport.SUCCESS;
     }
 
+    public String getUOMandHSNAndPrice() {
+        try {
+
+            int id = this.getProdId();
+            int compId = this.getCompId();
+
+            Product product = invoiceDao.getUOMAndHSNAndPrice(id, compId);
+
+            ObjectMapper mapper = new ObjectMapper();
+            String res = mapper.writeValueAsString(product);
+            inputStream = new ByteArrayInputStream(res.getBytes(StandardCharsets.UTF_8));
+
+        } catch (Exception ex) {
+            errorLog.error("InvoiceAction : " + ex);
+        }
+        return ActionSupport.SUCCESS;
+    }
+
     public String getSuccessMessage() {
         return successMessage;
     }
@@ -314,6 +333,14 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
     @Override
     public Object getModel() {
         return invoice;
+    }
+
+    public int getCompId() {
+        return compId;
+    }
+
+    public void setCompId(int compId) {
+        this.compId = compId;
     }
 
 }

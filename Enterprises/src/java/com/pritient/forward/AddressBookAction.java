@@ -8,8 +8,10 @@ package com.pritient.forward;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.pritient.bean.CompanyBean;
+import com.pritient.bean.Product;
 import com.pritient.bean.StateBean;
 import com.pritient.bean.dao.CompanyAddressDao;
+import com.pritient.bean.dao.ProductDao;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -36,6 +38,8 @@ public class AddressBookAction extends ActionSupport implements ModelDriven {
     String errorMessage = "";
     static final Logger errorLog = Logger.getLogger("errorLogger");
     static final Logger infoLog = Logger.getLogger("infoLogger");
+    List<Product> productListShow = new ArrayList<>();
+    ProductDao productDao = new ProductDao();
 
     public AddressBookAction() {
     }
@@ -44,6 +48,7 @@ public class AddressBookAction extends ActionSupport implements ModelDriven {
 
         companyList = companyAddressDao.getCompanyList();
         stateList = companyAddressDao.getStateList();
+        companyBean.setProductList(productDao.getProductList());
 
         return ActionSupport.SUCCESS;
     }
@@ -61,7 +66,7 @@ public class AddressBookAction extends ActionSupport implements ModelDriven {
         String compBankIFSC = companyBean.getCompanyBankIFSC();
         String compBankAccountNo = companyBean.getCompanyBankAccountNo();
         int stateId = Integer.parseInt(companyBean.getCompanyStateId());
-        int id = companyAddressDao.insertCompanyAddress(compName, compAdd, compGST, compEmail, compPhone1, compPhone2, compPhone3, stateId, compBankName, compBankIFSC, compBankAccountNo);
+        int id = companyAddressDao.insertCompanyAddress(compName, compAdd, compGST, compEmail, compPhone1, compPhone2, compPhone3, stateId, compBankName, compBankIFSC, compBankAccountNo, companyBean.getProductList());
 
         if (id == 0) {
             errorMessage = "Failed To add Company";
@@ -76,6 +81,7 @@ public class AddressBookAction extends ActionSupport implements ModelDriven {
 
             int id = this.getId();
             CompanyBean companyBean = companyAddressDao.getCompanyDetails(id);
+            companyBean.setProductList(companyAddressDao.getCompanyProductList(id));
 
             ObjectMapper mapper = new ObjectMapper();
             String res = mapper.writeValueAsString(companyBean);
@@ -157,6 +163,14 @@ public class AddressBookAction extends ActionSupport implements ModelDriven {
 
     public void setStateList(List<StateBean> stateList) {
         this.stateList = stateList;
+    }
+
+    public List<Product> getProductList() {
+        return productListShow;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productListShow = productList;
     }
 
 }

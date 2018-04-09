@@ -88,11 +88,12 @@ public class ProductDao extends DBUtil {
 
                 for (SubProduct sb : product.getSubProductList()) {
                     if (sb != null) {
-                        PreparedStatement ps1 = conn.prepareStatement("Call updateSubProduct(?,?,?,?)");
+                        PreparedStatement ps1 = conn.prepareStatement("Call updateSubProduct(?,?,?,?,?)");
                         ps1.setInt(1, sb.getSubProductId());
                         ps1.setString(2, sb.getSubProductName());
                         ps1.setInt(3, sb.getQty());
                         ps1.setInt(4, id);
+                        ps1.setInt(5, sb.getIsDeleted());
                         ps1.executeUpdate();
                     }
                 }
@@ -197,10 +198,12 @@ public class ProductDao extends DBUtil {
                     ResultSet rs1 = ps1.executeQuery();
                     while (rs1.next()) {
                         SubProduct sp = new SubProduct();
-                        sp.setSubProductId(rs1.getInt(1));
-                        sp.setSubProductName(rs1.getString(2));
-                        sp.setQty(rs1.getInt(3));
-                        subProductList.add(sp);
+                        if (rs1.getInt(4) == 0) {
+                            sp.setSubProductId(rs1.getInt(1));
+                            sp.setSubProductName(rs1.getString(2));
+                            sp.setQty(rs1.getInt(3));
+                            subProductList.add(sp);
+                        }
                     }
                     product.setSubProductList(subProductList);
                 }
@@ -244,6 +247,7 @@ public class ProductDao extends DBUtil {
                         sp.setSubProductId(rs1.getInt(1));
                         sp.setSubProductName(rs1.getString(2));
                         sp.setQty(rs1.getInt(3));
+                        sp.setIsDeleted(rs1.getInt(4));
                         subProductList.add(sp);
                     }
                     product.setSubProductList(subProductList);

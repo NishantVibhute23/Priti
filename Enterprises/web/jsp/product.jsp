@@ -28,27 +28,39 @@
 
 
                 $("#dashboard").removeClass("active");
-
                 $("#Invoice").removeClass("active");
 //$("#invoiceId").show()
                 $("#InvoiceNew").removeClass("highlight");
                 $("#InvoiceDetails").removeClass("highlight");
                 $("#InvoicePayment").addClass("highlight");
-
-
                 $("#Purchase").removeClass("active");
                 $("#PurchaseNew").removeClass("highlight");
                 $("#PurchaseDetails").removeClass("highlight");
-
                 $("#Products").addClass("active");
                 $("#AddressBook").removeClass("active");
                 $("#RawMaterial").removeClass("active");
                 $("#Ledger").removeClass("active");
-
-$("#Bills").removeClass("active");
-
+                $("#Bills").removeClass("active");
             });
+            function setIsdeleted(testResult)
+            {
+                if (testResult == 1) {
+                    return "checked='checked'";
+                } else {
+                    return "";
+                }
+            }
 
+            function assignDelete(va)
+            {
+
+                if ($("#cheked" + va).is(':checked')) {
+                    $("#checkedIt" + va).val("1");
+
+                } else {
+                    $("#checkedIt" + va).val("0");
+                }
+            }
 
             function getProductInfo(idIn)
             {
@@ -70,7 +82,6 @@ $("#Bills").removeClass("active");
 
                     $("#hsnCode").val(response.mainProductHSN);
                     $("#editmainProductName").val(response.mainProductName);
-
                     $("#editmainProductId").val(response.id);
                     $("#uomTypeSelect").val(response.mainProductUOM);
                     $("#ProductTypeSelect").val(response.mainProductType);
@@ -80,15 +91,15 @@ $("#Bills").removeClass("active");
                         var newRow = $("<tr>");
                         var cols = "";
                         cols += '<td><input type="hidden" name="subProductList[' + counter + '].subProductId" value="' + val.subProductId + '"/><input type="text" value="' + val.subProductName + '" class="form-control" name="subProductList[' + counter + '].subProductName"/></td>';
-                        cols += '<td><input type="text" value="' + val.qty + '" class="form-control" name="subProductList[' + counter + '].qty"/></td>';
+                        cols += '<td><input type="text" value="' + val.qty + '" class="form-control" name="subProductList[' + counter + '].qty"/></td>'
+                        cols += '<td><input type="hidden" value="' + val.isDeleted + '" id="checkedIt' + counter + '" name="subProductList[' + counter + '].isDeleted" value=""/>\n\
+                <input type="checkbox" ' + setIsdeleted(val.isDeleted) + ' id="cheked' + counter + '" class="form-control" onclick="assignDelete(' + counter + ')" >';
+
                         newRow.append(cols);
                         $("#myEditTable").append(newRow);
-
                         counter++;
                         $('#count').val(counter);
-
                     });
-
                     $('#myModal').modal('show');
                 });
             }
@@ -105,7 +116,7 @@ $("#Bills").removeClass("active");
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            Products 
+                            Products
                         </h3>
 
 
@@ -160,8 +171,8 @@ $("#Bills").removeClass("active");
                                                     <td align="center" class=""><s:property value = 'subProductList[0].qty'/></td>
                                                 </s:else>
 
-                                                    <td  style='vertical-align: middle !important' rowspan="<s:property value = 'subProductList.size()'/>" ><s:property value = 'mainProductUOMName'/></td>
-                                                    <td  style='vertical-align: middle !important' rowspan="<s:property value = 'subProductList.size()'/>" ><s:property value = 'mainProductHSN'/></td>
+                                                <td  style='vertical-align: middle !important' rowspan="<s:property value = 'subProductList.size()'/>" ><s:property value = 'mainProductUOMName'/></td>
+                                                <td  style='vertical-align: middle !important' rowspan="<s:property value = 'subProductList.size()'/>" ><s:property value = 'mainProductHSN'/></td>
 
                                                 <td  style='vertical-align: middle !important'  rowspan="<s:property value = 'subProductList.size()'/>" ><s:property value = 'mainProductTypeName'/></td>
 
@@ -358,6 +369,7 @@ $("#Bills").removeClass("active");
                                                 <tr>
                                                     <td >Name</td>
                                                     <td>QTY</td>
+                                                    <td>Delete</td>
                                                 </tr>
                                             </thead>
                                             <tbody id='editTableBody'>

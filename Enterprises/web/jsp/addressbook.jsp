@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="/jsp/include/includeSideMenu.jsp"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,33 +26,33 @@
         <script>
             $(document).ready(function() {
                 $('#addressTable').DataTable();
-                
-  
+
+
 //                $('#productTable').DataTable();
 
-   
+
 //    $("#reports").addClass("active");
-$("#dashboard").removeClass("active");
+                $("#dashboard").removeClass("active");
 
-$("#Invoice").removeClass("active");
+                $("#Invoice").removeClass("active");
 //$("#invoiceId").show()
-$("#InvoiceNew").removeClass("highlight");
-$("#InvoiceDetails").removeClass("highlight");
-$("#InvoicePayment").addClass("highlight");
+                $("#InvoiceNew").removeClass("highlight");
+                $("#InvoiceDetails").removeClass("highlight");
+                $("#InvoicePayment").addClass("highlight");
 
 
-$("#Purchase").removeClass("active");
-$("#PurchaseNew").removeClass("highlight");
-$("#PurchaseDetails").removeClass("highlight");
+                $("#Purchase").removeClass("active");
+                $("#PurchaseNew").removeClass("highlight");
+                $("#PurchaseDetails").removeClass("highlight");
 
-$("#Products").removeClass("active");
-$("#AddressBook").addClass("active");
-$("#RawMaterial").removeClass("active");
+                $("#Products").removeClass("active");
+                $("#AddressBook").addClass("active");
+                $("#RawMaterial").removeClass("active");
 
-$("#Ledger").removeClass("active");
+                $("#Ledger").removeClass("active");
 
-$("#Bills").removeClass("active");
-         
+                $("#Bills").removeClass("active");
+
             });
 
         </script>
@@ -61,111 +62,187 @@ $("#Bills").removeClass("active");
         <div class="modal-dialog modal-lg">
             <div class="modal-content ">
                 <div class="modal-header">
+                    <s:set name="theme" value="'simple'" scope="page" />
+
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h5 class="modal-title">NEW</h5>
+
+                    <ul  class="nav nav-pills">
+                        <li class="active" >
+                            <a  href="#1b" data-toggle="tab" style="padding: 10px 100px !important">Company</a>
+                        </li>
+                        <li><a href="#2b" data-toggle="tab" style="padding: 10px 100px !important">Products</a>
+                        </li>
+
+
+                    </ul>
                 </div>
 
+
+
                 <div class="modal-body">
-                    <!-- The form is placed inside the body of modal -->
+
                     <form id="loginForm" method="post" class="form-horizontal" action="saveCompany">
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">Company Name *</label>
-                            <div class="col-xs-8">
-                                <input type="text" required class="form-control" name="companyName" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">GSTIN  *</label>
-                            <div class="col-xs-8">
-                                <input type="text" required class="form-control" name="companyGSTIN" />
-                            </div>
-                        </div>
+                        <div class="panel-body">
+                            <div class="tab-content">
 
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">Address  *</label>
-                            <div class="col-xs-8">
-                                <textarea name="companyAddress" required class="form-control"></textarea>
-                                <!--<input type="text" class="form-control" name="companyAddress" />-->
-                            </div>
-                        </div>
+                                <div class="tab-pane fade in active" id="1b">
 
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">Company Name *</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" required class="form-control" name="companyName" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">GSTIN  *</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" required class="form-control" name="companyGSTIN" />
+                                        </div>
+                                    </div>
 
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">State  *</label>
-                            <div class="col-xs-8">
-                                <select required id="stateList" name="companyStateId" class="form-control" >
-                                    <option value="">Select</option>
-                                    <s:iterator value="stateList">
-                                        <option value="<s:property value = 'StateId'/>"><s:property value = 'StateName'/></option>
-                                    </s:iterator>
-                                </select>      
-                            </div>
-                        </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">Address  *</label>
+                                        <div class="col-xs-8">
+                                            <textarea name="companyAddress" required class="form-control"></textarea>
+                                            <!--<input type="text" class="form-control" name="companyAddress" />-->
+                                        </div>
+                                    </div>
 
 
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">State  *</label>
+                                        <div class="col-xs-8">
+                                            <select required id="stateList" name="companyStateId" class="form-control" >
+                                                <option value="">Select</option>
+                                                <s:iterator value="stateList">
+                                                    <option value="<s:property value = 'StateId'/>"><s:property value = 'StateName'/></option>
+                                                </s:iterator>
+                                            </select>
+                                        </div>
+                                    </div>
 
+                       
                         <div class="form-group">
                             <label class="col-xs-3 control-label">Email ID </label>
                             <div class="col-xs-8">
 
+                            
                                 <input type="email" class="form-control" name="companyEmailId" />
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">Phone No 1  *</label>
-                            <div class="col-xs-8">
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">Email ID  *</label>
+                                        <div class="col-xs-8">
 
-                                <input type="text" required class="form-control" name="companyPhoneNo1" />
+                                            <input type="email" required class="form-control" name="companyEmailId" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">Phone No 1  *</label>
+                                        <div class="col-xs-8">
+
+                                            <input type="text" required class="form-control" name="companyPhoneNo1" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">Phone No 2 </label>
+                                        <div class="col-xs-8">
+
+                                            <input type="text" class="form-control" name="companyPhoneNo2" />
+                                        </div>
+                                    </div><div class="form-group">
+                                        <label class="col-xs-3 control-label">Phone No 3 </label>
+                                        <div class="col-xs-8">
+
+                                            <input type="text" class="form-control" name="companyPhoneNo3" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">Bank Name </label>
+                                        <div class="col-xs-8">
+
+                                            <input type="text" class="form-control" name="companyBankName" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">IFSC Code </label>
+                                        <div class="col-xs-8">
+
+                                            <input type="text" class="form-control" name="companyBankIFSC" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">Account No </label>
+                                        <div class="col-xs-8">
+
+                                            <input type="text" class="form-control" name="companyBankAccountNo" />
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                                <div class="tab-pane fade in " id="2b">
+                                    <table id='productTable' class="table table-bordered"  width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>Product Name</th>
+                                                <th>Sub Product Name</th>
+                                                <th>Price</th>
+
+                                            </tr>
+                                        </thead>
+                                        <s:iterator value="productList" status="incr">
+                                            <tr >
+                                                <td style='vertical-align: middle !important' rowspan="<s:property value = 'subProductList.size()'/>" ><s:property value = 'mainProductName'/></td>
+                                                <td  ><s:property value = 'subProductList[0].subProductName'/></td>
+
+
+                                                <td align="center" ><s:hidden name="productList[%{#incr.index}].subProductList[0].subProductId"/>
+                                                    <s:textfield name="productList[%{#incr.index}].subProductList[0].price"/></td>
+
+
+                                            </tr>
+                                            <s:if test="subProductList.size() > 0">
+                                                <s:iterator value="subProductList" begin="1" status="incr1">
+                                                    <tr >
+                                                        <td  ><s:property value = 'subProductName'/>
+                                                        </td>
+
+                                                        <td align="center" class="" >
+                                                            <s:hidden name="productList[%{#incr.index}].subProductList[%{#incr1.index+1}].subProductId"/>
+                                                            <s:textfield name="productList[%{#incr.index}].subProductList[%{#incr1.index+1}].price"/>
+                                                        </td>
+
+
+                                                    </tr>
+                                                </s:iterator>
+                                            </s:if>
+                                        </s:iterator>
+                                    </table>
+                                    <div class="form-group">
+                                        <div class="col-xs-5 col-xs-offset-3">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">Phone No 2 </label>
-                            <div class="col-xs-8">
 
-                                <input type="text" class="form-control" name="companyPhoneNo2" />
-                            </div>
-                        </div><div class="form-group">
-                            <label class="col-xs-3 control-label">Phone No 3 </label>
-                            <div class="col-xs-8">
-
-                                <input type="text" class="form-control" name="companyPhoneNo3" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">Bank Name </label>
-                            <div class="col-xs-8">
-
-                                <input type="text" class="form-control" name="companyBankName" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">IFSC Code </label>
-                            <div class="col-xs-8">
-
-                                <input type="text" class="form-control" name="companyBankIFSC" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">Account No </label>
-                            <div class="col-xs-8">
-
-                                <input type="text" class="form-control" name="companyBankAccountNo" />
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="form-group">
-                            <div class="col-xs-5 col-xs-offset-3">
-                                <button type="submit" class="btn btn-primary">Save</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            </div>
                         </div>
                     </form>
+
+                    <!-- The form is placed inside the body of modal -->
+
                 </div>
             </div>
         </div>
@@ -212,7 +289,7 @@ $("#Bills").removeClass("active");
                     <s:iterator value="stateList">
                         <option value="<s:property value = 'StateId'/>"><s:property value = 'StateName'/></option>
                     </s:iterator>
-                </select>      
+                </select>
             </div>
         </div>
 
@@ -243,27 +320,41 @@ $("#Bills").removeClass("active");
                 <input type="text" class="form-control" name="companyPhoneNo3" />
             </div>
         </div>
- <div class="form-group">
-                            <label class="col-xs-3 control-label">Bank Name:</label>
-                            <div class="col-xs-8">
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Bank Name:</label>
+            <div class="col-xs-8">
 
-                                <input type="text" class="form-control" name="companyBankName" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">IFSC Code:</label>
-                            <div class="col-xs-8">
+                <input type="text" class="form-control" name="companyBankName" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">IFSC Code:</label>
+            <div class="col-xs-8">
 
-                                <input type="text" class="form-control" name="companyBankIFSC" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-xs-3 control-label">Account No:</label>
-                            <div class="col-xs-8">
+                <input type="text" class="form-control" name="companyBankIFSC" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-3 control-label">Account No:</label>
+            <div class="col-xs-8">
 
-                                <input type="text" class="form-control" name="companyBankAccountNo" />
-                            </div>
-                        </div>
+                <input type="text" class="form-control" name="companyBankAccountNo" />
+            </div>
+        </div>
+
+        <table id='productTableEdit' class="table table-bordered"  width="100%">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Sub Product Name</th>
+                    <th>Price</th>
+
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+
+        </table>
 
 
         <div class="form-group">
@@ -285,15 +376,15 @@ $("#Bills").removeClass("active");
                         <h3 class="page-header">
                             Address Book  <button class="btn btn-primary" data-toggle="modal" data-target="#loginModal">NEW</button>
                         </h3>
-                        
 
-                       
+
+
                     </div>
                 </div>
                 <!-- /.row -->
                 <p class="text-center">
-                           
-                        </p>
+
+                </p>
 
                 <s:if test="successMessage!=''">
                     <div class="alert alert-success">
@@ -347,9 +438,9 @@ $("#Bills").removeClass("active");
                                         <td><s:property value = 'companyPhoneNo1'/></td>
                                         <td><s:property value = 'companyPhoneNo2'/></td>
                                         <td><s:property value = 'companyPhoneNo3'/></td>
-                                         <td><s:property value = 'companyBankName'/></td>
-                                          <td><s:property value = 'companyBankIFSC'/></td>
-                                           <td><s:property value = 'companyBankAccountNo'/></td>
+                                        <td><s:property value = 'companyBankName'/></td>
+                                        <td><s:property value = 'companyBankIFSC'/></td>
+                                        <td><s:property value = 'companyBankAccountNo'/></td>
                                         <td><button type="button" data-id="<s:property value = 'companyId'/>" class="btn btn-default editButton">Edit</button></td>
                                     </tr>
                                 </s:iterator>
@@ -435,9 +526,21 @@ $("#Bills").removeClass("active");
                             .find('[name="companyPhoneNo2"]').val(response.companyPhoneNo2).end()
                             .find('[name="companyPhoneNo3"]').val(response.companyPhoneNo3).end()
                             .find('[name="companyStateId"]').val(response.companyStateId).end()
-                    .find('[name="companyBankName"]').val(response.companyBankName).end()
-            .find('[name="companyBankIFSC"]').val(response.companyBankIFSC).end()
-    .find('[name="companyBankAccountNo"]').val(response.companyBankAccountNo).end();
+                            .find('[name="companyBankName"]').val(response.companyBankName).end()
+                            .find('[name="companyBankIFSC"]').val(response.companyBankIFSC).end()
+                            .find('[name="companyBankAccountNo"]').val(response.companyBankAccountNo).end();
+
+                    $.each(response.productList, function(index, value) {
+                        $.each(value.subProductList, function(index1, value1) {
+                            $("#productTableEdit").find('tbody').append("<tr><td>" + value.mainProductName + "</td>\n\
+                    <td>" + value1.subProductName + "</td>\n\
+<td><input type='hidden' name='productList[" + index + "].subProductList[" + index1 + "].subProductId' value='" + value1.subProductId + "'/>\n\
+<input type='text' name='productList[" + index + "].subProductList[" + index1 + "].price' value='" + value1.price + "'/></td></tr>");
+
+                        });
+
+                    });
+
 
                     // Show the dialog
                     bootbox

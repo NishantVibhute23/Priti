@@ -6,7 +6,9 @@
 package com.pritient.bean.dao;
 
 import com.pritient.bean.CompanyBean;
+import com.pritient.bean.Product;
 import com.pritient.bean.StateBean;
+import com.pritient.bean.SubProduct;
 import com.pritient.util.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,7 +30,7 @@ public class CompanyAddressDao extends DBUtil {
 
     public int insertCompanyAddress(String compName, String compAdd, String compGST,
             String email, String phone1, String phone2, String phone3,
-            int stateId, String compBankName, String compBankIFSC, String compBankAccountNo) {
+            int stateId, String compBankName, String compBankIFSC, String compBankAccountNo, List<Product> productList) {
         int id = 0;
         try {
             conn = getConnection();
@@ -48,6 +50,19 @@ public class CompanyAddressDao extends DBUtil {
 
             while (rs.next()) {
                 id = rs.getInt(1);
+            }
+
+            if (id != 0) {
+                for (Product pr : productList) {
+                    for (SubProduct sb : pr.getSubProductList()) {
+                        PreparedStatement ps1 = conn.prepareStatement("Call addCompnyProductPrice(?,?,?)");
+                        ps1.setInt(1, id);
+                        ps1.setInt(2, sb.getSubProductId());
+                        ps1.setDouble(3, sb.getPrice());
+
+                        ResultSet rs1 = ps1.executeQuery();
+                    }
+                }
             }
 
             closeConnection(conn);
@@ -151,6 +166,53 @@ public class CompanyAddressDao extends DBUtil {
         return cb;
     }
 
+    public List<Product> getCompanyProductList(int companyId) {
+        List<Product> productList = new ArrayList<>();
+        try {
+            conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement("Call getMainProducts()");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Product product = new Product();
+                int id = rs.getInt(1);
+                product.setId(id);
+                product.setMainProductName(rs.getString(2));
+                product.setMainProductHSN(rs.getString(3));
+                product.setMainProductUOM(rs.getString(4));
+                product.setMainProductUOMName(rs.getString(5));
+                product.setMainProductType(rs.getString(6));
+                product.setMainProductTypeName(rs.getString(7));
+
+                if (id != 0) {
+                    List<SubProduct> subProductList = new ArrayList<>();
+
+                    PreparedStatement ps1 = conn.prepareStatement("Call getCompanyProductsPrice(?,?)");
+                    ps1.setInt(1, id);
+                    ps1.setInt(2, companyId);
+                    ResultSet rs1 = ps1.executeQuery();
+                    while (rs1.next()) {
+                        SubProduct sp = new SubProduct();
+                        if (rs1.getInt(4) == 0) {
+                            sp.setSubProductId(rs1.getInt(1));
+                            sp.setSubProductName(rs1.getString(2));
+                            sp.setPrice(rs1.getInt(3));
+                            subProductList.add(sp);
+                        }
+                    }
+                    product.setSubProductList(subProductList);
+                }
+
+                productList.add(product);
+            }
+            closeConnection(conn);
+        } catch (SQLException ex) {
+            errorLog.error("ProductDao : " + ex);
+        }
+        return productList;
+    }
+
     public int updateCompanyDetails(CompanyBean cb) {
         int count = 0;
         try {
@@ -171,9 +233,20 @@ public class CompanyAddressDao extends DBUtil {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
                 count = rs.getInt(1);
+            }
 
+            if (count != 0) {
+                for (Product pr : cb.getProductList()) {
+                    for (SubProduct sb : pr.getSubProductList()) {
+                        PreparedStatement ps1 = conn.prepareStatement("Call updateCompnyProductPrice(?,?,?)");
+                        ps1.setInt(1, cb.getCompanyId());
+                        ps1.setInt(2, sb.getSubProductId());
+                        ps1.setDouble(3, sb.getPrice());
+
+                        ResultSet rs1 = ps1.executeQuery();
+                    }
+                }
             }
 
             closeConnection(conn);
