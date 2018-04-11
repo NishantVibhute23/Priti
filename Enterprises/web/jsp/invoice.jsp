@@ -193,7 +193,7 @@
                             type: "POST",
                             dataType: 'json'
                         }).success(function(response) {
-
+                            $("#productType" + val).val(response.mainProductType);
                             $("#hsn" + val).val(response.mainProductHSN);
                             $("#uom" + val).val(response.mainProductUOM);
                             $("#price" + val).val(response.price);
@@ -223,7 +223,13 @@
                 document.body.innerHTML = originalContents;
             }
 
-
+            function resetInvoiceNumber()
+            {
+                $("#invoiceNo").val(1);
+                var d = new Date();
+                var n = d.getFullYear();
+                $("#invoiceNum").val(1 + "/" + n + "-" + (n + 1));
+            }
 
 
         </script>
@@ -266,7 +272,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            Invoice New
+                            Invoice New <input type="button"  class="btn btn-primary col-xs-2" style="float: right" onclick="resetInvoiceNumber()"  value="Reset Invoice Number" />
                         </h3>
 
                     </div>
@@ -286,7 +292,8 @@
                                                 <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">Invoice No.</label>
                                                 <div class="col-sm-9">
                                                     <input type="hidden" id="count" value="1"/>
-                                                    <input type="text" readonly  class="form-control" name="invoiceNo" value="<s:property value = 'latestInvoiceNumber'/>"/>
+                                                    <input type="hidden"  class="form-control" id="invoiceNo" name="invoiceNo" value="<s:property value = 'latestInvoiceNumber'/>"/>
+                                                    <input type="text" readonly  class="form-control" id ="invoiceNum" name="invoiceNumber" value="<s:property value = 'latestInvoiceNum'/>"/>
 
                                                 </div>
                                             </div>
@@ -294,7 +301,7 @@
                                             <div class="form-group row">
                                                 <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">Invoice Date.</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" required class="form-control" id="datepicker"  style="background-color: #fff !important"  readonly name="date" />
+                                                    <input type="text" required class="form-control" id="datepicker"  style="background-color: #fff !important"  name="date" />
                                                 </div>
                                             </div>
 
@@ -511,6 +518,7 @@
 
                                                 <td >
                                                     <input type="hidden" id="productId0" name="invoiceDetails[0].productName"/>
+                                                    <input type="hidden" id="productType0" name="invoiceDetails[0].productType"/>
                                                     <select id="productSelect0" required name="invoiceDetails[0].productId" class="form-control" onchange="setProduct(0)">
                                                         <option value="">Select</option>
                                                         <s:iterator value="subProductList">

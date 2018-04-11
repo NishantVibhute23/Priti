@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -52,6 +53,7 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
     List<PaymentBean> invoiceList = new ArrayList<>();
     String val;
     int latestInvoiceNumber;
+    String latestInvoiceNum;
     String filePath;
     int prodId;
     int docId;
@@ -68,6 +70,8 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
         myProfileList.add(myProfile);
 
         latestInvoiceNumber = invoiceDao.getLatestInvoiceNumber();
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        latestInvoiceNum = latestInvoiceNumber + "/" + year + "-" + (year + 1);
         return ActionSupport.SUCCESS;
     }
 
@@ -341,6 +345,14 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
 
     public void setCompId(int compId) {
         this.compId = compId;
+    }
+
+    public String getLatestInvoiceNum() {
+        return latestInvoiceNum;
+    }
+
+    public void setLatestInvoiceNum(String latestInvoiceNum) {
+        this.latestInvoiceNum = latestInvoiceNum;
     }
 
 }

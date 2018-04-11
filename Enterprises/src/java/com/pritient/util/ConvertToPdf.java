@@ -62,7 +62,7 @@ public class ConvertToPdf {
             data.put("companyHeaderTelNo2", myProfile.getCompanyPhoneNo2());
             data.put("companyHeaderEmail", myProfile.getCompanyEmailId());
 
-            data.put("invoiceNo", in.getInvoiceNo());
+            data.put("invoiceNo", in.getInvoiceNumber());
             data.put("invoiceDate", in.getDate());
             data.put("isReverse", in.getReverseCharge());
             data.put("invoiceState", in.getState());

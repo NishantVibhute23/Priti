@@ -170,9 +170,9 @@ br {
                         <tr >
                             <td ><span class="font-medium">State</span></td>
                             <td ><span class="font-medium">:</span></td>
-                            <td width="30%"><span class="font-medium">${invoiceState}</span></td>
-                            <td><span class="font-medium">Code:</span></td>
-                            <td><span class="font-medium">${invoiceCode}</span></td>
+                            <td ><span class="font-medium">${invoiceState}</span></td>
+                            <td width="10%"><span class="font-medium">Code:</span></td>
+                            <td width="10%"><span class="font-medium">${invoiceCode}</span></td>
                         </tr>
                     </table>
                 </td>
@@ -241,9 +241,9 @@ br {
                         <tr >
                             <td width="14%"><span class="font-medium">State</span></td>
                             <td width="1%"><span class="font-medium">:</span></td>
-                            <td width="35%"><span class="font-medium">${BillToState}</span></td>
-                            <td width="20%"><span class="font-medium">Code:</span></td>
-                            <td width="30%"><span class="font-medium">${BillToCode}</span></td>
+                            <td ><span class="font-medium">${BillToState}</span></td>
+                            <td width="10%"><span class="font-medium">Code:</span></td>
+                            <td width="10%"><span class="font-medium">${BillToCode}</span></td>
                         </tr>
                     </table>
                 </td>
@@ -281,9 +281,9 @@ br {
                         <tr >
                             <td width="14%"><span class="font-medium">State</span></td>
                             <td width="1%"><span class="font-medium">:</span></td>
-                            <td width="35%"><span class="font-medium">${ShipToState}</span></td>
-                            <td width="20%"><span class="font-medium">Code:</span></td>
-                            <td width="20%"><span class="font-medium">${ShipToCode}</span></td>
+                            <td ><span class="font-medium">${ShipToState}</span></td>
+                            <td width="10%"><span class="font-medium">Code:</span></td>
+                            <td width="10%"><span class="font-medium">${ShipToCode}</span></td>
                         </tr>
                     </table>
                 </td>
@@ -324,10 +324,12 @@ br {
                         <#assign i = 1>
                         <#list invoiceDetails as invoice>
 
-
+<#if invoice.productType != 2>
                         <tr>
 
-                            <td style="border: 0.5px solid gray" width="3%"><span class="font-small" >${invoice_index + 1}</span></td>
+                              
+
+                            <td style="border: 0.5px solid gray" width="3%"><span class="font-small" >${i}</span></td>
                             <td style="border: 0.5px solid gray"  width="22%"><span class="font-small">${invoice.productName}</span></td>
                             <td style="border: 0.5px solid gray"  width="5%"><span class="font-small" >${invoice.hsn}</span></td>
                             <td style="border: 0.5px solid gray"  width="5%"><span class="font-small">${invoice.qty}</span></td>
@@ -343,7 +345,9 @@ br {
                             <td style="border: 0.5px solid gray"  width="10%"><span class="font-small">${invoice.totalAmountAfterTax}</span></td>
 
                         </tr>
-                        <#assign i = i+1>
+                          <#assign i = i+1>
+                        </#if>
+                      
                         </#list>
 
                         <#assign x=11>

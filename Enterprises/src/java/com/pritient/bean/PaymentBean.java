@@ -27,10 +27,19 @@ public class PaymentBean {
     private String utrNo;
     private String ifscCode;
     private String type;
+    private String invoiceNum;
 
     private List<String> invId = new ArrayList<String>();
     public int isPaymentDone;
     public int isLast;
+
+    public String getInvoiceNum() {
+        return invoiceNum;
+    }
+
+    public void setInvoiceNum(String invoiceNum) {
+        this.invoiceNum = invoiceNum;
+    }
 
     public String getType() {
         return type;

@@ -5,6 +5,7 @@
  */
 package com.pritient.bean.dao;
 
+import com.pritient.bean.CompanyBean;
 import com.pritient.bean.Product;
 import com.pritient.bean.ProductTypeBean;
 import com.pritient.bean.SubProduct;
@@ -26,10 +27,13 @@ public class ProductDao extends DBUtil {
     Connection conn;
     static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
     static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
+    CompanyAddressDao companyAddressDao = new CompanyAddressDao();
 
     public int insertProduct(Product product) {
         int id = 0;
         try {
+            List<CompanyBean> companyList = companyAddressDao.getCompanyList();
+
             conn = getConnection();
 
             PreparedStatement ps = conn.prepareStatement("Call insertMainProduct(?,?,?,?)");
@@ -45,14 +49,29 @@ public class ProductDao extends DBUtil {
             }
 
             if (id != 0) {
-
+                int idProd = 0;
                 for (SubProduct sb : product.getSubProductList()) {
                     if (sb != null) {
-                        PreparedStatement ps1 = conn.prepareStatement("Call insertSubProduct(?,?,?)");
+                        PreparedStatement ps1 = conn.prepareStatement("Call insertSubProduct(?,?,?,?)");
                         ps1.setString(1, sb.getSubProductName());
                         ps1.setString(2, sb.getSubProductName());
                         ps1.setInt(3, id);
-                        ps1.executeUpdate();
+                        ps1.setInt(4, 0);
+                        ResultSet rs2 = ps1.executeQuery();
+
+                        while (rs2.next()) {
+                            idProd = rs2.getInt(1);
+                        }
+
+                        if (!companyList.isEmpty()) {
+                            for (CompanyBean cb : companyList) {
+                                PreparedStatement ps2 = conn.prepareStatement("Call addCompnyProductPrice(?,?,?)");
+                                ps2.setInt(1, cb.getCompanyId());
+                                ps2.setInt(2, idProd);
+                                ps2.setDouble(3, 0);
+                                ps2.executeQuery();
+                            }
+                        }
                     }
                 }
             }

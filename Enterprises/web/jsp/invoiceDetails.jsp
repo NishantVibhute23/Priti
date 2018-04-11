@@ -146,6 +146,8 @@
                     $("#paydesc").val(response.description);
                     $("#invoiceId1").val(response.id);
                     $("#invoiceNo").val(response.invoiceNo);
+                    $("#invoiceNum").val(response.invoiceNumber);
+
                     $("#transporteMode").val(response.transportMode);
                     $("#datepicker").val(response.date);
                     $("#vehicleNo").val(response.vehicleNo);
@@ -222,7 +224,8 @@
                         cols += '<td><input type="text" style="text-align: center;background-color: #fff !important" tabindex="-1" readonly class="form-control" value="' + val.hsn + '" name="invoiceDetails[' + counter + '].hsn" id="hsn' + counter + '"/></td>';
                         cols += '<td > <input type="text" style="text-align: center;background-color: #fff !important" tabindex="-1" readonly class="form-control" value="' + val.uom + '" name="invoiceDetails[' + counter + '].uom" id="uom' + counter + '"/></td>';
                         cols += '<td >\n\
-\n\
+<input type="hidden" class="form-control" value="' + val.productType + '" name="invoiceDetails[' + counter + '].oldProductType" id="oldProductType' + counter + '"/>\n\
+<input  type="hidden" class="form-control" value="' + val.productType + '" name="invoiceDetails[' + counter + '].productType" id="productType' + counter + '"/>\n\
 <input type="hidden" class="form-control" value="' + val.qty + '" name="invoiceDetails[' + counter + '].oldQty" id="oldQty' + counter + '"/><input style="text-align: center" type="text" class="form-control" value="' + val.qty + '" name="invoiceDetails[' + counter + '].qty" id="qty' + counter + '"/></td>';
                         cols += '<td ><input style="text-align: center" type="text" class="form-control" value="' + val.price + '" name="invoiceDetails[' + counter + '].price" id="price' + counter + '" onblur="calculateRowGSTTotal(' + counter + ')"/></td>';
                         cols += '<td ><input style="text-align: center;background-color: #fff !important" tabindex="-1" readonly type="text" class="form-control" value="' + val.amount + '" name="invoiceDetails[' + counter + '].amount" id="amount' + counter + '" /></td>';
@@ -291,7 +294,7 @@
                     type: "POST",
                     dataType: 'json'
                 }).success(function(response) {
-
+                    $("#productType" + val).val(response.mainProductType);
                     $("#hsn" + val).val(response.mainProductHSN);
                     $("#uom" + val).val(response.mainProductUOM);
                     $("#price" + val).val(response.price);
@@ -517,7 +520,8 @@
                                                                         <label class="col-xs-3 control-label">Invoice No.</label>
                                                                         <div class="col-xs-9">
                                                                             <input type="hidden"  id="invoiceId1" class="form-control" name="id" />
-                                                                            <input type="text" required id="invoiceNo" readonly class="form-control" name="invoiceNo" />
+                                                                            <input type="hidden" id="invoiceNo"  class="form-control" name="invoiceNo" />
+                                                                            <input type="text" required id="invoiceNum" readonly class="form-control" name="invoiceNumber" />
                                                                         </div>
 
                                                                     </div>

@@ -166,4 +166,12 @@ public class InvoiceDetails {
         this.oldProductId = oldProductId;
     }
 
+    public int getProductType() {
+        return productType;
+    }
+
+    public void setProductType(int productType) {
+        this.productType = productType;
+    }
+
 }

@@ -33,7 +33,7 @@ public class InvoiceDao extends DBUtil {
         try {
             conn = getConnection();
 
-            PreparedStatement ps = conn.prepareStatement("Call insertInvoice(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("Call insertInvoice(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, CommonUtil.convertDate(invoice.getDate()));
             ps.setString(2, invoice.getReverseCharge());
             ps.setString(3, invoice.getState());
@@ -58,6 +58,7 @@ public class InvoiceDao extends DBUtil {
             ps.setDouble(22, invoice.getTotalAmountGST());
             ps.setDouble(23, invoice.getGstOnReverseCharge());
             ps.setInt(24, Integer.parseInt(invoice.getInvoiceNo()));
+            ps.setString(25, invoice.getInvoiceNumber());
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -68,7 +69,7 @@ public class InvoiceDao extends DBUtil {
 
                 for (InvoiceDetails ids : invoice.getInvoiceDetails()) {
                     if (ids != null) {
-                        PreparedStatement ps1 = conn.prepareStatement("Call insertInvoiceDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        PreparedStatement ps1 = conn.prepareStatement("Call insertInvoiceDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                         ps1.setInt(1, ids.getProductId());
                         ps1.setInt(2, ids.getQty());
                         ps1.setDouble(3, ids.getPrice());
@@ -83,6 +84,7 @@ public class InvoiceDao extends DBUtil {
                         ps1.setInt(12, id);
                         ps1.setString(13, ids.getHsn());
                         ps1.setString(14, ids.getUom());
+                        ps1.setInt(15, ids.getProductType());
                         ps1.executeUpdate();
 
                         PreparedStatement ps2 = conn.prepareStatement("Call deleteProduct(?,?)");
@@ -160,7 +162,7 @@ public class InvoiceDao extends DBUtil {
                 for (InvoiceDetails ids : invoice.getInvoiceDetails()) {
                     if (ids != null) {
 
-                        ps1 = conn.prepareStatement("Call insertInvoiceDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        ps1 = conn.prepareStatement("Call insertInvoiceDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
                         ps1.setInt(1, ids.getProductId());
                         ps1.setInt(2, ids.getQty());
                         ps1.setDouble(3, ids.getPrice());
@@ -175,6 +177,7 @@ public class InvoiceDao extends DBUtil {
                         ps1.setInt(12, invoice.getId());
                         ps1.setString(13, ids.getHsn());
                         ps1.setString(14, ids.getUom());
+                        ps1.setInt(15, ids.getProductType());
                         ps1.executeUpdate();
 
                         PreparedStatement ps2 = conn.prepareStatement("Call deleteProduct(?,?)");
@@ -206,7 +209,7 @@ public class InvoiceDao extends DBUtil {
             while (rs.next()) {
                 PaymentBean pb = new PaymentBean();
                 pb.setId(rs.getInt("id"));
-                pb.setInvoiceId("" + rs.getInt("invoiceId"));
+                pb.setInvoiceId(rs.getString("invoice_num"));
                 pb.setCompanyName(rs.getString("company_name"));
                 pb.setAmount(rs.getDouble("bill_amount"));
                 pb.setDate(CommonUtil.convertDateToNormal(rs.getString("date")));
@@ -258,6 +261,7 @@ public class InvoiceDao extends DBUtil {
                 in.setTotalAmountInWords(rs.getString("bill_amount_in_words"));
                 in.setTotalAmountGST(rs.getDouble("total_amount_gst"));
                 in.setGstOnReverseCharge(rs.getDouble("gst_on_reverse_charge"));
+                in.setInvoiceNumber(rs.getString("invoice_num"));
             }
 
             List<InvoiceDetails> invoiceDetails = new ArrayList<>();
@@ -281,6 +285,7 @@ public class InvoiceDao extends DBUtil {
                 ind.setUom(rs1.getString("uom"));
                 ind.setProductId(rs1.getInt("product_id"));
                 ind.setId(rs1.getInt("id"));
+                ind.setProductType(rs1.getInt("product_type"));
                 invoiceDetails.add(ind);
             }
 
@@ -413,9 +418,8 @@ public class InvoiceDao extends DBUtil {
                 p.setMainProductUOM(rs.getString(2));
                 p.setMainProductType(rs.getString(3));
                 p.setQty(rs.getString(4));
-                p.setMainProductType("" + rs.getInt(5));
                 p.setPrice(rs.getDouble(5));
-
+                p.setMainProductType("" + rs.getInt(6));
             }
 
             closeConnection(conn);

@@ -126,7 +126,7 @@
 
                         $.each(response, function(i, item) {
 
-                            a = a + '<tr><input type="hidden" name="invId[' + i + ']" value="0" id="hiddenInvoice' + item.id + '" /><td>' + item.invoiceId + '</td><td>' + item.date + '</td>\n\
+                            a = a + '<tr><input type="hidden" name="invId[' + i + ']" value="0" id="hiddenInvoice' + item.id + '" /><td>' + item.invoiceNum + '</td><td>' + item.date + '</td>\n\
                     <td><input type="hidden"  value="' + item.amount + '" id="amount' + i + '" />' + item.amount + '</td>\n\
                     <td><input type="checkbox" id="checkId' + item.id + '" onclick="setValue(' + item.id + ')"</td></tr>';
 
@@ -349,7 +349,7 @@
                     </form>
                 </div>
 
-                
+
 
             </div>
             <!-- /#page-wrapper -->

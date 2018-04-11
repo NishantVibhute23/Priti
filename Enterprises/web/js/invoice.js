@@ -27,10 +27,11 @@ var counter = $("#count").val();
         var sgstPerc = $("#sgstPerc" + (counter - 1)).val();
         var igstPerc = $("#igstPerc" + (counter - 1)).val();
 
-        cols += '<td><input  type="hidden" id="productId' + counter + '" name="invoiceDetails[' + counter + '].productName"/><select required id="productSelect' + counter + '" name="invoiceDetails[' + counter + '].productId" class="form-control" onchange="setProduct(' + counter + ')"></select></td>';
+        cols += '<td><input  type="hidden" id="productId' + counter + '" name="invoiceDetails[' + counter + '].productName"/>\n\
+<input type="hidden" id="productType' + counter + '" name="invoiceDetails[' + counter + '].productType"/><select required id="productSelect' + counter + '" name="invoiceDetails[' + counter + '].productId" class="form-control" onchange="setProduct(' + counter + ')"></select></td>';
         cols += '<td><input type="text" required  style="text-align: center;background-color: #fff !important" tabindex="-1" readonly  class="form-control" name="invoiceDetails[' + counter + '].hsn" id="hsn' + counter + '"/></td>';
         cols += '<td><input type="text" required  style="text-align: center;background-color: #fff !important" tabindex="-1"  class="form-control" name="invoiceDetails[' + counter + '].uom" id="uom' + counter + '"/></td>';
-        cols += '<td><input type="text" required  style="text-align: center"  class="form-control" onblur="calculateRowGSTTotal(' + counter + ') name="invoiceDetails[' + counter + '].qty" id="qty' + counter + '"/></td>';
+        cols += '<td><input type="text" required  style="text-align: center"  class="form-control" onblur="calculateRowGSTTotal(' + counter + ')" name="invoiceDetails[' + counter + '].qty" id="qty' + counter + '"/></td>';
 
         cols += '<td><input type="text" required  style="text-align: center" tabindex="-1" class="form-control" name="invoiceDetails[' + counter + '].price" id="price' + counter + '" onblur="calculateRowGSTTotal(' + counter + ')"/></td>';
         cols += '<td><input type="text" required  style="text-align: center;background-color: #fff !important" tabindex="-1" readonly  class="form-control" name="invoiceDetails[' + counter + '].amount" id="amount' + counter + '" /></td>';
@@ -67,10 +68,11 @@ var counter = $("#count").val();
         var sgstPerc = $("#sgstPerc" + (counter1 - 1)).val();
         var igstPerc = $("#igstPerc" + (counter1 - 1)).val();
 
-        cols += '<td><input type="hidden" id="id' + counter1 + '" value="0" name="invoiceDetails[' + counter1 + '].id"/><input type="hidden" id="productId' + counter1 + '" name="invoiceDetails[' + counter1 + '].productName"/><select required id="productSelect' + counter1 + '" name="invoiceDetails[' + counter1 + '].productId" class="form-control" onchange="setProduct(' + counter1 + ')"></select></td>';
+        cols += '<td><input type="hidden" id="id' + counter1 + '" value="0" name="invoiceDetails[' + counter1 + '].id"/>\n\
+<input type="hidden" id="productType' + counter1 + '" name="invoiceDetails[' + counter1 + '].mainProductType"/><input type="hidden" id="productId' + counter1 + '" name="invoiceDetails[' + counter1 + '].productName"/><select required id="productSelect' + counter1 + '" name="invoiceDetails[' + counter1 + '].productId" class="form-control" onchange="setProduct(' + counter1 + ')"></select></td>';
         cols += '<td><input type="text" required class="form-control" name="invoiceDetails[' + counter1 + '].hsn" id="hsn' + counter1 + '"/></td>';
         cols += '<td><input type="text" required  class="form-control" name="invoiceDetails[' + counter1 + '].uom" id="uom' + counter1 + '"/></td>';
-        cols += '<td><input type="text" required class="form-control" name="invoiceDetails[' + counter1 + '].qty" onblur="calculateRowGSTTotal(' + counter1 + ') id="qty' + counter1 + '"/></td>';
+        cols += '<td><input type="text" required class="form-control" name="invoiceDetails[' + counter1 + '].qty" onblur="calculateRowGSTTotal(' + counter1 + ')" id="qty' + counter1 + '"/></td>';
 
         cols += '<td><input type="text" required class="form-control" tabindex="-1" name="invoiceDetails[' + counter1 + '].price" id="price' + counter1 + '" onblur="calculateRowGSTTotal(' + counter1 + ')"/></td>';
         cols += '<td><input type="text" required class="form-control" name="invoiceDetails[' + counter1 + '].amount" id="amount' + counter1 + '" /></td>';

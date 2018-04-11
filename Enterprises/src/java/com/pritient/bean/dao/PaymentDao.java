@@ -68,6 +68,7 @@ public class PaymentDao extends DBUtil {
                 pb.setCompanyName(rs.getString("company_name"));
                 pb.setAmount(rs.getDouble("bill_amount"));
                 pb.setDate(CommonUtil.convertDateToNormal(rs.getString("date")));
+                pb.setInvoiceNum(rs.getString("invoice_num"));
                 invoice.add(pb);
             }
 

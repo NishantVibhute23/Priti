@@ -156,7 +156,7 @@ public class ExcelAction extends ActionSupport {
 
             cell = invoiceSheet.getRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Transport Mode : " + invoice.getTransportMode());
+            cell.setCellValue("Transport Mode : " + (invoice.getTransportMode() == null ? "" : invoice.getTransportMode()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 12, totalCol));
 
             cell = invoiceSheet.createRow(++row).createCell(0);
@@ -166,17 +166,17 @@ public class ExcelAction extends ActionSupport {
 
             cell = invoiceSheet.getRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Vehicle Number : " + invoice.getVehicleNo());
+            cell.setCellValue("Vehicle Number : " + (invoice.getVehicleNo() == null ? "" : invoice.getVehicleNo()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 12, totalCol));
 
             cell = invoiceSheet.createRow(++row).createCell(0);
             cell.setCellStyle(styleMedium);
-            invoiceSheet.getRow(row).getCell(0).setCellValue("Reverse Charge (Y/N) : " + invoice.getReverseCharge());
+            invoiceSheet.getRow(row).getCell(0).setCellValue("Reverse Charge (Y/N) : " + (invoice.getReverseCharge() == null ? "" : invoice.getReverseCharge()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 0, leftCol));
 
             cell = invoiceSheet.getRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Date of Supply : " + invoice.getDateOfSupply());
+            cell.setCellValue("Date of Supply : " + (invoice.getDateOfSupply() == null ? "" : invoice.getDateOfSupply()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 12, totalCol));
 
             cell = invoiceSheet.createRow(++row).createCell(0);
@@ -191,7 +191,7 @@ public class ExcelAction extends ActionSupport {
 
             cell = invoiceSheet.getRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Place of Supply : " + invoice.getPlaceOfSupply());
+            cell.setCellValue("Place of Supply : " + (invoice.getPlaceOfSupply() == null ? "" : invoice.getPlaceOfSupply()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 12, totalCol));
 
             //            invoice row ends
@@ -858,7 +858,7 @@ public class ExcelAction extends ActionSupport {
 
             cell = invoiceSheet.getRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Transport Mode : " + invoice.getTransportMode());
+            cell.setCellValue("Transport Mode : " + (invoice.getTransportMode() == null ? "" : invoice.getTransportMode()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 12, totalCol));
 
             cell = invoiceSheet.createRow(++row).createCell(0);
@@ -868,32 +868,32 @@ public class ExcelAction extends ActionSupport {
 
             cell = invoiceSheet.getRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Vehicle Number : " + invoice.getVehicleNo());
+            cell.setCellValue("Vehicle Number : " + (invoice.getVehicleNo() == null ? "" : invoice.getVehicleNo()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 12, totalCol));
 
             cell = invoiceSheet.createRow(++row).createCell(0);
             cell.setCellStyle(styleMedium);
-            invoiceSheet.getRow(row).getCell(0).setCellValue("Reverse Charge (Y/N) : " + invoice.getReverseCharge());
+            invoiceSheet.getRow(row).getCell(0).setCellValue("Reverse Charge (Y/N) : " + (invoice.getReverseCharge() == null ? "" : invoice.getReverseCharge()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 0, leftCol));
 
             cell = invoiceSheet.getRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Date of Supply : " + invoice.getDateOfSupply());
+            cell.setCellValue("Date of Supply : " + (invoice.getDateOfSupply() == null ? "" : invoice.getDateOfSupply()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 12, totalCol));
 
             cell = invoiceSheet.createRow(++row).createCell(0);
             cell.setCellStyle(styleMedium);
-            invoiceSheet.getRow(row).getCell(0).setCellValue("State : " + invoice.getState());
+            invoiceSheet.getRow(row).getCell(0).setCellValue("State : " + companyBean.getCompanyState());
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 0, 9));
 
             cell = invoiceSheet.getRow(row).createCell(10);
             cell.setCellStyle(styleMedium);
-            invoiceSheet.getRow(row).getCell(10).setCellValue("Code : " + invoice.getCode());
+            invoiceSheet.getRow(row).getCell(10).setCellValue("Code : " + companyBean.getCompanyStateCode());
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 10, leftCol));
 
             cell = invoiceSheet.getRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Place of Supply : " + invoice.getPlaceOfSupply());
+            cell.setCellValue("Place of Supply : " + (invoice.getPlaceOfSupply() == null ? "" : invoice.getPlaceOfSupply()));
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 12, totalCol));
 
             //            invoice row ends

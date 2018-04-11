@@ -16,6 +16,7 @@ public class Invoice {
     int id;
     int companyId;
     String invoiceNo;
+    String invoiceNumber;
     String companyHeaderName;
     String companyHeaderAddress;
     String companyHeaderGSTIN;
@@ -30,18 +31,18 @@ public class Invoice {
     String dateOfSupply;
     String placeOfSupply;
     int billTO;
-    String billToName="";
-    String billToAddress="";
-    String billToGSTIN="";
-    String billToState="";
-    String billToCode="";
+    String billToName = "";
+    String billToAddress = "";
+    String billToGSTIN = "";
+    String billToState = "";
+    String billToCode = "";
 
     int shipTo;
-    String shipToName="";
-    String shipToAddress="";
-    String shipToGSTIN="";
-    String shipToState="";
-    String shipToCode="";
+    String shipToName = "";
+    String shipToAddress = "";
+    String shipToGSTIN = "";
+    String shipToState = "";
+    String shipToCode = "";
     double totalAmountGST;
     double totalAmountBeforeTax;
     double cgstPerc;
@@ -56,10 +57,18 @@ public class Invoice {
     double gstOnReverseCharge;
     String totalAmountInWords;
     List<InvoiceDetails> invoiceDetails;
-    
+
     String status;
     String paymentDate;
     String description;
+
+    public String getInvoiceNumber() {
+        return invoiceNumber;
+    }
+
+    public void setInvoiceNumber(String invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
 
     public String getPaymentDate() {
         return paymentDate;
@@ -69,8 +78,6 @@ public class Invoice {
         this.paymentDate = paymentDate;
     }
 
-    
-    
     public int getId() {
         return id;
     }
@@ -423,6 +430,4 @@ public class Invoice {
         this.description = description;
     }
 
-    
-    
 }
