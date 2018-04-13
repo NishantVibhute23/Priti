@@ -197,7 +197,7 @@ public class CompanyAddressDao extends DBUtil {
                         if (rs1.getInt(4) == 0) {
                             sp.setSubProductId(rs1.getInt(1));
                             sp.setSubProductName(rs1.getString(2));
-                            sp.setPrice(rs1.getInt(3));
+                            sp.setPrice(rs1.getDouble(3));
                             subProductList.add(sp);
                         }
                     }

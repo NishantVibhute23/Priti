@@ -526,6 +526,7 @@
 
                     $.each(response.productList, function(index, value) {
                         $.each(value.subProductList, function(index1, value1) {
+                            console.log(value1);
                             $("#productTableEdit").find('tbody').append("<tr><td>" + value.mainProductName + "</td>\n\
                     <td>" + value1.subProductName + "</td>\n\
 <td><input type='hidden' name='productList[" + index + "].subProductList[" + index1 + "].subProductId' value='" + value1.subProductId + "'/>\n\
