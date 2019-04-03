@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/login.css" type="text/css" />
         
         <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
-        <title>JSP Page</title>
+        <title>PritiEnterprises</title>
     </head>
     <body>
 
@@ -29,6 +29,7 @@
 
             <div class="form">
                 <form class="login-form" action="login" method="POST">
+                    <h2 style=" margin-top: 0px !important;margin-bottom: 30px !important">Priti Enterprises</h2>
                     <input type="text" placeholder="username" name="userName" required=""/>
                     <input type="password" placeholder="password" name="password" required=""/>
                     <button>login</button>

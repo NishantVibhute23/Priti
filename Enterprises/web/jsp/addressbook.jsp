@@ -509,6 +509,7 @@
                     dataType: 'json'
                 }).success(function(response) {
 
+                    $("#productTableEdit").find("tr:gt(0)").remove();
                     // Populate the form fields with the data returned from server
                     $('#userForm')
                             .find('[name="companyId"]').val(response.companyId).end()
@@ -526,7 +527,7 @@
 
                     $.each(response.productList, function(index, value) {
                         $.each(value.subProductList, function(index1, value1) {
-                            console.log(value1);
+
                             $("#productTableEdit").find('tbody').append("<tr><td>" + value.mainProductName + "</td>\n\
                     <td>" + value1.subProductName + "</td>\n\
 <td><input type='hidden' name='productList[" + index + "].subProductList[" + index1 + "].subProductId' value='" + value1.subProductId + "'/>\n\
