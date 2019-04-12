@@ -51,6 +51,7 @@ public class MyProfileDao extends DBUtil {
                 myProfile.setTermsCondition1(rs.getString(16));
                 myProfile.setTermsCondition2(rs.getString(17));
                 myProfile.setTermsCondition3(rs.getString(18));
+                myProfile.setCompanyBankBranch(rs.getString(19));
 
             }
 
@@ -66,7 +67,7 @@ public class MyProfileDao extends DBUtil {
         int count = 0;
         try {
             conn = getConnection();
-            PreparedStatement ps = conn.prepareStatement("Call updateMyProfileDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("Call updateMyProfileDetails(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setInt(1, cb.getId());
             ps.setString(2, cb.getCompanyName());
             ps.setString(3, cb.getCompanyAddress());
@@ -85,6 +86,7 @@ public class MyProfileDao extends DBUtil {
             ps.setString(14, cb.getTermsCondition1());
             ps.setString(15, cb.getTermsCondition2());
             ps.setString(16, cb.getTermsCondition3());
+            ps.setString(17, cb.getCompanyBankBranch());
 
             ResultSet rs = ps.executeQuery();
 

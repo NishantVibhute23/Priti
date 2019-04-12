@@ -548,7 +548,7 @@ public class ExcelAction extends ActionSupport {
             cell = invoiceSheet.createRow(++row).createCell(0);
             cell.setCellStyle(styleMedium);
             cell.setCellValue("" + invoice.getTotalAmountInWords());
-            invoiceSheet.addMergedRegion(new CellRangeAddress(row, row + 1, 0, leftCol));
+            invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 0, leftCol));
             CellUtil.setAlignment(cell, workbook, CellStyle.ALIGN_CENTER);
 
             cell = invoiceSheet.getRow(row).createCell(12);
@@ -561,7 +561,13 @@ public class ExcelAction extends ActionSupport {
             cell.setCellValue("" + invoice.getCgstAmount());
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 18, 19));
             CellUtil.setAlignment(cell, workbook, CellStyle.ALIGN_RIGHT);
-            cell = invoiceSheet.createRow(++row).createCell(12);
+
+            cell = invoiceSheet.createRow(++row).createCell(0);
+            cell.setCellStyle(styleMedium);
+            cell.setCellValue("Bank Details");
+            invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 0, leftCol));
+            CellUtil.setAlignment(cell, workbook, CellStyle.ALIGN_CENTER);
+            cell = invoiceSheet.createRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
             cell.setCellValue("Add : SGST " + invoice.getSgstPerc() + "%");
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 12, 17));
@@ -574,9 +580,9 @@ public class ExcelAction extends ActionSupport {
 
             cell = invoiceSheet.createRow(++row).createCell(0);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Bank Details");
+            cell.setCellValue("Bank Name : " + myProfile.getCompanyBankName());
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 0, leftCol));
-            CellUtil.setAlignment(cell, workbook, CellStyle.ALIGN_CENTER);
+            CellUtil.setAlignment(cell, workbook, CellStyle.ALIGN_LEFT);
             cell = invoiceSheet.getRow(row).createCell(12);
             cell.setCellStyle(styleMedium);
             cell.setCellValue("Add : IGST " + invoice.getIgstPerc() + "%");
@@ -590,7 +596,7 @@ public class ExcelAction extends ActionSupport {
 
             cell = invoiceSheet.createRow(++row).createCell(0);
             cell.setCellStyle(styleMedium);
-            cell.setCellValue("Bank A/C : " + myProfile.getCompanyBankName());
+            cell.setCellValue("Bank Branch : " + myProfile.getCompanyBankBranch());
             invoiceSheet.addMergedRegion(new CellRangeAddress(row, row, 0, leftCol));
             CellUtil.setAlignment(cell, workbook, CellStyle.ALIGN_LEFT);
 

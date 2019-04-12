@@ -301,6 +301,7 @@ public class InvoiceDao extends DBUtil {
                 in.setBillToGSTIN(rs2.getString(4));
                 in.setBillToState(rs2.getString(9));
                 in.setBillToCode(rs2.getString(10));
+                in.setBillToTel(rs2.getString(6));
             }
 
             PreparedStatement ps3 = conn.prepareStatement("Call getCompanyDetails(?)");
@@ -313,6 +314,7 @@ public class InvoiceDao extends DBUtil {
                 in.setShipToGSTIN(rs3.getString(4));
                 in.setShipToState(rs3.getString(9));
                 in.setShipToCode(rs3.getString(10));
+                in.setShipToTel(rs3.getString(6));
             }
 
             PreparedStatement ps4 = conn.prepareStatement("Call getInvoicePaymentDetails(?)");

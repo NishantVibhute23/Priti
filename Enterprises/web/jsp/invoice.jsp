@@ -84,19 +84,7 @@
                     $("#billToGSTIN").val(response.companyGSTIN);
                     $("#billToState").val(response.companyState);
                     $("#billToCode").val(response.companyStateCode);
-
-
-
-//                    $.each(response.productList, function(index, value) {
-//                        $.each(value.subProductList, function(index1, value1) {
-//                            map[value1.subProductId] = value1.price;
-//
-//                        });
-//
-//                    });
-
-
-
+                    $("#billToTel").val(response.companyPhoneNo1);
                 });
 
 
@@ -117,6 +105,7 @@
                     $("#shipToGSTIN").val(response.companyGSTIN);
                     $("#shipToState").val(response.companyState);
                     $("#shipToCode").val(response.companyStateCode);
+                    $("#shipToTel").val(response.companyPhoneNo1);
                 });
             }
 
@@ -226,9 +215,9 @@
             function resetInvoiceNumber()
             {
                 $("#invoiceNo").val(1);
-                var d = new Date();
-                var n = d.getFullYear();
-                $("#invoiceNum").val(1 + "/" + n + "-" + (n + 1));
+//                var d = new Date();
+//                var n = d.getFullYear();
+//                $("#invoiceNum").val(1 + "/" + n + "-" + (n + 1));
             }
 
 
@@ -393,8 +382,12 @@
 
                                             <div class="form-group row">
                                                 <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">GSTIN</label>
-                                                <div class="col-sm-9">
+                                                <div class="col-sm-5">
                                                     <input type="text" class="form-control" id="billToGSTIN"  name="billToGSTIN" />
+                                                </div>
+                                                <label class="col-xs-1 control-label">Tel </label>
+                                                <div class="col-xs-3">
+                                                    <input type="text" class="form-control"  id="billToTel" name="billToTel" />
                                                 </div>
                                             </div>
 
@@ -439,8 +432,12 @@
 
                                             <div class="form-group row">
                                                 <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">GSTIN</label>
-                                                <div class="col-sm-9">
+                                                <div class="col-sm-5">
                                                     <input type="text" class="form-control" id="shipToGSTIN" name="shipToGSTIN" />
+                                                </div>
+                                                <label class="col-xs-1 control-label">Tel </label>
+                                                <div class="col-xs-3">
+                                                    <input type="text" class="form-control" id="shipToTel" name="shipToTel" />
                                                 </div>
                                             </div>
 

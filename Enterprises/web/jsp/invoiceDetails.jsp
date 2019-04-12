@@ -30,7 +30,7 @@
         <title>JSP Page</title>
         <script>
 //            var map = {};
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $("#dashboard").removeClass("active");
                 $("#Invoice").addClass("active");
                 $("#invoiceId").show()
@@ -55,7 +55,7 @@
                 $("#Ledger").removeClass("active");
                 $("#Bills").removeClass("active");
             });
-            $(function() {
+            $(function () {
                 $("#datepicker").datepicker({changeMonth: true,
                     changeYear: true,
                     showAnim: "slideDown",
@@ -75,7 +75,7 @@
                     url: 'getCompanyDetails?id=' + id,
                     type: "POST",
                     dataType: 'json'
-                }).success(function(response) {
+                }).success(function (response) {
 //                    map = {};
 
                     $("#companyId").val(response.companyId);
@@ -83,6 +83,7 @@
                     $("#billToGSTIN").val(response.companyGSTIN);
                     $("#billToState").val(response.companyState);
                     $("#billToCode").val(response.companyStateCode);
+                    $("#billToTel").val(response.companyPhoneNo1);
 //                    $.each(response.productList, function(index, value) {
 //                        $.each(value.subProductList, function(index1, value1) {
 //                            map[value1.subProductId] = value1.price;
@@ -100,7 +101,7 @@
                     url: 'getCompanyDetails?id=' + id,
                     type: "POST",
                     dataType: 'json'
-                }).success(function(response) {
+                }).success(function (response) {
 
 
                     $("#companyId").val(response.companyId);
@@ -108,6 +109,7 @@
                     $("#shipToGSTIN").val(response.companyGSTIN);
                     $("#shipToState").val(response.companyState);
                     $("#shipToCode").val(response.companyStateCode);
+                    $("#shipToTel").val(response.companyPhoneNo1);
                 });
             }
 
@@ -120,7 +122,7 @@
                     url: 'createExcel?val=' + id,
                     type: "POST",
                     dataType: 'json'
-                }).success(function(response) {
+                }).success(function (response) {
                 });
             }
 
@@ -132,7 +134,7 @@
                     url: 'getInvoiceDetailsInfo?val=' + id,
                     type: "POST",
                     dataType: 'json'
-                }).success(function(response) {
+                }).success(function (response) {
 
 
                     $('.nav-tabs a[href="#2b"]').tab('show');
@@ -186,27 +188,26 @@
                     $("#FinalAmount").val(response.totalAmount);
                     $("#gstOnReverseCharge").val(response.gstOnReverseCharge);
                     $("#amountInwords").val(response.totalAmountInWords);
+                    $("#billToTel").val(response.billToTel);
+                    $("#shipToTel").val(response.shipToTel);
                     if (response.cgstPerc === 0)
                     {
                         $('#cgstCheckBox').prop('checked', false);
-                    }
-                    else {
+                    } else {
                         $('#cgstCheckBox').prop('checked', true);
                     }
 
                     if (response.sgstPerc === 0)
                     {
                         $('#sgstCheckBox').prop('checked', false);
-                    }
-                    else {
+                    } else {
                         $('#sgstCheckBox').prop('checked', true);
                     }
 
                     if (response.igstPerc === 0)
                     {
                         $('#igstCheckBox').prop('checked', false);
-                    }
-                    else {
+                    } else {
                         $('#igstCheckBox').prop('checked', true);
                     }
 
@@ -215,7 +216,7 @@
 
 
                     var counter = 0;
-                    $.each(response.invoiceDetails, function(i, val) {
+                    $.each(response.invoiceDetails, function (i, val) {
                         var $options = $("#productSelect > option").clone();
 //                        alert(" - " + val.subProductId);
                         var newRow = $("<tr>");
@@ -293,7 +294,7 @@
                     url: 'getHSNUOMPRICE?prodId=' + id + "&compId=" + bill,
                     type: "POST",
                     dataType: 'json'
-                }).success(function(response) {
+                }).success(function (response) {
                     $("#productType" + val).val(response.mainProductType);
                     $("#hsn" + val).val(response.mainProductHSN);
                     $("#uom" + val).val(response.mainProductUOM);
@@ -308,7 +309,7 @@
                 $.ajax({
                     url: 'printInvoicePDF?val=' + id_in,
                     type: "POST",
-                }).success(function(response) {
+                }).success(function (response) {
                     $("#spinner").hide();
 //                    alert(response);
                     $('#invoiceModal').find('.modal-body').text("");
@@ -327,7 +328,7 @@
                     url: 'printInvoice',
                     type: "POST",
                     data: formData,
-                }).success(function(response) {
+                }).success(function (response) {
                     $("#spinner").hide();
 //                    alert(response);
                     $('#invoiceModal').find('.modal-body').text("");
@@ -620,11 +621,14 @@
                                                                     </div>
 
                                                                     <div class="form-group row">
-                                                                        <label class="col-xs-3 control-label">GSTIN</label>
-                                                                        <div class="col-xs-9">
+                                                                        <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">GSTIN</label>
+                                                                        <div class="col-sm-5">
                                                                             <input type="text" class="form-control" id="billToGSTIN"  name="billToGSTIN" />
                                                                         </div>
-
+                                                                        <label class="col-xs-1 control-label">Tel </label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control"  id="billToTel" name="billToTel" />
+                                                                        </div>
                                                                     </div>
                                                                     <div class="form-group row">
                                                                         <label class="col-xs-3 control-label">State </label>
@@ -664,9 +668,13 @@
 
                                                                     </div>
                                                                     <div class="form-group row">
-                                                                        <label class="col-xs-3 control-label">&nbsp;&nbsp;GSTIN</label>
-                                                                        <div class="col-xs-9">
+                                                                        <label for="lgFormGroupInput" class="col-sm-3 col-form-label col-form-label-lg">GSTIN</label>
+                                                                        <div class="col-sm-5">
                                                                             <input type="text" class="form-control" id="shipToGSTIN" name="shipToGSTIN" />
+                                                                        </div>
+                                                                        <label class="col-xs-1 control-label">Tel </label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="shipToTel" name="shipToTel" />
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group row">
@@ -939,7 +947,7 @@
                 </div>
                 <script>
 
-                    $('.editButton').on('click', function() {
+                    $('.editButton').on('click', function () {
 
                         // Get the record's ID via attribute
 

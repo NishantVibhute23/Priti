@@ -92,12 +92,14 @@ public class ConvertToPdf {
             data.put("BillToGSTIN", in.getBillToGSTIN());
             data.put("BillToState", in.getBillToState());
             data.put("BillToCode", in.getBillToCode());
+            data.put("BillToTel", in.getBillToTel());
 
             data.put("ShipToName", in.getShipToName());
             data.put("ShipToAddress", in.getShipToAddress());
             data.put("ShipToGSTIN", in.getShipToGSTIN());
             data.put("ShipToState", in.getShipToState());
             data.put("ShipToCode", in.getShipToCode());
+            data.put("ShipToTel", in.getShipToTel());
 
             data.put("TotalAmountGST", in.getTotalAmountGST());
             data.put("GstOnReverseCharge", in.getGstOnReverseCharge());
@@ -105,6 +107,7 @@ public class ConvertToPdf {
             data.put("companyBankName", myProfile.getCompanyBankName());
             data.put("companyBankAccount", myProfile.getCompanyBankAccountNo());
             data.put("companyBankIFSC", myProfile.getCompanyBankIFSC());
+            data.put("companyBranchName", myProfile.getCompanyBankBranch());
 
             data.put("termCond1", myProfile.getTermsCondition1());
             data.put("termCond2", myProfile.getTermsCondition2());

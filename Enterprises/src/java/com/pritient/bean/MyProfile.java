@@ -26,6 +26,7 @@ public class MyProfile {
     private String companyBankName;
     private String companyBankIFSC;
     private String companyBankAccountNo;
+    private String companyBankBranch;
     private String companyLogo;
 
     private String termsCondition1;
@@ -174,6 +175,14 @@ public class MyProfile {
 
     public void setTermsCondition3(String termsCondition3) {
         this.termsCondition3 = termsCondition3;
+    }
+
+    public String getCompanyBankBranch() {
+        return companyBankBranch;
+    }
+
+    public void setCompanyBankBranch(String companyBankBranch) {
+        this.companyBankBranch = companyBankBranch;
     }
 
 }

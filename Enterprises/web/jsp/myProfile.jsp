@@ -151,6 +151,13 @@
                                 <input type="text" class="form-control" name="companyBankName" value="<s:property value="companyBankName"/>"/>
                             </div>
                         </div>
+                             <div class="form-group">
+                            <label class="col-xs-3 control-label">Bank Branch Name:</label>
+                            <div class="col-xs-8">
+                                
+                                <input type="text" class="form-control" name="companyBankBranch" value="<s:property value="companyBankBranch"/>"/>
+                            </div>
+                        </div>
                             
                              <div class="form-group">
                             <label class="col-xs-3 control-label">Account No:</label>

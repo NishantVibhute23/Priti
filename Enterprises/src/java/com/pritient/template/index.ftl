@@ -71,6 +71,9 @@ h1 {
     font-size: 11px;
 }
 
+.font-style{
+   font-weight: bold;
+}
 
 .font-small{
     font-size: 8px;
@@ -79,6 +82,11 @@ h1 {
 .center
 {
     text-align: center;
+}
+
+.right
+{
+    text-align: right;
 }
 
 br {
@@ -233,10 +241,17 @@ br {
                             <td ><span class="font-medium"></span></td>
 
                         </tr>
+<tr >
+                           
+                            <td ><span class="font-medium">Tel</span></td>
+<td ><span class="font-medium">:</span></td>
+                            <td colspan="2" ><span class="font-medium">${BillToTel}</span></td>
+                        </tr>
                         <tr >
                             <td ><span class="font-medium">GSTIN</span></td>
                             <td ><span class="font-medium">:</span></td>
-                            <td colspan="2"><span class="font-medium">${BillToGSTIN}</span></td>
+                            <td colspan="2" ><span class="font-medium font-style">${BillToGSTIN}</span></td>
+                            
                         </tr>
                         <tr >
                             <td width="14%"><span class="font-medium">State</span></td>
@@ -254,12 +269,12 @@ br {
                             <td colspan="5" style="text-align: center;" class="border-style"><span class="font-medium">Ship to Party</span></td>
                         </tr>
                         <tr >
-                            <td  ><span class="font-medium">Name</span></td>
+                            <td ><span class="font-medium">Name</span></td>
                             <td ><span class="font-medium">:</span></td>
                             <td colspan="3"><span class="font-medium">${ShipToName}</span></td>
                         </tr>
                         <tr >
-                            <td  ><span class="font-medium">Address</span></td>
+                            <td ><span class="font-medium">Address</span></td>
                             <td ><span class="font-medium">:</span></td>
                             <td valign="top" colspan="3" rowspan="3"><span class="font-medium">${ShipToAddress}</span></td>
                         </tr>
@@ -273,11 +288,19 @@ br {
                             <td ><span class="font-medium"></span></td>
 
                         </tr>
+<tr >
+                           
+                            <td ><span class="font-medium">Tel</span></td>
+<td ><span class="font-medium">:</span></td>
+                            <td colspan="2" ><span class="font-medium">${ShipToTel}</span></td>
+                        </tr>
                         <tr >
                             <td ><span class="font-medium">GSTIN</span></td>
                             <td ><span class="font-medium">:</span></td>
-                            <td  colspan="2"><span class="font-medium">${ShipToGSTIN}</span></td>
+                            <td colspan="2"><span class="font-medium font-style">${ShipToGSTIN}</span></td>
+                            
                         </tr>
+
                         <tr >
                             <td width="14%"><span class="font-medium">State</span></td>
                             <td width="1%"><span class="font-medium">:</span></td>
@@ -313,11 +336,11 @@ br {
 
                         <tr class="center">
 
-                            <th style="border: 0.5px solid gray" ><span class="font-small" >RATE</span></th>
+                            <th style="border: 0.5px solid gray" ><span class="font-small" >RATE(%)</span></th>
                             <th style="border: 0.5px solid gray" ><span class="font-small">AMOUNT</span></th>
-                            <th style="border: 0.5px solid gray" ><span class="font-small" >RATE</span></th>
+                            <th style="border: 0.5px solid gray" ><span class="font-small" >RATE(%)</span></th>
                             <th style="border: 0.5px solid gray" ><span class="font-small">AMOUNT</span></th>
-                            <th style="border: 0.5px solid gray"><span class="font-small" >RATE</span></th>
+                            <th style="border: 0.5px solid gray"><span class="font-small" >RATE(%)</span></th>
                             <th style="border: 0.5px solid gray" ><span class="font-small">AMOUNT</span></th>
                         </tr>
 
@@ -329,20 +352,20 @@ br {
 
                               
 
-                            <td style="border: 0.5px solid gray" width="3%"><span class="font-small" >${i}</span></td>
+                            <td align="center" style="border: 0.5px solid gray" width="3%"><span class="font-small" >${i}</span></td>
                             <td style="border: 0.5px solid gray"  width="22%"><span class="font-small">${invoice.productName}</span></td>
                             <td style="border: 0.5px solid gray"  width="5%"><span class="font-small" >${invoice.hsn}</span></td>
-                            <td style="border: 0.5px solid gray"  width="5%"><span class="font-small">${invoice.qty}</span></td>
-                            <td style="border: 0.5px solid gray"  width="5%"><span class="font-small" >${invoice.uom}</span></td>
-                            <td style="border: 0.5px solid gray"  width="6%"><span class="font-small">${invoice.price}</span></td>
-                            <td style="border: 0.5px solid gray"  width="8%"><span class="font-small" >${invoice.amount}</span></td>
-                            <td style="border: 0.5px solid gray"  width="4%"><span class="font-small">${invoice.cgstPerc}</span></td>
-                            <td style="border: 0.5px solid gray"  width="8%"><span class="font-small" >${invoice.cgstAmount}</span></td>
-                            <td style="border: 0.5px solid gray"  width="4%"><span class="font-small">${invoice.sgstPerc}</span></td>
-                            <td style="border: 0.5px solid gray"  width="8%"><span class="font-small" >${invoice.sgstAmount}</span></td>
-                            <td style="border: 0.5px solid gray"  width="4%"><span class="font-small">${invoice.igstPerc}</span></td>
-                            <td style="border: 0.5px solid gray"  width="8%"><span class="font-small" >${invoice.igstAmount}</span></td>
-                            <td style="border: 0.5px solid gray"  width="10%"><span class="font-small">${invoice.totalAmountAfterTax}</span></td>
+                            <td align="center" style="border: 0.5px solid gray"  width="5%"><span class="font-small">${invoice.qty}</span></td>
+                            <td align="center" style="border: 0.5px solid gray"  width="5%"><span class="font-small" >${invoice.uom}</span></td>
+                            <td align="right" style="border: 0.5px solid gray"  width="6%"><span class="font-small">${invoice.price?string(",##0.00")}</span></td>
+                            <td align="right" style="border: 0.5px solid gray"  width="8%"><span class="font-small" >${invoice.amount?string(",##0.00")}</span></td>
+                            <td align="center" style="border: 0.5px solid gray"  width="4%"><span class="font-small">${invoice.cgstPerc}</span></td>
+                            <td align="right" style="border: 0.5px solid gray"  width="8%"><span class="font-small" >${invoice.cgstAmount?string(",##0.00")}</span></td>
+                            <td align="center" style="border: 0.5px solid gray"  width="4%"><span class="font-small">${invoice.sgstPerc}</span></td>
+                            <td align="right"style="border: 0.5px solid gray"  width="8%"><span class="font-small" >${invoice.sgstAmount?string(",##0.00")}</span></td>
+                            <td align="center" style="border: 0.5px solid gray"  width="4%"><span class="font-small">${invoice.igstPerc}</span></td>
+                            <td align="right" style="border: 0.5px solid gray"  width="8%"><span class="font-small" >${invoice.igstAmount?string(",##0.00")}</span></td>
+                            <td align="right"style="border: 0.5px solid gray"  width="10%"><span class="font-small">${invoice.totalAmountAfterTax?string(",##0.00")}</span></td>
 
                         </tr>
                           <#assign i = i+1>
@@ -380,14 +403,14 @@ br {
 
                             <td style="border: 0.5px solid gray"  colspan="6"><span class="font-small" >TOTAL</span></td>
 
-                            <td style="border: 0.5px solid gray"  ><span class="font-small" >${totalAmountBeforeTax}</span></td>
+                            <td align="right" style="border: 0.5px solid gray"  ><span class="font-small" >${totalAmountBeforeTax?string(",##0.00")}</span></td>
                             <td style="border: 0.5px solid gray"  ><span class="font-small">&nbsp;</span></td>
-                            <td style="border: 0.5px solid gray"  ><span class="font-small" >${cgstAmount}</span></td>
+                            <td align="right" style="border: 0.5px solid gray"  ><span class="font-small" >${cgstAmount?string(",##0.00")}</span></td>
                             <td style="border: 0.5px solid gray"  ><span class="font-small">&nbsp;</span></td>
-                            <td style="border: 0.5px solid gray"  ><span class="font-small" >${sgstAmount}</span></td>
+                            <td align="right" style="border: 0.5px solid gray"  ><span class="font-small" >${sgstAmount?string(",##0.00")}</span></td>
                             <td style="border: 0.5px solid gray"  ><span class="font-small">&nbsp;</span></td>
-                            <td style="border: 0.5px solid gray"  ><span class="font-small" >${igstAmount}</span></td>
-                            <td style="border: 0.5px solid gray"  ><span class="font-small">${totalAmountAfterTax}</span></td>
+                            <td align="right" style="border: 0.5px solid gray"  ><span class="font-small" >${igstAmount?string(",##0.00")}</span></td>
+                            <td align="right" style="border: 0.5px solid gray"  ><span class="font-small">${totalAmountAfterTax?string(",##0.00")}</span></td>
 
                         </tr>
 
@@ -407,56 +430,60 @@ br {
                             <td width="50%" colspan="2" class="center border-style"><span class="font-medium" >Total Invoice amount in words</span></td>
                             <td class="border-style" colspan="3" width="19%"><span class="font-medium" >Total Amount Before Tax</span></td>
                             <td class="border-style" width="1%"><span class="font-medium" >:</span></td>
-                            <td class="border-style"><span class="font-medium" >${totalAmountBeforeTax}</span></td>
+                            <td align="right" class="border-style"><span class="font-medium " >${totalAmountBeforeTax?string(",##0.00")}</span></td>
                         </tr>
                         <tr >
-                            <td class="border-style" rowspan="4"  valign="top" colspan="2"><span  class="font-medium" >${amountInwords}</span></td>
+                            <td class="border-style" rowspan="3"  valign="top" colspan="2"><span  class="font-medium" >${amountInwords}</span></td>
                             <td class="border-style" width="16%"><span class="font-medium" >Add : CGST</span></td>
-                            <td class="border-style" width="3%"><span class="font-medium" >${cgstPerc}</span></td>
+                            <td align="right" class="border-style" width="3%"><span class="font-medium" >${cgstPerc}</span></td>
                             <td class="border-style" width="1%"><span class="font-medium" >%</span></td>
                             <td class="border-style"><span class="font-medium" >:</span></td>
-                            <td class="border-style"><span class="font-medium" >${cgstAmount}</span></td>
+                            <td align="right" class="border-style"><span class="font-medium" >${cgstAmount?string(",##0.00")}</span></td>
                         </tr>
                         <tr >
                             <td class="border-style"><span class="font-medium" >Add : SGST</span></td>
-                            <td class="border-style" ><span class="font-medium" >${sgstPerc}</span></td>
+                            <td align="right" class="border-style" ><span class="font-medium" >${sgstPerc}</span></td>
                             <td class="border-style" ><span class="font-medium" >%</span></td>
                             <td class="border-style" ><span class="font-medium" >:</span></td>
-                            <td class="border-style"><span class="font-medium" >${sgstAmount}</span></td>
+                            <td align="right" class="border-style"><span class="font-medium" >${sgstAmount?string(",##0.00")}</span></td>
                         </tr>
                         <tr >
                             <td class="border-style"><span class="font-medium" >Add : IGST</span></td>
-                            <td class="border-style" ><span class="font-medium" >${igstPerc}</span></td>
+                            <td align="right" class="border-style" ><span class="font-medium" >${igstPerc}</span></td>
                             <td class="border-style" ><span class="font-medium" >%</span></td>
                             <td class="border-style" ><span class="font-medium" >:</span></td>
-                            <td class="border-style"><span class="font-medium" >${igstAmount}</span></td>
+                            <td align="right" class="border-style"><span class="font-medium" >${igstAmount?string(",##0.00")}</span></td>
                         </tr>
-                        <tr >
-                            <td class="border-style" colspan="3" ><span class="font-medium" >Total Amount GST</span></td>
-                            <td class="border-style" ><span class="font-medium" >:</span></td>
-                            <td class="border-style"><span class="font-medium" >${TotalAmountGST}</span></td>
-                        </tr>
+                        
                         <tr >
 <td class="border-style center" colspan="2" width="30%" ><span class="font-medium center" >Bank Details</span></td>
-                            <td class="border-style" colspan="3"><span class="font-medium" >Total Amount After Tax</span></td>
+   <td class="border-style" colspan="3" ><span class="font-medium" >Total Amount GST</span></td>
                             <td class="border-style" ><span class="font-medium" >:</span></td>
-                            <td class="border-style"><span class="font-medium" >${totalAmountAfterTax}</span></td>
+                            <td align="right" class="border-style"><span class="font-medium" >${TotalAmountGST?string(",##0.00")}</span></td>
                         </tr>
                         <tr >
-                            <td class="border-style" width="15%"><span class="font-medium " >Bank Name :</span></td>
+                            <td class="border-style" width="10%"><span class="font-medium " >Bank Name :</span></td>
 
                             <td class="border-style" ><span class="font-medium " >${companyBankName}</span></td>
-                            <td class="border-style" colspan="3" ><span class="font-medium" >Round Off</span></td>
+                                                     <td class="border-style" colspan="3"><span class="font-medium" >Total Amount After Tax</span></td>
                             <td class="border-style" ><span class="font-medium" >:</span></td>
-                            <td class="border-style"><span class="font-medium" >${roundOff}</span></td>
+                            <td align="right" class="border-style"><span class="font-medium" >${totalAmountAfterTax?string(",##0.00")}</span></td>
                         </tr>
                         <tr >
-                            <td class="border-style" width="15%"><span class="font-medium " >Bank A/C :</span></td>
+                            <td class="border-style" width="10%"><span class="font-medium " >Bank Branch :</span></td>
+
+                            <td class="border-style" ><span class="font-medium " >${companyBranchName}</span></td>
+                            <td class="border-style" colspan="3" ><span class="font-medium" >Round Off</span></td>
+                            <td class="border-style" ><span class="font-medium" >:</span></td>
+                            <td align="right" class="border-style"><span class="font-medium" >${roundOff?string(",##0.00")}</span></td>
+                        </tr>
+                        <tr >
+                            <td class="border-style" width="10%"><span class="font-medium " >Bank A/C :</span></td>
 
                             <td class="border-style" ><span class="font-medium " >${companyBankAccount}</span></td>
                             <td class="border-style" colspan="3" ><span class="font-medium" >Bill Amount</span></td>
                             <td class="border-style" ><span class="font-medium" >:</span></td>
-                            <td class="border-style"><span class="font-medium" >${billamount}</span></td>
+                            <td align="right" class="border-style"><span class="font-medium" >${billamount?string(",##0.00")}</span></td>
                         </tr>
                         <tr >
                             <td class="border-style" ><span class="font-medium " >Bank IFSC :</span></td>
@@ -464,7 +491,7 @@ br {
                             <td class="border-style" ><span class="font-medium " >${companyBankIFSC}</span></td>
                             <td class="border-style" colspan="3" ><span class="font-medium" >GST On Reverse Charge</span></td>
                             <td class="border-style" ><span class="font-medium" >:</span></td>
-                            <td class="border-style"><span class="font-medium" >${GstOnReverseCharge}</span></td>
+                            <td align="right" class="border-style"><span class="font-medium" >${GstOnReverseCharge?string(",##0.00")}</span></td>
                         </tr>
                     </table>
                 </td>

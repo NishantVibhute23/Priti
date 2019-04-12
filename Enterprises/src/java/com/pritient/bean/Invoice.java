@@ -36,6 +36,7 @@ public class Invoice {
     String billToGSTIN = "";
     String billToState = "";
     String billToCode = "";
+    String billToTel = "";
 
     int shipTo;
     String shipToName = "";
@@ -43,6 +44,8 @@ public class Invoice {
     String shipToGSTIN = "";
     String shipToState = "";
     String shipToCode = "";
+    String shipToTel = "";
+
     double totalAmountGST;
     double totalAmountBeforeTax;
     double cgstPerc;
@@ -428,6 +431,22 @@ public class Invoice {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getBillToTel() {
+        return billToTel;
+    }
+
+    public void setBillToTel(String billToTel) {
+        this.billToTel = billToTel;
+    }
+
+    public String getShipToTel() {
+        return shipToTel;
+    }
+
+    public void setShipToTel(String shipToTel) {
+        this.shipToTel = shipToTel;
     }
 
 }

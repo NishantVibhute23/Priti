@@ -71,7 +71,8 @@ public class InvoiceAction extends ActionSupport implements ModelDriven {
 
         latestInvoiceNumber = invoiceDao.getLatestInvoiceNumber();
         int year = Calendar.getInstance().get(Calendar.YEAR);
-        latestInvoiceNum = latestInvoiceNumber + "/" + year + "-" + (year + 1);
+//        latestInvoiceNum = latestInvoiceNumber + "/" + year + "-" + (year + 1);
+        latestInvoiceNum = latestInvoiceNumber + "";
         return ActionSupport.SUCCESS;
     }
 
