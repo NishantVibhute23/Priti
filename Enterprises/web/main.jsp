@@ -59,7 +59,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand scrollTo" href="#intro">Priti EnterPrises</a>
+                    <a class="navbar-brand scrollTo" href="#intro">Priti Traders</a>
                 </div>
 
                 <div class="navbar-collapse collapse" id="navigation">

@@ -349,5 +349,16 @@
             <result name="failed">/index.jsp</result>
         </action>
         
+        <action name="redirectChangePassword" class="com.pritient.forward.LoginAction" method="redirectChangePassword"  >
+           <result name="success" >/jsp/changePassword.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        <action name="changePassword" class="com.pritient.forward.LoginAction" method="changePassword"  >
+           <result name="success" >/jsp/changePassword.jsp</result>
+            <result name="failed">/index.jsp</result>
+        </action>
+        
+        
+        
     </package>
 </struts>

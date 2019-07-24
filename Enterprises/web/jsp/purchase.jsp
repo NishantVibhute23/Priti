@@ -54,6 +54,15 @@
                 });
 
             });
+            
+            $(function() {
+                $("#datepicker1").datepicker({changeMonth: true,
+                    changeYear: true,
+                    showAnim: "slideDown",
+                    dateFormat: "dd/mm/yy"
+                });
+
+            });
             function getCompanyInfo()
             {
                 var id = $("#compSelect").val();

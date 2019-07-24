@@ -49,6 +49,9 @@ $("#Bills").removeClass("active");
             });
 
         </script>
+        <style>
+            .ui-datepicker {font-size:75%; }
+        </style>
     </head>
     <body>
         <div id="page-wrapper">
@@ -141,11 +144,11 @@ $("#Bills").removeClass("active");
                                     <div class="form-inline">
                                         <div class="form-group">
                                           
-                                            <input placeholder="From" type="text" size="10" class="form-control" id="datepickerPurchaseFrom" readonly name="date"> 
+                                            <input placeholder="From" type="text" size="10" class="form-control" id="datepickerSalesFrom" readonly name="date"> 
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd"></label>
-                                            <input placeholder="To" type="text" size="10"  class="form-control" id="datepickerPurchaseTo" readonly name="date">
+                                            <input placeholder="To" type="text" size="10"  class="form-control" id="datepickerSalesTo" readonly name="date">
                                         </div>
                                         
                                         <button type="submit" id="salesReport" class="btn btn-warning">Go</button>
@@ -174,7 +177,7 @@ $("#Bills").removeClass("active");
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd"></label>
-                                            <input placeholder="To" type="text" size="10"  class="form-control" id="datepickerPlFrom" readonly name="date">
+                                            <input placeholder="To" type="text" size="10"  class="form-control" id="datepickerPlTo" readonly name="date">
                                         </div>
                                         
                                         <button type="submit" id="plReport" class="btn btn-danger">Go</button>

@@ -37,6 +37,8 @@ public class LoginAction extends ActionSupport implements ModelDriven, SessionAw
     List<Product> productList;
     static final org.apache.log4j.Logger errorLog = org.apache.log4j.Logger.getLogger("errorLogger");
     static final org.apache.log4j.Logger infoLog = org.apache.log4j.Logger.getLogger("infoLogger");
+    String successMessage = "", errorMessage = "";
+    String newpassword, confirmPassword;
 
     public LoginAction() {
 
@@ -64,6 +66,24 @@ public class LoginAction extends ActionSupport implements ModelDriven, SessionAw
             return "failed";
         }
 
+    }
+
+    public String redirectChangePassword() {
+        return "success";
+    }
+
+    public String changePassword() {
+        if (!newpassword.equals(confirmPassword)) {
+            errorMessage = "Password does not matched";
+        } else {
+            int count = loginDao.changePassword("" + session.get("userName"), newpassword);
+            if (count != 0) {
+                successMessage = "Password Changed successfully";
+            } else {
+                errorMessage = "Failed to update password";
+            }
+        }
+        return "success";
     }
 
     public String logout() {
@@ -107,6 +127,38 @@ public class LoginAction extends ActionSupport implements ModelDriven, SessionAw
     @Override
     public void setSession(Map<String, Object> map) {
         this.session = (SessionMap<String, Object>) map;
+    }
+
+    public String getSuccessMessage() {
+        return successMessage;
+    }
+
+    public void setSuccessMessage(String successMessage) {
+        this.successMessage = successMessage;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public String getNewpassword() {
+        return newpassword;
+    }
+
+    public void setNewpassword(String newpassword) {
+        this.newpassword = newpassword;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
 }

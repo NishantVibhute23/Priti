@@ -61,13 +61,13 @@ public class ConvertToPdf {
             data.put("companyHeaderTelNo1", myProfile.getCompanyPhoneNo1());
             data.put("companyHeaderTelNo2", myProfile.getCompanyPhoneNo2());
             data.put("companyHeaderEmail", myProfile.getCompanyEmailId());
-
+//
             data.put("invoiceNo", in.getInvoiceNumber());
             data.put("invoiceDate", in.getDate());
             data.put("isReverse", in.getReverseCharge());
             data.put("invoiceState", in.getState());
             data.put("invoiceCode", in.getCode());
-
+//
             data.put("transMode", in.getTransportMode());
             data.put("vehicleNo", in.getVehicleNo());
             data.put("dateOFSupply", in.getDateOfSupply());
@@ -112,8 +112,8 @@ public class ConvertToPdf {
             data.put("termCond1", myProfile.getTermsCondition1());
             data.put("termCond2", myProfile.getTermsCondition2());
             data.put("termCond3", myProfile.getTermsCondition3());
-
-            // Console output
+//
+//            // Console output
             out = new StringWriter();
             template.process(data, out);
             out.flush();

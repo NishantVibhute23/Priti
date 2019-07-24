@@ -42,4 +42,22 @@ public class LoginDao extends DBUtil {
         return count;
     }
 
+    public int changePassword(String userName, String password) {
+        int count = 0;
+        try {
+
+            conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement("Call changePassword(?,?)");
+            ps.setString(1, userName);
+            ps.setString(2, password);
+            count = ps.executeUpdate();
+
+            closeConnection(conn);
+        } catch (Exception ex) {
+            errorLog.error("LoginDao : " + ex);
+        }
+
+        return count;
+    }
+
 }
